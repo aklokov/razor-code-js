@@ -1,0 +1,39 @@
+{
+  "name": "razor-code-js",
+  "version": "1.0.0",
+  "description": "javascript razor-like generator implementation",
+  "files": [
+    "out/src"
+  ],
+  "main": "./out/src/razor-code-js.js",
+  "types": "./out/src/razor-code-js.d.ts",
+  "scripts": {},
+  "keywords": [
+    "token",
+    "tokenizer"
+  ],
+  "author": "Vladimir Repin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repinvv/razor-code-js.git"
+  },
+  "devDependencies": {
+    "@types/chai": "3.4.34",
+    "@types/mocha": "2.2.32",
+    "chai": "3.5.0",
+    "gulp": "3.9.1",
+    "gulp-coverage": "0.3.38",
+    "gulp-mocha": "3.0.1",
+    "gulp-plumber": "1.1.0",
+    "gulp-tsc": "1.2.5",
+    "gulp-tslint": "6.1.3",
+    "mocha": "3.1.2",
+    "node-notifier": "4.6.1",
+    "tslint": "3.15.1",
+    "typescript": "2.0.9"
+  },
+  "dependencies": {
+    "token-breakdown-js": "1.0.4"
+  }
+}
