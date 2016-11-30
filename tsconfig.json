@@ -2,9 +2,8 @@
     "compilerOptions": {
         "module": "commonjs",
         "declaration": true,
-        "noResolve": true,
+        "noResolve": false,
         "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true
+        "preserveConstEnums": true 
     }
 }

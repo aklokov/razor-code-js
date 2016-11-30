@@ -31,9 +31,9 @@
     "mocha": "3.1.2",
     "node-notifier": "4.6.1",
     "tslint": "3.15.1",
-    "typescript": "2.0.9"
+    "typescript": "2.0.10"
   },
   "dependencies": {
-    "token-breakdown-js": "1.0.4"
+    "token-breakdown-js": "1.0.6"
   }
 }
