@@ -1,3 +1,3 @@
-export function csGen(source:string):string{
+export default function csGen(source: string[]): string {
     return '';
 }

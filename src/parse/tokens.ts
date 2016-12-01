@@ -4,7 +4,7 @@ const keywords = {
     foreach: '@foreach',
     eol: '@eol',
     visibility: '@visibility',
-    
+
     inherits: '@inherits',
     implements: '@implements',
     constructor: '@constructor',
@@ -15,8 +15,21 @@ const keywords = {
     using: '@using'
 };
 
-const configKeywords = [keywords.visibility, keywords.using, keywords.inherits, keywords.implements, keywords.constructor, keywords.member, keywords.partialPattern];
-const controlKeywords = [keywords.if, keywords.for, keywords.foreach, keywords.eol];
+const configKeywords = [
+    keywords.visibility,
+    keywords.using,
+    keywords.inherits,
+    keywords.implements,
+    keywords.constructor,
+    keywords.member,
+    keywords.partialPattern
+];
+const controlKeywords = [
+    keywords.if,
+    keywords.for,
+    keywords.foreach,
+    keywords.eol
+];
 
 const tokens = ['\n', '\r', '\r\n',
     '<', '>',

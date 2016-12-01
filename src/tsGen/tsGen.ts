@@ -1,4 +1,4 @@
 
-export function tsGen(source:string):string{
+export default function tsGen(source: string[]): string {
     return '';
 }
