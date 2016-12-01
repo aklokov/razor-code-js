@@ -34,6 +34,8 @@
     "typescript": "2.0.10"
   },
   "dependencies": {
-    "token-breakdown-js": "1.0.6"
+    "@types/uuid": "2.0.29",
+    "token-breakdown-js": "1.0.6",
+    "uuid": "3.0.1"
   }
 }
