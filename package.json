@@ -20,8 +20,10 @@
   },
   "devDependencies": {
     "@types/chai": "3.4.34",
+    "@types/deep-freeze": "0.0.29",
     "@types/mocha": "2.2.32",
     "chai": "3.5.0",
+    "deep-freeze": "0.0.1",
     "gulp": "3.9.1",
     "gulp-coverage": "0.3.38",
     "gulp-mocha": "3.0.1",
