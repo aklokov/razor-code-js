@@ -1,5 +1,5 @@
 interface IState{
-    state:string;
+    name:string;
 }
 
 export default IState;

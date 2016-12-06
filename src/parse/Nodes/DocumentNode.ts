@@ -1,6 +1,6 @@
 import Node from './Node';
 
-class DocumentNode extends Node{
+class DocumentNode extends Node {
 
 }
 
