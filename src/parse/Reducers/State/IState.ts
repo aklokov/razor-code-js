@@ -1,5 +1,5 @@
-interface IState{
-    name:string;
+interface IState {
+    name: string;
 }
 
 export default IState;
