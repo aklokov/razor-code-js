@@ -3,8 +3,8 @@ const ts = require('gulp-tsc');
 const settings = require('./extra/buildSettings');
 const tslint = require('gulp-tslint');
 const wrap = require('./extra/wrap');
-const src = 'src/**/*.ts';
-const tests = 'testSrc/**/*.ts';
+const src = settings.srcDir + '/**/*.ts';
+const tests = settings.testSrcDir + '/**/*.ts';
 
 function build(reportError, emitError) {
     return gulp.src([tests, src])
