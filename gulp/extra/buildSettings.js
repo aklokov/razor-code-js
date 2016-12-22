@@ -5,5 +5,5 @@ module.exports = {
     buildDir: './out',
     testRunDir: './out/testSrc',
     reportDir: './out/reports',
-    coverage: true
+    coverage: false
 }

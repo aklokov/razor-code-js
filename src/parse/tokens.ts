@@ -52,8 +52,7 @@ const replacements = {
 };
 
 export {
-    configKeywords,
-    controlKeywords,
+    keywords,
     allTokens,
     replacements
 }
