@@ -24,7 +24,7 @@ const configKeywords = [
     keywords.member,
     keywords.partialPattern
 ];
-const controlKeywords = [
+const flowKeywords = [
     keywords.if,
     keywords.for,
     keywords.foreach,
@@ -44,7 +44,7 @@ const tokens = ['\n', '\r', '\r\n',
     '=', '@@'
 ];
 
-const allTokens = tokens.concat(configKeywords, controlKeywords);
+const allTokens = tokens.concat(configKeywords, flowKeywords);
 
 const replacements = {
     '\r': '\n',
@@ -53,6 +53,8 @@ const replacements = {
 
 export {
     keywords,
+    configKeywords,
+    flowKeywords,
     allTokens,
     replacements
 }

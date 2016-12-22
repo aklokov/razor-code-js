@@ -1,8 +1,8 @@
 const gulp = require('gulp');
 const settings = require('./extra/buildSettings');
 
-const src = 'src/**/*.ts';
-const tests = 'testSrc/**/*.ts';
+const src = settings.srcDir + '/**/*.ts';
+const tests = settings.testSrcDir + '/**/*.ts';
 
 gulp.task('watch-sequence', ['build-watch', 'tslint-watch', 'tests-watch'])
 

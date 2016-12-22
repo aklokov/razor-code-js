@@ -12,7 +12,7 @@ const mochaSetting = { reporter: 'spec' };
 function test(reportError) {
     if (settings.coverage) {
         return gulp.src(testSrc)
-            .pipe(cover.instrument({ pattern: [settings.buildDir + '/src/**/*.js'] }))
+            .pipe(cover.instrument({ pattern: [settings.buildSrcDir + '/**/*.js'] }))
             .pipe(mocha(mochaSetting))
             .on('error', reportError)
             .pipe(cover.gather())

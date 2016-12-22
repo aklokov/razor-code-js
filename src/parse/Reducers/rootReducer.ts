@@ -5,7 +5,7 @@ import getStateItem from './getStateItem';
 import { actions, TokenAction, EndAction } from './actions';
 
 const rootReducer: IReduce<IRoot> = function (prev: IRoot, action: IAction): IRoot {
-    prev = prev || { document: undefined, state: { name: states.initial } };
+    prev = prev || { document: undefined, state: { name: states.initial, nodes: [] } };
     const item = getStateItem(prev.state.name);
     switch (action.type) {
         case actions.token:
@@ -15,7 +15,7 @@ const rootReducer: IReduce<IRoot> = function (prev: IRoot, action: IAction): IRo
         case actions.end:
             const endAction = action as EndAction;
             // dummy
-            return { ...prev, state: { name: endAction.type } };
+            return { ...prev, state: { name: endAction.type, nodes: [] } };
         default:
             return prev;
     }
