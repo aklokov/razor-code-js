@@ -1,16 +1,28 @@
 import IState from '../IState';
 import { keywords } from '../../../tokens';
-
-function processState(prev: IState, token: string): IState {
+import states from '../states';
+import IGroupState from '../IGroupState';
+function processState(current: IState, token: string): IState {
     switch (token) {
-        case keywords.for:
-            break;
+        case keywords.inherits:
+        case keywords.constructor:
+        case keywords.implements:
+        case keywords.partialPattern:
+            return null;
         default:
-            break;
+            return null;
     }
-    return { name: 'name', nodes: [] };
+}
+
+function createState(): IGroupState {
+    return {
+        name: states.initial,
+        group: [],
+        previous: undefined
+    }
 }
 
 export {
-    processState
+    processState,
+    createState,
 }

@@ -8,5 +8,5 @@ module.exports = {
     buildSrcDir: './out/src',
     testRunDir: './out/testSrc',
     reportDir: './out/reports',
-    coverage: true
+    coverage: false
 }

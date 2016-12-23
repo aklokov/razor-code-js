@@ -1,5 +1,6 @@
-const initial: string = 'INITIAL';
-
-export {
-    initial
+const states = {
+    initial: 'INITIAL',
+    simpleConfig: 'SIMPLE_CONFIG'
 }
+
+export default states;
