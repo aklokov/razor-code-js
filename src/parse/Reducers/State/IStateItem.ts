@@ -1,7 +1,8 @@
 import IState from './IState';
+import { TokenAction } from '../actions';
 
 interface IStateItem {
-    processState(current: IState, token: string): IState;
+    reduce(current: IState, action: TokenAction): IState;
 }
 
 export default IStateItem;
