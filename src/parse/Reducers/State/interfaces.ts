@@ -1,5 +1,5 @@
 import { TokenAction } from '../actions';
-import { RootNode } from '../../Nodes/export';
+import { RootNode, Node } from '../../Nodes/export';
 interface IState {
     name: string;
 }

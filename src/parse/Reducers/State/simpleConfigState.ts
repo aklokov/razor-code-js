@@ -1,7 +1,5 @@
-import states from './states';
-import { IState, IGroupState } from './interfaces';
-import { TokenAction } from '../actions';
-import SimpleConfigNode from '../../Nodes/SimpleConfigNode';
+import { states, IState, IGroupState, TokenAction, keywords } from './import';
+import { SimpleConfigNode } from '../../Nodes/export';
 
 interface ISimpleConfigState extends IState {
     content: string[];
@@ -13,6 +11,7 @@ function reduce(current: IState, action: TokenAction): IState {
     const currentState: ISimpleConfigState = current as ISimpleConfigState;
     switch (action.token) {
         case '\n':
+        case keywords.eof:
             const node = new SimpleConfigNode(currentState.token, currentState.content.join());
             return {
                 ...currentState.previous,

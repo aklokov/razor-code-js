@@ -8,6 +8,8 @@ function getStateItem(stateName: string): IStateItem {
             return stateItems.rootState;
         case states.simpleConfig:
             return stateItems.simpleConfigState;
+        case states.final:
+            return stateItems.finalState;
         default:
             throw new Error('unsupported state');
     }

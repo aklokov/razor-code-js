@@ -1,7 +1,5 @@
-import states from './states';
-import { IState, IGroupState } from './interfaces';
-import { keywords } from '../../tokens';
-import { TokenAction } from '../actions';
+import { states, IState, IGroupState, TokenAction, keywords } from './import';
+import * as finalState from './finalState';
 import * as simpleConfig from './simpleConfigState';
 
 function reduce(current: IState, action: TokenAction): IState {
@@ -13,6 +11,8 @@ function reduce(current: IState, action: TokenAction): IState {
         case keywords.partialPattern:
         case keywords.using:
             return simpleConfig.createState(currentState, action.token);
+        case keywords.eof:
+            return finalState.createState(currentState.group);
         default:
             return current; // todo
     }
