@@ -3,16 +3,16 @@ const keywords = {
     for: '@for',
     foreach: '@foreach',
     eol: '@eol',
-    visibility: '@visibility',
+    eof: '@eof',
 
-    inherits: '@inherits',
-    implements: '@implements',
-    constructor: '@constructor',
-    member: '@member',
-    partialPattern: '@partialPattern',
+    visibility: '@visibility ',
+    inherits: '@inherits ',
+    implements: '@implements ',
+    constructor: '@constructor ',
+    partialPattern: '@partialPattern ',
+    using: '@using ',
 
-    // c# specific
-    using: '@using'
+    member: '@member'
 };
 
 const configKeywords = [
@@ -28,7 +28,8 @@ const flowKeywords = [
     keywords.if,
     keywords.for,
     keywords.foreach,
-    keywords.eol
+    keywords.eol,
+    keywords.eof
 ];
 
 const tokens = ['\n', '\r', '\r\n',

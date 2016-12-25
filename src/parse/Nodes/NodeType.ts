@@ -1,5 +1,5 @@
 enum NodeType {
-    Document,
+    Root,
     SimpleConfig
 }
 

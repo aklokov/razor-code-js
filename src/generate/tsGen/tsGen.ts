@@ -1,5 +1,5 @@
-import DocumentNode from '../../parse/Nodes/DocumentNode';
+import RootNode from '../../parse/Nodes/RootNode';
 
-export default function tsGen(node: DocumentNode): string {
+export default function tsGen(node: RootNode): string {
     return '';
 }

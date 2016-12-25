@@ -1,23 +1,21 @@
-import IRoot from '../Reducers/IRoot';
+import { IState } from './State/interfaces';
 import { IAction, IReduce } from '../StateManage/interfaces';
-import states from './State/states';
 import getStateItem from './getStateItem';
-import { actions, TokenAction, EndAction } from './actions';
+import { TokenAction } from './actions';
+import * as rootState from './State/rootState';
+import { keywords } from '../tokens';
 
-const rootReducer: IReduce<IRoot> = function (prev: IRoot, action: IAction): IRoot {
-    prev = prev || { document: undefined, state: { name: states.initial } };
-    const item = getStateItem(prev.state.name);
-    switch (action.type) {
-        case actions.token:
-            const tokenAction = action as TokenAction;
-            const newState = item.reduce(prev.state, tokenAction);
-            return { ...prev, state: newState };
-        case actions.end:
-            const endAction = action as EndAction;
-            // dummy
-            return { ...prev, state: { name: endAction.type } };
+const rootReducer: IReduce<IState> = function (current: IState, action: IAction): IState {
+    current = current || rootState.createState();
+    const item = getStateItem(current.name);
+    const tokenAction = action as TokenAction;
+    switch (tokenAction.token) {
+        case keywords.eof:
+            return current;
         default:
-            return prev;
+            const tokenAction = action as TokenAction;
+            const newState = item.reduce(current, tokenAction);
+            return { ...current, state: newState };
     }
 };
 

@@ -1,5 +1,5 @@
 const states = {
-    initial: 'INITIAL',
+    root: 'ROOT',
     simpleConfig: 'SIMPLE_CONFIG'
 };
 

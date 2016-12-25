@@ -5,6 +5,8 @@ const tslint = require('gulp-tslint');
 const wrap = require('./extra/wrap');
 const src = settings.srcDir + '/**/*.ts';
 const tests = settings.testSrcDir + '/**/*.ts';
+const tsconfig = require('../tsconfig');
+
 
 function build(reportError, emitError) {
     return gulp.src([tests, src])
@@ -13,15 +15,15 @@ function build(reportError, emitError) {
         .pipe(gulp.dest(settings.buildDir));
 }
 
-gulp.task('build', ['cleanup'], function() {
+gulp.task('build', ['cleanup'], function () {
     return gulp.src([tests, src])
-        .pipe(ts({ declaration: true }))
+        .pipe(ts(tsconfig.compilerOptions))
         .pipe(gulp.dest(settings.buildDir));
 });
 
-gulp.task('build-watch', ['cleanup'], wrap('TS-Build', function(reportError) {
+gulp.task('build-watch', ['cleanup'], wrap('TS-Build', function (reportError) {
     return gulp.src([tests, src])
-        .pipe(ts({ declaration: true }))
+        .pipe(ts(tsconfig.compilerOptions))
         .on('error', reportError)
         .pipe(gulp.dest(settings.buildDir));
 }));
@@ -33,7 +35,7 @@ function lint(reportError, emitError) {
         .on('error', reportError);
 }
 
-gulp.task('tslint', ['build'], function(done) {
+gulp.task('tslint', ['build'], function (done) {
     return lint(() => { }, true);
 });
 

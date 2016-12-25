@@ -1,9 +1,8 @@
-import IState from '../IState';
-import { keywords } from '../../../tokens';
-import states from '../states';
-import IGroupState from '../IGroupState';
-import { TokenAction } from '../../actions';
-import * as simpleConfig from './simpleConfig';
+import states from './states';
+import { IState, IGroupState } from './interfaces';
+import { keywords } from '../../tokens';
+import { TokenAction } from '../actions';
+import * as simpleConfig from './simpleConfigState';
 
 function reduce(current: IState, action: TokenAction): IState {
     const currentState = current as IGroupState;
@@ -12,17 +11,19 @@ function reduce(current: IState, action: TokenAction): IState {
         case keywords.constructor:
         case keywords.implements:
         case keywords.partialPattern:
+        case keywords.using:
             return simpleConfig.createState(currentState, action.token);
         default:
             return current; // todo
     }
 }
 
-function createState(): IGroupState {
-    return {
-        name: states.initial,
+function createState(): IState {
+    const state: IGroupState = {
+        name: states.root,
         group: []
     };
+    return state;
 }
 
 export {

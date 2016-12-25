@@ -2,7 +2,7 @@ import Node from './Node';
 import NodeType from './NodeType';
 
 class SimpleConfigNode extends Node {
-    constructor(public configToken: string) {
+    constructor(public token: string, public content: string) {
         super(NodeType.SimpleConfig);
     }
 }

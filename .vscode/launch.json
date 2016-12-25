@@ -10,7 +10,7 @@
             "name": "Launch Gulp",
             "program": "${workspaceRoot}\\node_modules\\gulp\\bin\\gulp.js",
             "cwd": "${workspaceRoot}",
-            "outFiles": [],
+            "outFiles": ["${workspaceRoot}\\out\\**\\*.js"],
             "sourceMaps": true
         },
         {

@@ -1,7 +1,6 @@
 import { IAction } from '../StateManage/interfaces';
 const actions = {
-    token: 'TOKEN',
-    end: 'END'
+    token: 'TOKEN'
 };
 
 class TokenAction implements IAction {
@@ -9,12 +8,7 @@ class TokenAction implements IAction {
     constructor(public token: string) { }
 }
 
-class EndAction implements IAction {
-    public type: string = actions.end;
-}
-
 export {
     actions,
-    TokenAction,
-    EndAction
+    TokenAction
 };
