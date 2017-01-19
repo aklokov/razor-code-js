@@ -1,14 +1,15 @@
 import tokenBreakdown from 'token-breakdown-js';
 import { allTokens, replacements } from './tokens';
 import { IStateManager } from './StateManage/interfaces';
-import IRoot from './Reducers/IRoot';
-import DocumentNode from './Nodes/DocumentNode';
-import { TokenAction, EndAction } from './Reducers/actions';
+import { IState, IFinalState } from './Reducers/State/interfaces';
+import { RootNode } from './Nodes/export';
+import { TokenAction } from './Reducers/actions';
+import setEof from './setEof';
 
-export default function parseImpl(manager: IStateManager<IRoot>, source: string): DocumentNode {
+export default function parseImpl(manager: IStateManager<IState>, source: string): RootNode {
     const tokens = tokenBreakdown(allTokens, replacements).breakDown(source);
-    tokens.forEach(token => manager.dispatch(new TokenAction(token)));
-    manager.dispatch(new EndAction());
-    const result = manager.getState();
-    return result.document;
+    const tokensWithEof = setEof(tokens);
+    tokensWithEof.forEach(token => manager.dispatch(new TokenAction(token)));
+    const result = manager.getState() as IFinalState;
+    return result.rootNode;
 }

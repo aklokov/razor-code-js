@@ -9,7 +9,7 @@ function protect<T>(obj: T): T {
 
 function wrapReducer<T>(reducer: IReduce<T>): IReduce<T> {
     const wrapper: IReduce<T> = function (prev: T, action: IAction): T {
-        const newState = reducer(this.state, protect(action));
+        const newState = reducer(prev, protect(action));
         return protect(newState);
     };
 

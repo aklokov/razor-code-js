@@ -1,10 +1,10 @@
 import StateManager from './StateManage/StateManager';
-import IRoot from './Reducers/IRoot';
-import DocumentNode from './Nodes/DocumentNode';
+import { IState } from './Reducers/State/interfaces';
+import { RootNode } from './Nodes/export';
 import rootReducer from './Reducers/rootReducer';
 import parseImpl from './parseImpl';
 
-export default function parse(source: string): DocumentNode {
-    const manager = new StateManager<IRoot>(rootReducer);
+export default function parse(source: string): RootNode {
+    const manager = new StateManager<IState>(rootReducer);
     return parseImpl(manager, source);
 }

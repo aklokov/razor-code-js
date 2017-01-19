@@ -1,8 +1,18 @@
-import * as initial from './State/stateItems/initial';
-import IStateItem from './State/IStateItem';
+import * as stateItems from './State/export';
+import { IStateItem } from './State/interfaces';
+import states from './State/states';
 
 function getStateItem(stateName: string): IStateItem {
-    return initial;
+    switch (stateName) {
+        case states.root:
+            return stateItems.rootState;
+        case states.simpleConfig:
+            return stateItems.simpleConfigState;
+        case states.final:
+            return stateItems.finalState;
+        default:
+            throw new Error('unsupported state');
+    }
 }
 
 export default getStateItem;
