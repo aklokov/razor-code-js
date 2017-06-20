@@ -1,5 +1,5 @@
 import { TokenAction } from '../actions';
-import { RootNode, Node } from '../../../nodes';
+import { RootNode, BasicNode } from '../../../nodes';
 
 interface IState {
     name: string;
@@ -10,16 +10,31 @@ interface IStateItem {
 }
 
 interface IGroupState extends IState {
-    group: Node[];
+    previous: IState;
+    group: BasicNode[];
+}
+
+interface IRootState extends IState {
+    hasContent: boolean;
+    content: string[];
+    group: BasicNode[];
 }
 
 interface IFinalState extends IState {
     rootNode: RootNode;
 }
 
+interface ISimpleConfigState extends IState {
+    content: string[];
+    token: string;
+    root: IRootState;
+}
+
 export {
     IState,
     IStateItem,
     IGroupState,
-    IFinalState
+    IFinalState,
+    IRootState,
+    ISimpleConfigState
 }

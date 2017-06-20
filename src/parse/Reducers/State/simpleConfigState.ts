@@ -1,10 +1,22 @@
-import { states, IState, IGroupState, TokenAction, keywords } from './import';
+import states from './states';
+import { IState, IRootState, ISimpleConfigState } from './interfaces';
+import { keywords } from '../../tokens';
+import { TokenAction } from '../actions';
 import { SimpleConfigNode } from '../../../nodes';
 
-interface ISimpleConfigState extends IState {
-    content: string[];
-    token: string;
-    previous: IGroupState;
+function backToRootState(currentState: ISimpleConfigState): IRootState {
+    const node = new SimpleConfigNode(currentState.token, currentState.content.join(''));
+    return {
+        ...currentState.root,
+        group: [...currentState.root.group, node]
+    };
+}
+
+function addToState(currentState: ISimpleConfigState, token: string): ISimpleConfigState {
+    return {
+        ...currentState,
+        content: [...currentState.content, token]
+    };
 }
 
 function reduce(current: IState, action: TokenAction): IState {
@@ -12,22 +24,15 @@ function reduce(current: IState, action: TokenAction): IState {
     switch (action.token) {
         case '\n':
         case keywords.eof:
-            const node = new SimpleConfigNode(currentState.token, currentState.content.join(''));
-            return {
-                ...currentState.previous,
-                group: [...currentState.previous.group, node]
-            };
+            return backToRootState(currentState);
         default:
-            return {
-                ...currentState,
-                content: [...currentState.content, action.token]
-            };
+            return addToState(currentState, action.token);
     }
 }
 
-function createState(previous: IGroupState, token: string, content: string[] = []): IState {
+function createState(root: IRootState, token: string, content: string[] = []): ISimpleConfigState {
     const newState: ISimpleConfigState = {
-        previous,
+        root,
         token,
         content,
         name: states.simpleConfig

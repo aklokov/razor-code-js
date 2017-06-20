@@ -1,8 +1,8 @@
-import Node from './Node';
+import BasicNode from './BasicNode';
 import NodeType from './NodeType';
 
-class RootNode extends Node {
-    constructor(public nodes: Node[]) {
+class RootNode extends BasicNode {
+    constructor(public nodes: BasicNode[]) {
         super(NodeType.Root);
     }
 }
