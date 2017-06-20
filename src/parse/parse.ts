@@ -1,6 +1,6 @@
 import StateManager from './StateManage/StateManager';
 import { IState } from './Reducers/State/interfaces';
-import { RootNode } from './Nodes/export';
+import { RootNode } from '../nodes';
 import rootReducer from './Reducers/rootReducer';
 import parseImpl from './parseImpl';
 

@@ -40,3 +40,5 @@ gulp.task('tslint', ['build'], function (done) {
 });
 
 gulp.task('tslint-watch', ['build-watch'], wrap('TS-lint', reportError => lint(reportError, false)));
+
+gulp.task('full-build-watch', ['build-watch', 'tslint-watch']);

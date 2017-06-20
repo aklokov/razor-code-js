@@ -1,4 +1,4 @@
-import RootNode from '../../parse/Nodes/RootNode';
+import { RootNode } from '../../nodes';
 
 export default function tsGen(node: RootNode): string {
     return '';

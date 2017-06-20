@@ -1,5 +1,5 @@
 import { states, IState, IFinalState, TokenAction } from './import';
-import { RootNode, Node } from '../../Nodes/export';
+import { RootNode, Node } from '../../../nodes';
 
 function reduce(current: IState, action: TokenAction): IState {
     throw new Error('should be no more tokens after eof');

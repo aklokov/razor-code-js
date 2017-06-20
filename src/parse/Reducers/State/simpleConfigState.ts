@@ -1,5 +1,5 @@
 import { states, IState, IGroupState, TokenAction, keywords } from './import';
-import { SimpleConfigNode } from '../../Nodes/export';
+import { SimpleConfigNode } from '../../../nodes';
 
 interface ISimpleConfigState extends IState {
     content: string[];

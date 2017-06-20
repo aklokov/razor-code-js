@@ -25,8 +25,8 @@ function test(reportError) {
         .on('error', reportError);
 }
 
-gulp.task('tests', ['build'], function (done) {
+gulp.task('tests', ['full-build'], function (done) {
     return test(() => { });
 });
 
-gulp.task('tests-watch', ['build-watch'], wrap('Tests', test));
+gulp.task('tests-watch', ['full-build-watch'], wrap('Tests', test));

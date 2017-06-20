@@ -1,4 +1,4 @@
-import RootNode from '../src/parse/Nodes/RootNode';
+import { RootNode } from '../src/nodes';
 import rootReducer from '../src/parse/Reducers/rootReducer';
 import StateManager from '../src/parse/StateManage/StateManager';
 import wrapReducer from '../src/parse/StateManage/wrapReducer';

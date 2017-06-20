@@ -1,38 +1,40 @@
 const keywords = {
+    // flow
     if: '@if',
-    for: '@for',
+    else: 'else',
     foreach: '@foreach',
     eol: '@eol',
     eof: '@eof',
 
-    visibility: '@visibility ',
-    inherits: '@inherits ',
-    implements: '@implements ',
-    constructor: '@constructor ',
-    partialPattern: '@partialPattern ',
+    // config
+    language: '@language', // c#, js or ts
+    input: '@input(',
+
+    // c# specific
+    namespace: '@namespace',
     using: '@using ',
 
-    member: '@member'
+    // js/ts specific
+    import: '@import'
 };
 
 const configKeywords = [
-    keywords.visibility,
-    keywords.using,
-    keywords.inherits,
-    keywords.implements,
-    keywords.constructor,
-    keywords.member,
-    keywords.partialPattern
+    keywords.language,
+    keywords.input,
+    keywords.import,
+    keywords.namespace,
+    keywords.using
 ];
+
 const flowKeywords = [
     keywords.if,
-    keywords.for,
     keywords.foreach,
     keywords.eol,
     keywords.eof
 ];
 
-const tokens = ['\n', '\r', '\r\n',
+const tokens = [
+    '\n', '\r', '\r\n',
     '<', '>',
     '(', ')',
     '[', ']',
@@ -45,7 +47,7 @@ const tokens = ['\n', '\r', '\r\n',
     '=', '@@'
 ];
 
-const allTokens = tokens.concat(configKeywords, flowKeywords);
+const allTokens = [...tokens, ...configKeywords, ...flowKeywords];
 
 const replacements = {
     '\r': '\n',

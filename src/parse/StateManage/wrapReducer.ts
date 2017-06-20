@@ -4,7 +4,7 @@ import * as deepFreeze from 'deep-freeze';
 function protect<T>(obj: T): T {
     const serialized = JSON.stringify(obj);
     const deserialized = JSON.parse(serialized);
-    return deepFreeze(deserialized)
+    return deepFreeze(deserialized);
 }
 
 function wrapReducer<T>(reducer: IReduce<T>): IReduce<T> {

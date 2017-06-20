@@ -1,25 +1,12 @@
 import parse from './parse/parse';
-import jsGen from './generate/jsGen/jsGen';
-import csGen from './generate/csGen/csGen';
-import tsGen from './generate/tsGen/tsGen';
+import generateImpl from './generate/generate';
 
-function generateTs(source: string): string {
+function generate(source: string): string {
     const nodes = parse(source);
-    return tsGen(nodes);
+    return generateImpl(nodes);
 }
 
-function generateCs(source: string): string {
-    const nodes = parse(source);
-    return csGen(nodes);
-}
-
-function generateJs(source: string): string {
-    const nodes = parse(source);
-    return jsGen(nodes);
-}
 
 export {
-    generateTs,
-    generateJs,
-    generateCs
+    generate
 }
