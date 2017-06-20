@@ -5,6 +5,10 @@ import * as simpleConfig from './simpleConfigState';
 function reduce(current: IState, action: TokenAction): IState {
     const currentState = current as IGroupState;
     switch (action.token) {
+        case keywords.language:
+        case keywords.parameters:
+        case keywords.import:
+        case keywords.namespace:
         case keywords.using:
             return simpleConfig.createState(currentState, action.token);
         case keywords.eof:

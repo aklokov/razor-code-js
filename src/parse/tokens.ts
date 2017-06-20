@@ -8,19 +8,19 @@ const keywords = {
 
     // config
     language: '@language', // c#, js or ts
-    input: '@input(',
+    parameters: '@parameters',
+
+    // js/ts specific
+    import: '@import',
 
     // c# specific
     namespace: '@namespace',
-    using: '@using ',
-
-    // js/ts specific
-    import: '@import'
+    using: '@using '
 };
 
 const configKeywords = [
     keywords.language,
-    keywords.input,
+    keywords.parameters,
     keywords.import,
     keywords.namespace,
     keywords.using

@@ -1,6 +1,7 @@
 enum NodeType {
     Root,
-    SimpleConfig
+    SimpleConfig,
+    Content
 }
 
 export default NodeType;

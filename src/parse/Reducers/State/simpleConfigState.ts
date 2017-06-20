@@ -12,7 +12,7 @@ function reduce(current: IState, action: TokenAction): IState {
     switch (action.token) {
         case '\n':
         case keywords.eof:
-            const node = new SimpleConfigNode(currentState.token, currentState.content.join());
+            const node = new SimpleConfigNode(currentState.token, currentState.content.join(''));
             return {
                 ...currentState.previous,
                 group: [...currentState.previous.group, node]
@@ -20,7 +20,7 @@ function reduce(current: IState, action: TokenAction): IState {
         default:
             return {
                 ...currentState,
-                tokens: [...currentState.content, action.token]
+                content: [...currentState.content, action.token]
             };
     }
 }

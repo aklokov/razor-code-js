@@ -5,7 +5,7 @@ import { keywords, RootNode, NodeType, SimpleConfigNode } from './import';
 describe('parser', function () {
     it('should return simple config node', function () {
         // arrange
-        const src = '@using asdf fre arfs\n'
+        const src = '@using asdf fre arfs\n';
 
         // act
         const res: RootNode = wrappedParser(src);
@@ -15,6 +15,7 @@ describe('parser', function () {
         expect(res.nodes.length).to.be.equal(1);
         const configNode = res.nodes[0] as SimpleConfigNode;
         expect(configNode.type).to.be.equal(NodeType.SimpleConfig);
-        expect(configNode.token)
+        expect(configNode.token).to.be.equal(keywords.using);
+        expect(configNode.content).to.be.equal('asdf fre arfs');
     });
 });
