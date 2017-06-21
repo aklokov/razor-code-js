@@ -40,4 +40,36 @@ describe('parser', function () {
         expect(contentNode2.type).to.be.equal(NodeType.Content);
         expect(contentNode2.content).to.be.equal('bbb');
     });
+
+    it('should return 7 nodes', function () {
+        // arrange
+        const src = `aaa
+        bbb
+        ccc
+        ddd`;
+
+        // act
+        const res: RootNode = wrappedParser(src);
+
+        // assert
+        expect(res.type).to.be.equal(NodeType.Root);
+        expect(res.nodes.length).to.be.equal(7);
+    });
+
+    it('should skip empty lines before content', function () {
+        // arrange
+        const src = `    
+        
+        aaa`;
+
+        // act
+        const res: RootNode = wrappedParser(src);
+
+        // assert
+        expect(res.type).to.be.equal(NodeType.Root);
+        expect(res.nodes.length).to.be.equal(1);
+        const contentNode = res.nodes[0] as ContentNode;
+        expect(contentNode.type).to.be.equal(NodeType.Content);
+        expect(contentNode.content).to.be.equal('        aaa');
+    });
 });

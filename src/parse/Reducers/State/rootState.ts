@@ -13,13 +13,17 @@ function addToken(current: IRootState, token: string): IRootState {
     };
 }
 
-function hasContent(content: string[]): boolean {
-    return content.some(item => !!item.trim().length);
+function hasContent(node: IRootState): boolean {
+    return node.hasContent || node.content.some(item => !!item.trim().length);
 }
 
 function tryAddContentNode(current: IRootState): IRootState {
-    if (!hasContent(current.content)) {
-        return current;
+    if (!hasContent(current)) {
+        // dump empty line if there are no previous content
+        return {
+            ...current,
+            content: []
+        };
     }
 
     const node = new ContentNode(current.content.join(''));
@@ -31,25 +35,32 @@ function tryAddContentNode(current: IRootState): IRootState {
     };
 }
 
-function addBasicNode(current: IRootState, type: NodeType): IRootState {
+function addEol(current: IRootState): IRootState {
     const afterAdd = tryAddContentNode(current);
-    const node = new BasicNode(type);
+
+    // dump empty line if there are no previous content
+    if (!afterAdd.hasContent) {
+        return afterAdd;
+    }
+
+    const node = new BasicNode(NodeType.Eol);
     return {
         ...afterAdd,
         group: [...afterAdd.group, node]
     };
 }
 
-function addEol(current: IRootState): IRootState {
-    return addBasicNode(current, NodeType.Eol);
-}
-
 function addForceEol(current: IRootState): IRootState {
-    return addBasicNode(current, NodeType.ForceEol);
+    const afterAdd = tryAddContentNode(current);
+    const node = new BasicNode(NodeType.ForceEol);
+    return {
+        ...afterAdd,
+        group: [...afterAdd.group, node]
+    };
 }
 
 function tryCreateSimpleConfig(current: IRootState, token: string): IState {
-    if (hasContent(current.content) || current.hasContent) {
+    if (hasContent(current)) {
         return addToken(current, token);
     }
 
