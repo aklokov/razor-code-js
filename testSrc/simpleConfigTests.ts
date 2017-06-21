@@ -18,4 +18,17 @@ describe('parser', function () {
         expect(configNode.token).to.be.equal(keywords.using);
         expect(configNode.content).to.be.equal('asdf fre arfs');
     });
+
+    it('should not return config node after content node', function () {
+        // arrange
+        const src = 'some @using asdf fre arfs\n';
+
+        // act
+        const res: RootNode = wrappedParser(src);
+
+        // assert
+        expect(res.type).to.be.equal(NodeType.Root);
+        var haveConfigNode = res.nodes.some(node => node.type === NodeType.SimpleConfig);
+        expect(haveConfigNode).to.be.false;
+    });
 });
