@@ -1,8 +1,5 @@
-import BasicNode from './BasicNode';
+import { BasicNode, RootNode, SimpleConfigNode, ContentNode } from './nodes';
 import NodeType from './NodeType';
-import RootNode from './RootNode';
-import SimpleConfigNode from './SimpleConfigNode';
-import ContentNode from './ContentNode';
 
 export {
     BasicNode,
