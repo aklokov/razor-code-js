@@ -8,7 +8,7 @@ function backToRootState(currentState: ISimpleConfigState): IRootState {
     const node = new SimpleConfigNode(currentState.token, currentState.content.join(''));
     return {
         ...currentState.root,
-        group: [...currentState.root.group, node]
+        children: [...currentState.root.children, node]
     };
 }
 

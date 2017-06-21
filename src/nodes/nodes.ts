@@ -15,7 +15,7 @@ export class ContentNode extends BasicNode {
 }
 
 export class RootNode extends BasicNode {
-    constructor(public nodes: BasicNode[]) {
+    constructor(public children: BasicNode[]) {
         super(NodeType.Root);
     }
 }

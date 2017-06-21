@@ -18,20 +18,41 @@ function addNode(current: IRootState, node: BasicNode): IRootState {
         ...current,
         hasContent: true,
         content: [],
-        group: [...current.group, node]
+        children: [...current.children, node]
     };
 }
 
-function hasContent(node: IRootState): boolean {
-    return node.hasContent || node.content.some(item => !!item.trim().length);
+function contentIsNotEmpty(content: string[]): boolean {
+    return content.some(item => !!item.trim().length);
+}
+
+function nodeHasContent(node: IRootState): boolean {
+    return node.hasContent || contentIsNotEmpty(node.content);
 }
 
 function getContent(current: IRootState): string {
     return current.content.join('');
 }
 
+function afterForceEol(current: IRootState): boolean {
+    if (!current.children.length) {
+        return false;
+    }
+
+    const lastNode = current.children[current.children.length - 1];
+    return lastNode.type === NodeType.ForceEol;
+}
+
+function emptyContentAfterForceEol(current: IRootState): boolean {
+    return afterForceEol(current) && !contentIsNotEmpty(current.content);
+}
+
 function tryAddContentNode(current: IRootState): IRootState {
-    if (!hasContent(current)) {
+    if (!current.content.length) {
+        return current;
+    }
+
+    if (!nodeHasContent(current) || emptyContentAfterForceEol(current)) {
         // dump empty line if there are no previous content
         return {
             ...current,
@@ -42,11 +63,13 @@ function tryAddContentNode(current: IRootState): IRootState {
     return addNode(current, new ContentNode(getContent(current)));
 }
 
+
+
 function addEol(current: IRootState): IRootState {
     const afterAdd = tryAddContentNode(current);
 
     // dump empty line if there are no previous content
-    if (!afterAdd.hasContent) {
+    if (!afterAdd.hasContent || afterForceEol(current)) {
         return afterAdd;
     }
 
@@ -66,7 +89,7 @@ function addForceEol(current: IRootState): IRootState {
 }
 
 function tryCreateSimpleConfig(current: IRootState, token: string): IState {
-    if (hasContent(current)) {
+    if (nodeHasContent(current)) {
         return addToken(current, token);
     }
 
@@ -83,7 +106,7 @@ function reduce(current: IState, action: TokenAction): IState {
         case keywords.using:
             return tryCreateSimpleConfig(currentState, action.token);
         case keywords.eof:
-            return finalState.createState(tryAddContentNode(currentState).group);
+            return finalState.createState(tryAddContentNode(currentState).children);
         case keywords.eol:
             return addForceEol(currentState);
         case '\n':
@@ -100,7 +123,7 @@ function createState(): IRootState {
     return {
         name: states.root,
         hasContent: false,
-        group: [],
+        children: [],
         content: []
     };
 }

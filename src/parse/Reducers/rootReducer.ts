@@ -1,9 +1,9 @@
-import { IState } from './State/interfaces';
+import { IState } from './state/interfaces';
 import { IAction, IReduce } from '../StateManage/interfaces';
 import getStateItem from './getStateItem';
-import states from './State/states';
+import states from './state/states';
 import { TokenAction, actions } from './actions';
-import * as rootState from './State/rootState';
+import * as rootState from './state/rootState';
 import { keywords } from '../tokens';
 
 const rootReducer: IReduce<IState> = function (current: IState, action: IAction): IState {

@@ -1,7 +1,7 @@
 import StateManager from './StateManage/StateManager';
-import { IState } from './Reducers/State/interfaces';
+import { IState } from './reducers/state/interfaces';
 import { RootNode } from '../nodes';
-import rootReducer from './Reducers/rootReducer';
+import rootReducer from './reducers/rootReducer';
 import parseImpl from './parseImpl';
 
 export default function parse(source: string): RootNode {

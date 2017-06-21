@@ -1,9 +1,9 @@
 import tokenBreakdown from 'token-breakdown-js';
 import { allTokens, replacements } from './tokens';
 import { IStateManager } from './StateManage/interfaces';
-import { IState, IFinalState } from './Reducers/State/interfaces';
+import { IState, IFinalState } from './reducers/state/interfaces';
 import { RootNode } from '../nodes';
-import { TokenAction } from './Reducers/actions';
+import { TokenAction } from './reducers/actions';
 import setEof from './setEof';
 
 export default function parseImpl(manager: IStateManager<IState>, source: string): RootNode {

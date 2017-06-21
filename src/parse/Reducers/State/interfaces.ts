@@ -17,7 +17,7 @@ interface IGroupState extends IState {
 interface IRootState extends IState {
     hasContent: boolean;
     content: string[];
-    group: BasicNode[];
+    children: BasicNode[];
 }
 
 interface IFinalState extends IState {
