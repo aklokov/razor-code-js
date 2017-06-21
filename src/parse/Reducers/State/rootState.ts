@@ -1,6 +1,6 @@
 import states from './states';
 import { IState, IRootState } from './interfaces';
-import { ContentNode } from '../../../nodes';
+import { BasicNode, ContentNode, NodeType } from '../../../nodes';
 import { keywords } from '../../tokens';
 import { TokenAction } from '../actions';
 import * as finalState from './finalState';
@@ -31,12 +31,21 @@ function tryAddContentNode(current: IRootState): IRootState {
     };
 }
 
+function addBasicNode(current: IRootState, type: NodeType): IRootState {
+    const afterAdd = tryAddContentNode(current);
+    const node = new BasicNode(type);
+    return {
+        ...afterAdd,
+        group: [...afterAdd.group, node]
+    };
+}
+
 function addEol(current: IRootState): IRootState {
-    return current;
+    return addBasicNode(current, NodeType.Eol);
 }
 
 function addForceEol(current: IRootState): IRootState {
-    return current;
+    return addBasicNode(current, NodeType.ForceEol);
 }
 
 function tryCreateSimpleConfig(current: IRootState, token: string): IState {
