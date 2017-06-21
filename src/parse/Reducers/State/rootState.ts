@@ -63,13 +63,11 @@ function tryAddContentNode(current: IRootState): IRootState {
     return addNode(current, new ContentNode(getContent(current)));
 }
 
-
-
 function addEol(current: IRootState): IRootState {
     const afterAdd = tryAddContentNode(current);
 
     // dump empty line if there are no previous content
-    if (!afterAdd.hasContent || afterForceEol(current)) {
+    if (!afterAdd.hasContent || afterForceEol(afterAdd)) {
         return afterAdd;
     }
 

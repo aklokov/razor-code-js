@@ -7,14 +7,14 @@ const keywords = {
     eof: '@eof',
 
     // config
-    language: '@language', // c#, js or ts
-    parameters: '@parameters',
+    language: '@language ', // c#, js or ts
+    parameters: '@parameters ',
 
     // js/ts specific
-    import: '@import',
+    import: '@import ',
 
     // c# specific
-    namespace: '@namespace',
+    namespace: '@namespace ',
     using: '@using '
 };
 

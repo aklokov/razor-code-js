@@ -14,8 +14,8 @@ describe('setEof', function () {
         expect(result).to.be.deep.equal(['a', 'b', keywords.eof]);
     });
 
-    it('should trim if eof is already present', function(){
- // arrange
+    it('should trim if eof is already present', function () {
+        // arrange
         const input = ['a', keywords.eof, 'b'];
 
         // act

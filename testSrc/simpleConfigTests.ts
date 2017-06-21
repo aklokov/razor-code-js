@@ -1,26 +1,18 @@
-import { expect } from 'chai';
 import wrappedParser from './wrappedParser';
-import { keywords, RootNode, NodeType, SimpleConfigNode } from './import';
-
-function haveConfigNode(node: RootNode): boolean {
-    return node.children.some(node => node.type === NodeType.SimpleConfig);
-}
+import { keywords } from './import';
+import expectNode from './helpers/expectNode';
 
 describe('parser', function () {
     it('should return simple config node', function () {
         // arrange
-        const src = '@using asdf fre arfs\n';
+        const src = '@namespace asdf fre arfs\n';
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
-        expect(res.type).to.be.equal(NodeType.Root);
-        expect(res.children.length).to.be.equal(1);
-        const configNode = res.children[0] as SimpleConfigNode;
-        expect(configNode.type).to.be.equal(NodeType.SimpleConfig);
-        expect(configNode.token).to.be.equal(keywords.using);
-        expect(configNode.content).to.be.equal('asdf fre arfs');
+        expectNode.root(res, 1);
+        expectNode.simpleConfig(res.children[0], keywords.namespace, 'asdf fre arfs');
     });
 
     it('should not return config node after content node', function () {
@@ -28,11 +20,11 @@ describe('parser', function () {
         const src = 'some @using asdf fre arfs\n';
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
-        expect(res.type).to.be.equal(NodeType.Root);
-        expect(haveConfigNode(res)).to.be.false;
+        expectNode.root(res);
+        expectNode.noConfigNode(res);
     });
 
     it('should not return config node after force eol node', function () {
@@ -41,11 +33,11 @@ describe('parser', function () {
         @using asdf fre arfs\n`;
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
-        expect(res.type).to.be.equal(NodeType.Root);
-        expect(haveConfigNode(res)).to.be.false;
+        expectNode.root(res);
+        expectNode.noConfigNode(res);
     });
 
     it('should ignore empty line before config node', function () {
@@ -54,14 +46,10 @@ describe('parser', function () {
         @using aaa\n`;
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
-        expect(res.type).to.be.equal(NodeType.Root);
-        expect(res.children.length).to.be.equal(1);
-        const configNode = res.children[0] as SimpleConfigNode;
-        expect(configNode.type).to.be.equal(NodeType.SimpleConfig);
-        expect(configNode.token).to.be.equal(keywords.using);
-        expect(configNode.content).to.be.equal('aaa');
+        expectNode.root(res, 1);
+        expectNode.simpleConfig(res.children[0], keywords.using, 'aaa');
     });
 });

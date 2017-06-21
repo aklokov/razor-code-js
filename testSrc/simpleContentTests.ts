@@ -8,7 +8,7 @@ describe('parser', function () {
         const src = 'using asdf fre arfs';
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
         expect(res.type).to.be.equal(NodeType.Root);
@@ -18,12 +18,13 @@ describe('parser', function () {
         expect(contentNode.content).to.be.equal(src);
     });
 
+
     it('should return 2 content nodes and eol in between', function () {
         // arrange
         const src = 'aaa\nbbb';
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
         expect(res.type).to.be.equal(NodeType.Root);
@@ -41,6 +42,7 @@ describe('parser', function () {
         expect(contentNode2.content).to.be.equal('bbb');
     });
 
+
     it('should return 7 nodes', function () {
         // arrange
         const src = `aaa
@@ -49,12 +51,13 @@ describe('parser', function () {
         ddd`;
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
         expect(res.type).to.be.equal(NodeType.Root);
         expect(res.children.length).to.be.equal(7);
     });
+
 
     it('should skip empty lines before content', function () {
         // arrange
@@ -63,7 +66,7 @@ describe('parser', function () {
    aaa`;
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
         expect(res.type).to.be.equal(NodeType.Root);
@@ -72,6 +75,8 @@ describe('parser', function () {
         expect(contentNode.type).to.be.equal(NodeType.Content);
         expect(contentNode.content).to.be.equal('   aaa');
     });
+
+
     it('should not skip empty lines with force eol', function () {
         // arrange
         const src = `    
@@ -79,7 +84,7 @@ describe('parser', function () {
    aaa`;
 
         // act
-        const res: RootNode = wrappedParser(src);
+        const res = wrappedParser(src);
 
         // assert
         expect(res.type).to.be.equal(NodeType.Root);
@@ -95,5 +100,52 @@ describe('parser', function () {
         const contentNode = res.children[2] as ContentNode;
         expect(contentNode.type).to.be.equal(NodeType.Content);
         expect(contentNode.content).to.be.equal('   aaa');
+    });
+
+
+    it('should skip empty content and eol after force eol', function () {
+        // arrange
+        const src = `    
+   @eol  
+`;
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expect(res.type).to.be.equal(NodeType.Root);
+        expect(res.children.length).to.be.equal(2);
+
+        const emptyContentNode = res.children[0] as ContentNode;
+        expect(emptyContentNode.type).to.be.equal(NodeType.Content);
+        expect(emptyContentNode.content).to.be.equal('   ');
+
+        const eolNode = res.children[1] as BasicNode;
+        expect(eolNode.type).to.be.equal(NodeType.ForceEol);
+    });
+
+
+    it('should not skip non-empty content after force eol', function () {
+        // arrange
+        const src = `    
+@eol   aaa
+`;
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expect(res.type).to.be.equal(NodeType.Root);
+        expect(res.children.length).to.be.equal(3);
+
+        const feolNode = res.children[0] as BasicNode;
+        expect(feolNode.type).to.be.equal(NodeType.ForceEol);
+
+        const emptyContentNode = res.children[1] as ContentNode;
+        expect(emptyContentNode.type).to.be.equal(NodeType.Content);
+        expect(emptyContentNode.content).to.be.equal('   aaa');
+
+        const eolNode = res.children[2] as BasicNode;
+        expect(eolNode.type).to.be.equal(NodeType.Eol);
     });
 });
