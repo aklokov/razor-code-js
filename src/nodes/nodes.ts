@@ -20,7 +20,7 @@ export class RootNode extends BasicNode {
     }
 }
 
-export class SimpleConfigNode extends BasicNode {
+export class ConfigNode extends BasicNode {
     constructor(public token: string, public content: string) {
         super(NodeType.SimpleConfig);
     }

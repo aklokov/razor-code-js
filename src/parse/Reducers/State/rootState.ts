@@ -4,7 +4,7 @@ import { BasicNode, ContentNode, NodeType } from '../../../nodes';
 import { keywords } from '../../tokens';
 import { TokenAction } from '../actions';
 import * as finalState from './finalState';
-import * as simpleConfig from './simpleConfigState';
+import * as configState from './configState';
 
 function addToken(current: IRootState, token: string): IRootState {
     return {
@@ -91,7 +91,7 @@ function tryCreateSimpleConfig(current: IRootState, token: string): IState {
         return addToken(current, token);
     }
 
-    return simpleConfig.createState(current, token);
+    return configState.createState(current, token);
 }
 
 function reduce(current: IState, action: TokenAction): IState {

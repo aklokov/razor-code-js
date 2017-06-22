@@ -1,4 +1,4 @@
-import { BasicNode, RootNode, SimpleConfigNode, ContentNode } from './nodes';
+import { BasicNode, RootNode, ConfigNode, ContentNode } from './nodes';
 import NodeType from './NodeType';
 
 export {
@@ -6,5 +6,5 @@ export {
     NodeType,
     RootNode,
     ContentNode,
-    SimpleConfigNode,
+    ConfigNode,
 }

@@ -7,7 +7,7 @@ function getStateItem(stateName: string): IStateItem {
         case states.root:
             return stateItems.rootState;
         case states.simpleConfig:
-            return stateItems.simpleConfigState;
+            return stateItems.configState;
         case states.final:
             return stateItems.finalState;
         default:

@@ -2,10 +2,10 @@ import states from './states';
 import { IState, IRootState, ISimpleConfigState } from './interfaces';
 import { keywords } from '../../tokens';
 import { TokenAction } from '../actions';
-import { SimpleConfigNode } from '../../../nodes';
+import { ConfigNode } from '../../../nodes';
 
 function backToRootState(currentState: ISimpleConfigState): IRootState {
-    const node = new SimpleConfigNode(currentState.token, currentState.content.join(''));
+    const node = new ConfigNode(currentState.token, currentState.content.join(''));
     return {
         ...currentState.root,
         children: [...currentState.root.children, node]

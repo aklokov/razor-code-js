@@ -1,9 +1,9 @@
-import { RootNode, BasicNode, NodeType, SimpleConfigNode, ContentNode } from '../src/nodes';
+import { RootNode, BasicNode, NodeType, ConfigNode, ContentNode } from '../src/nodes';
 import { keywords } from '../src/parse/tokens';
 
 export {
     keywords,
-    SimpleConfigNode,
+    ConfigNode,
     ContentNode,
     RootNode,
     BasicNode,

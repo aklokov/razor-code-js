@@ -24,7 +24,7 @@ describe('parser', function () {
 
         // assert
         expectNode.root(res);
-        expectNode.noConfigNode(res);
+        expectNode.rootWithoutConfig(res);
     });
 
     it('should not return config node after force eol node', function () {
@@ -37,7 +37,7 @@ describe('parser', function () {
 
         // assert
         expectNode.root(res);
-        expectNode.noConfigNode(res);
+        expectNode.rootWithoutConfig(res);
     });
 
     it('should ignore empty line before config node', function () {
