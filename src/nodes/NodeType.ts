@@ -1,7 +1,9 @@
 enum NodeType {
     Root,
     SimpleConfig,
-    Content,
+    Literal,
+    Expression,
+    Injection,
     Eol,
     ForceEol
 }

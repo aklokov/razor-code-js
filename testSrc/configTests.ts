@@ -2,7 +2,7 @@ import wrappedParser from './wrappedParser';
 import { keywords } from './import';
 import expectNode from './helpers/expectNode';
 
-describe('parser', function () {
+describe('parser/config', function () {
     it('should return simple config node', function () {
         // arrange
         const src = '@namespace asdf fre arfs\n';

@@ -10,14 +10,12 @@ interface IStateItem {
 }
 
 interface IGroupState extends IState {
-    previous: IState;
-    group: BasicNode[];
-}
-
-interface IRootState extends IState {
     hasContent: boolean;
     content: string[];
     children: BasicNode[];
+}
+
+interface IRootState extends IGroupState {
 }
 
 interface IFinalState extends IState {

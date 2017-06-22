@@ -1,10 +1,8 @@
-import { expect } from 'chai';
 import wrappedParser from './wrappedParser';
-import { BasicNode, RootNode, NodeType, ContentNode } from './import';
 import expectNode from './helpers/expectNode';
 
-describe('parser', function () {
-    it('should return content node', function () {
+describe('parser/literal', function () {
+    it('should return literal node', function () {
         // arrange
         const src = 'using asdf fre arfs';
 
@@ -13,11 +11,11 @@ describe('parser', function () {
 
         // assert
         expectNode.root(res, 1);
-        expectNode.content(res.children[0], src);
+        expectNode.literal(res.children[0], src);
     });
 
 
-    it('should return 2 content nodes and eol in between', function () {
+    it('should return 2 literal nodes and eol in between', function () {
         // arrange
         const src = 'aaa\nbbb';
 
@@ -26,9 +24,9 @@ describe('parser', function () {
 
         // assert
         expectNode.root(res, 3);
-        expectNode.content(res.children[0], 'aaa');
+        expectNode.literal(res.children[0], 'aaa');
         expectNode.eol(res.children[1]);
-        expectNode.content(res.children[2], 'bbb');
+        expectNode.literal(res.children[2], 'bbb');
     });
 
 
@@ -47,7 +45,7 @@ describe('parser', function () {
     });
 
 
-    it('should skip empty lines before content', function () {
+    it('should skip empty lines before literal', function () {
         // arrange
         const src = `    
         
@@ -58,7 +56,7 @@ describe('parser', function () {
 
         // assert
         expectNode.root(res, 1);
-        expectNode.content(res.children[0], '   aaa');
+        expectNode.literal(res.children[0], '   aaa');
     });
 
 
@@ -74,13 +72,13 @@ describe('parser', function () {
         // assert
         expectNode.root(res, 3);
 
-        expectNode.content(res.children[0], '   ');
+        expectNode.literal(res.children[0], '   ');
         expectNode.forceEol(res.children[1]);
-        expectNode.content(res.children[2], '   aaa');
+        expectNode.literal(res.children[2], '   aaa');
     });
 
 
-    it('should skip empty content and eol after force eol', function () {
+    it('should skip empty literal and eol after force eol', function () {
         // arrange
         const src = `    
    @eol  
@@ -92,12 +90,12 @@ describe('parser', function () {
         // assert
         expectNode.root(res, 2);
 
-        expectNode.content(res.children[0], '   ');
+        expectNode.literal(res.children[0], '   ');
         expectNode.forceEol(res.children[1]);
     });
 
 
-    it('should not skip non-empty content after force eol', function () {
+    it('should not skip non-empty literal after force eol', function () {
         // arrange
         const src = `    
 @eol   aaa
@@ -110,7 +108,7 @@ describe('parser', function () {
         expectNode.root(res, 3);
 
         expectNode.forceEol(res.children[0]);
-        expectNode.content(res.children[1], '   aaa');
+        expectNode.literal(res.children[1], '   aaa');
         expectNode.eol(res.children[2]);
     });
 });

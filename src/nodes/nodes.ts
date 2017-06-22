@@ -9,8 +9,26 @@ export class BasicNode {
 }
 
 export class ContentNode extends BasicNode {
+    constructor(public content: string, type: NodeType) {
+        super(type);
+    }
+}
+
+export class LiteralNode extends ContentNode {
     constructor(public content: string) {
-        super(NodeType.Content);
+        super(content, NodeType.Literal);
+    }
+}
+
+export class ExpressionNode extends ContentNode {
+    constructor(public content: string) {
+        super(content, NodeType.Expression);
+    }
+}
+
+export class InjectionNode extends ContentNode {
+    constructor(public content: string) {
+        super(content, NodeType.Injection);
     }
 }
 

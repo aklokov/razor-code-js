@@ -15,9 +15,9 @@ function simpleConfig(node: BasicNode, token: string, content: string): void {
     expect(configNode.content).to.be.equal(content);
 }
 
-function content(node: BasicNode, content: string) {
+function literal(node: BasicNode, content: string) {
     const contentNode = node as ContentNode;
-    expect(contentNode.type).to.be.equal(NodeType.Content);
+    expect(contentNode.type).to.be.equal(NodeType.Literal);
     expect(contentNode.content).to.be.equal(content);
 }
 
@@ -37,7 +37,7 @@ function rootWithoutConfig(node: RootNode): void {
 const expectNode = {
     root,
     simpleConfig,
-    content,
+    literal,
     eol,
     forceEol,
     rootWithoutConfig
