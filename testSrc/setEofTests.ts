@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import { keywords } from './import';
 import setEof from '../src/parse/setEof';
 
-describe('setEof', function () {
-    it('should attach eof if there is none', function () {
+describe('setEof', function (): void {
+    it('should attach eof if there is none', function (): void {
         // arrange
         const input = ['a', 'b'];
 
@@ -14,7 +14,7 @@ describe('setEof', function () {
         expect(result).to.be.deep.equal(['a', 'b', keywords.eof]);
     });
 
-    it('should trim if eof is already present', function () {
+    it('should trim if eof is already present', function (): void {
         // arrange
         const input = ['a', keywords.eof, 'b'];
 

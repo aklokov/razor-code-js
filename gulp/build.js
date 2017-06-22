@@ -29,7 +29,7 @@ gulp.task('build-watch', ['cleanup'], wrap('TS-Build', function (reportError) {
 }));
 
 function lint(reportError, emitError) {
-    return gulp.src(src)
+    return gulp.src([tests, src])
         .pipe(tslint({ formatter: "verbose" }))
         .pipe(tslint.report({ emitError: process.env.emitError }))
         .on('error', reportError);

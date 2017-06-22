@@ -4,11 +4,12 @@ import { keywords } from '../../tokens';
 import { TokenAction } from '../actions';
 import * as finalState from './finalState';
 import * as configState from './configState';
-import * as groupState from './groupState';
+import * as groupState from './groupState/groupState';
+import * as groupStateFunctions from './groupState/groupStateFunctions';
 
 function tryCreateSimpleConfig(current: IRootState, token: string): IState {
-    if (groupState.nodeHasContent(current)) {
-        return groupState.addToken(current, token);
+    if (groupStateFunctions.nodeHasContent(current)) {
+        return groupStateFunctions.addToken(current, token);
     }
 
     return configState.createState(current, token);
@@ -24,7 +25,7 @@ function reduce(current: IState, action: TokenAction): IState {
         case keywords.using:
             return tryCreateSimpleConfig(currentState, action.token);
         case keywords.eof:
-            return finalState.createState(groupState.tryAddLiteralNode(currentState).children);
+            return finalState.createState(groupStateFunctions.tryAddLiteralNode(currentState).children);
         default:
             return groupState.reduceGroupState(currentState, action.token);
     }

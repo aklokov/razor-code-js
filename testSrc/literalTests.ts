@@ -1,8 +1,8 @@
 import wrappedParser from './wrappedParser';
 import expectNode from './helpers/expectNode';
 
-describe('parser/literal', function () {
-    it('should return literal node', function () {
+describe('parser/literal', function (): void {
+    it('should return literal node', function (): void {
         // arrange
         const src = 'using asdf fre arfs';
 
@@ -15,7 +15,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should return 2 literal nodes and eol in between', function () {
+    it('should return 2 literal nodes and eol in between', function (): void {
         // arrange
         const src = 'aaa\nbbb';
 
@@ -30,7 +30,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should return 7 nodes', function () {
+    it('should return 7 nodes', function (): void {
         // arrange
         const src = `aaa
         bbb
@@ -45,7 +45,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should skip empty lines before literal', function () {
+    it('should skip empty lines before literal', function (): void {
         // arrange
         const src = `    
         
@@ -60,7 +60,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should not skip empty lines with force eol', function () {
+    it('should not skip empty lines with force eol', function (): void {
         // arrange
         const src = `    
    @eol
@@ -78,7 +78,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should skip empty literal and eol after force eol', function () {
+    it('should skip empty literal and eol after force eol', function (): void {
         // arrange
         const src = `    
    @eol  
@@ -95,7 +95,7 @@ describe('parser/literal', function () {
     });
 
 
-    it('should not skip non-empty literal after force eol', function () {
+    it('should not skip non-empty literal after force eol', function (): void {
         // arrange
         const src = `    
 @eol   aaa

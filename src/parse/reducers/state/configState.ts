@@ -19,7 +19,7 @@ function addToState(currentState: ISimpleConfigState, token: string): ISimpleCon
     };
 }
 
-function reduce(current: IState, action: TokenAction): IState {
+export function reduce(current: IState, action: TokenAction): IState {
     const currentState: ISimpleConfigState = current as ISimpleConfigState;
     switch (action.token) {
         case '\n':
@@ -30,7 +30,7 @@ function reduce(current: IState, action: TokenAction): IState {
     }
 }
 
-function createState(root: IRootState, token: string, content: string[] = []): ISimpleConfigState {
+export function createState(root: IRootState, token: string, content: string[] = []): ISimpleConfigState {
     const newState: ISimpleConfigState = {
         root,
         token,
@@ -39,9 +39,4 @@ function createState(root: IRootState, token: string, content: string[] = []): I
     };
 
     return newState;
-}
-
-export {
-    reduce,
-    createState,
 }

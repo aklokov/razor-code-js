@@ -15,17 +15,25 @@ function simpleConfig(node: BasicNode, token: string, content: string): void {
     expect(configNode.content).to.be.equal(content);
 }
 
-function literal(node: BasicNode, content: string) {
+function contentNode(node: BasicNode, content: string, type: NodeType): void {
     const contentNode = node as ContentNode;
     expect(contentNode.type).to.be.equal(NodeType.Literal);
     expect(contentNode.content).to.be.equal(content);
 }
 
-function eol(node: BasicNode) {
+function literal(node: BasicNode, content: string): void {
+    contentNode(node, content, NodeType.Literal);
+}
+
+function expression(node: BasicNode, content: string): void {
+    contentNode(node, content, NodeType.Expression);
+}
+
+function eol(node: BasicNode): void {
     expect(node.type).to.be.equal(NodeType.Eol);
 }
 
-function forceEol(node: BasicNode) {
+function forceEol(node: BasicNode): void {
     expect(node.type).to.be.equal(NodeType.ForceEol);
 }
 
@@ -38,6 +46,7 @@ const expectNode = {
     root,
     simpleConfig,
     literal,
+    expression,
     eol,
     forceEol,
     rootWithoutConfig
