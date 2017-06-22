@@ -1,22 +1,16 @@
-import states from './states';
+import StateType from './StateType';
 import { IState, IFinalState } from './interfaces';
-import { TokenAction } from '../actions';
 
 import { RootNode, BasicNode } from '../../../nodes';
 
-function reduce(current: IState, action: TokenAction): IState {
+export function reduce(current: IState, token: string): IState {
     throw new Error('should be no more tokens after eof');
 }
 
-function createState(nodes: BasicNode[]): IState {
+export function createState(nodes: BasicNode[]): IState {
     const state: IFinalState = {
-        name: states.final,
+        type: StateType.Final,
         rootNode: new RootNode(nodes)
     };
     return state;
-}
-
-export {
-    reduce,
-    createState,
 }

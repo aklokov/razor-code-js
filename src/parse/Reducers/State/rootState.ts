@@ -1,46 +1,40 @@
-import states from './states';
+import StateType from './StateType';
 import { IState, IRootState } from './interfaces';
 import { keywords } from '../../tokens';
-import { TokenAction } from '../actions';
 import * as finalState from './finalState';
 import * as configState from './configState';
-import * as groupState from './groupState/groupState';
-import * as groupStateFunctions from './groupState/groupStateFunctions';
+import * as groupState from './groupState';
+import * as functions from './stateFunctions';
 
 function tryCreateSimpleConfig(current: IRootState, token: string): IState {
-    if (groupStateFunctions.nodeHasContent(current)) {
-        return groupStateFunctions.addToken(current, token);
+    if (functions.content.nodeHasContent(current)) {
+        return functions.content.addToken(current, token);
     }
 
     return configState.createState(current, token);
 }
 
-function reduce(current: IState, action: TokenAction): IState {
+export function reduce(current: IState, token: string): IState {
     const currentState = current as IRootState;
-    switch (action.token) {
+    switch (token) {
         case keywords.language:
         case keywords.parameters:
         case keywords.import:
         case keywords.namespace:
         case keywords.using:
-            return tryCreateSimpleConfig(currentState, action.token);
+            return tryCreateSimpleConfig(currentState, token);
         case keywords.eof:
-            return finalState.createState(groupStateFunctions.tryAddLiteralNode(currentState).children);
+            return finalState.createState(functions.content.tryAddLiteralNode(currentState).children);
         default:
-            return groupState.reduceGroupState(currentState, action.token);
+            return groupState.reduceGroupState(currentState, token);
     }
 }
 
-function createState(): IRootState {
+export function createState(): IRootState {
     return {
-        name: states.root,
+        type: StateType.Root,
         hasContent: false,
         children: [],
-        content: []
+        content: ''
     };
-}
-
-export {
-    reduce,
-    createState,
 }

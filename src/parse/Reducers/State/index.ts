@@ -1,11 +1,14 @@
 import * as rootState from './rootState';
 import * as configState from './configState';
 import * as finalState from './finalState';
-import states from './states';
+import * as expressionState from './expressionState';
+
+import StateType from './StateType';
 
 export {
     rootState,
     configState,
     finalState,
-    states
+    StateType,
+    expressionState
 }

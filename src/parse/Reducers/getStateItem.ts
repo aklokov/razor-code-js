@@ -1,15 +1,17 @@
 import * as stateItems from './state';
 import { IStateItem } from './state/interfaces';
-import states from './state/states';
+import StateType from './state/StateType';
 
-function getStateItem(stateName: string): IStateItem {
-    switch (stateName) {
-        case states.root:
+function getStateItem(type: StateType): IStateItem {
+    switch (type) {
+        case StateType.Root:
             return stateItems.rootState;
-        case states.simpleConfig:
+        case StateType.Config:
             return stateItems.configState;
-        case states.final:
+        case StateType.Final:
             return stateItems.finalState;
+        case StateType.Expression:
+            return stateItems.expressionState;
         default:
             throw new Error('unsupported state');
     }

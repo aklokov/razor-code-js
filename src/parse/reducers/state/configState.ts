@@ -1,11 +1,10 @@
-import states from './states';
+import StateType from './StateType';
 import { IState, IRootState, ISimpleConfigState } from './interfaces';
 import { keywords } from '../../tokens';
-import { TokenAction } from '../actions';
 import { ConfigNode } from '../../../nodes';
 
 function backToRootState(currentState: ISimpleConfigState): IRootState {
-    const node = new ConfigNode(currentState.token, currentState.content.join(''));
+    const node = new ConfigNode(currentState.token, currentState.content);
     return {
         ...currentState.root,
         children: [...currentState.root.children, node]
@@ -15,27 +14,27 @@ function backToRootState(currentState: ISimpleConfigState): IRootState {
 function addToState(currentState: ISimpleConfigState, token: string): ISimpleConfigState {
     return {
         ...currentState,
-        content: [...currentState.content, token]
+        content: currentState.content + token
     };
 }
 
-export function reduce(current: IState, action: TokenAction): IState {
+export function reduce(current: IState, token: string): IState {
     const currentState: ISimpleConfigState = current as ISimpleConfigState;
-    switch (action.token) {
+    switch (token) {
         case '\n':
         case keywords.eof:
             return backToRootState(currentState);
         default:
-            return addToState(currentState, action.token);
+            return addToState(currentState, token);
     }
 }
 
-export function createState(root: IRootState, token: string, content: string[] = []): ISimpleConfigState {
+export function createState(root: IRootState, token: string, content: string = ''): ISimpleConfigState {
     const newState: ISimpleConfigState = {
         root,
         token,
         content,
-        name: states.simpleConfig
+        type: StateType.Config
     };
 
     return newState;

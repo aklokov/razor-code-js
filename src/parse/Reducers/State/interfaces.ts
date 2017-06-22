@@ -1,38 +1,36 @@
-import { TokenAction } from '../actions';
 import { RootNode, BasicNode } from '../../../nodes';
+import StateType from './StateType';
 
-interface IState {
-    name: string;
+export interface IState {
+    type: StateType;
 }
 
-interface IStateItem {
-    reduce(current: IState, action: TokenAction): IState;
+export interface IStateItem {
+    reduce(current: IState, token: string): IState;
 }
 
-interface IGroupState extends IState {
+export interface IStateWithContent extends IState {
+    content: string;
+}
+
+export interface IChildState extends IState {
+    content: string;
+    previous: IGroupState;
+}
+
+export interface IGroupState extends IStateWithContent {
     hasContent: boolean;
-    content: string[];
     children: BasicNode[];
 }
 
-interface IRootState extends IGroupState {
+export interface IRootState extends IGroupState {
 }
 
-interface IFinalState extends IState {
+export interface IFinalState extends IState {
     rootNode: RootNode;
 }
 
-interface ISimpleConfigState extends IState {
-    content: string[];
+export interface ISimpleConfigState extends IStateWithContent {
     token: string;
     root: IRootState;
-}
-
-export {
-    IState,
-    IStateItem,
-    IGroupState,
-    IFinalState,
-    IRootState,
-    ISimpleConfigState
 }
