@@ -26,7 +26,7 @@ describe('parser/expression', function (): void {
         expectNode.root(res, 3);
         expectNode.literal(res.children[0], 'aaa');
         expectNode.expression(res.children[1], 'bbb');
-        expectNode.literal(res.children[2], 'ccc');
+        expectNode.literal(res.children[2], ' ccc');
     });
 
 });

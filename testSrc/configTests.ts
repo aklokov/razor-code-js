@@ -3,7 +3,7 @@ import { keywords } from './import';
 import expectNode from './helpers/expectNode';
 
 describe('parser/config', function (): void {
-    it('should return simple config node', function (): void {
+    it('should return config node', function (): void {
         // arrange
         const src = '@namespace asdf fre arfs\n';
 

@@ -3,6 +3,7 @@ const keywords = {
     if: '@if',
     else: 'else',
     foreach: '@foreach',
+    lineFeed: '\n',
     eol: '@eol',
     eof: '@eof',
 
@@ -29,12 +30,13 @@ const configKeywords = [
 const flowKeywords = [
     keywords.if,
     keywords.foreach,
+    keywords.lineFeed,
     keywords.eol,
     keywords.eof
 ];
 
 const tokens = [
-    '\n', '\r', '\r\n',
+    '\r', '\r\n',
     '<', '>', '(', ')',
     '[', ']', '{', '}',
     '@', '@@', '@(', '@{',
@@ -46,8 +48,8 @@ const tokens = [
 const allTokens = [...tokens, ...configKeywords, ...flowKeywords];
 
 const replacements = {
-    '\r': '\n',
-    '\r\n': '\n'
+    '\r': keywords.lineFeed,
+    '\r\n': keywords.lineFeed
 };
 
 export {

@@ -23,7 +23,7 @@ export function nodeHasContent(node: IGroupState): boolean {
     return node.hasContent || contentIsNotEmpty(node.content);
 }
 
-function getContent(current: IGroupState): string {
+export function getContent(current: IStateWithContent): string {
     return current.content;
 }
 

@@ -17,7 +17,7 @@ function simpleConfig(node: BasicNode, token: string, content: string): void {
 
 function contentNode(node: BasicNode, content: string, type: NodeType): void {
     const contentNode = node as ContentNode;
-    expect(contentNode.type).to.be.equal(NodeType.Literal);
+    expect(contentNode.type).to.be.equal(type);
     expect(contentNode.content).to.be.equal(content);
 }
 

@@ -21,7 +21,7 @@ function addToState(currentState: ISimpleConfigState, token: string): ISimpleCon
 export function reduce(current: IState, token: string): IState {
     const currentState: ISimpleConfigState = current as ISimpleConfigState;
     switch (token) {
-        case '\n':
+        case keywords.lineFeed:
         case keywords.eof:
             return backToRootState(currentState);
         default:

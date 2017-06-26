@@ -1,7 +1,7 @@
 import * as rootState from './rootState';
 import * as configState from './configState';
 import * as finalState from './finalState';
-import * as expressionState from './expressionState';
+import * as implicitExpressionState from './implicitExpressionState';
 
 import StateType from './StateType';
 
@@ -10,5 +10,5 @@ export {
     configState,
     finalState,
     StateType,
-    expressionState
+    implicitExpressionState
 }

@@ -11,7 +11,7 @@ function getStateItem(type: StateType): IStateItem {
         case StateType.Final:
             return stateItems.finalState;
         case StateType.Expression:
-            return stateItems.expressionState;
+            return stateItems.implicitExpressionState;
         default:
             throw new Error('unsupported state');
     }

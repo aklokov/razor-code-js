@@ -30,6 +30,35 @@ describe('parser/literal', function (): void {
     });
 
 
+    it('should treat windows linenbreaks the same way', function (): void {
+        // arrange
+        const src = 'aaa\r\nbbb';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 3);
+        expectNode.literal(res.children[0], 'aaa');
+        expectNode.eol(res.children[1]);
+        expectNode.literal(res.children[2], 'bbb');
+    });
+
+    it('should treat mac linenbreaks the same way', function (): void {
+        // arrange
+        const src = 'aaa\rbbb';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 3);
+        expectNode.literal(res.children[0], 'aaa');
+        expectNode.eol(res.children[1]);
+        expectNode.literal(res.children[2], 'bbb');
+    });
+
+
     it('should return 7 nodes', function (): void {
         // arrange
         const src = `aaa

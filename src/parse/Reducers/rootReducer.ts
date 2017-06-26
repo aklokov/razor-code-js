@@ -4,7 +4,7 @@ import getStateItem from './getStateItem';
 import StateType from './state/StateType';
 import { TokenAction, actions } from './actions';
 import * as rootState from './state/rootState';
-import { keywords } from '../tokens';
+import { keywords, replacements } from '../tokens';
 
 const rootReducer: IReduce<IState> = function (current: IState, action: IAction): IState {
     current = current || rootState.createState();
@@ -13,15 +13,16 @@ const rootReducer: IReduce<IState> = function (current: IState, action: IAction)
         return current;
     }
 
-    switch (tokenAction.token) {
+    const token = replacements[tokenAction.token] || tokenAction.token;
+    switch (token) {
         case keywords.eof:
             var nextState = current;
             while (nextState.type !== StateType.Final) {
-                nextState = getStateItem(nextState.type).reduce(nextState, tokenAction.token);
+                nextState = getStateItem(nextState.type).reduce(nextState, token);
             }
             return nextState;
         default:
-            return getStateItem(current.type).reduce(current, tokenAction.token);
+            return getStateItem(current.type).reduce(current, token);
     }
 };
 

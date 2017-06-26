@@ -4,6 +4,10 @@ import * as contentFunctions from './content';
 import * as group from './group';
 
 export function addEol(current: IGroupState): IGroupState {
+    return group.addNode(current, new BasicNode(NodeType.Eol));
+}
+
+export function tryAddEol(current: IGroupState): IGroupState {
     const afterAdd = contentFunctions.tryAddLiteralNode(current);
 
     // dump empty line if there are no previous content
@@ -11,7 +15,7 @@ export function addEol(current: IGroupState): IGroupState {
         return afterAdd;
     }
 
-    return group.addNode(afterAdd, new BasicNode(NodeType.Eol));
+    return addEol(afterAdd);
 }
 
 export function addForceEol(current: IGroupState): IGroupState {
