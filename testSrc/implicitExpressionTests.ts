@@ -15,6 +15,7 @@ describe('parser/expression', function (): void {
         expectNode.literal(res.children[0], 'aaa@bbb ccc');
     });
 
+
     it('should return expression node', function (): void {
         // arrange
         const src = 'aaa@bbb ccc';
@@ -29,4 +30,32 @@ describe('parser/expression', function (): void {
         expectNode.literal(res.children[2], ' ccc');
     });
 
+
+    it('should return 2 expression nodes in a row', function (): void {
+        // arrange
+        const src = '@bbb@ccc';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'bbb');
+        expectNode.expression(res.children[1], 'ccc');
+    });
+
+
+    it('should return expression node and eol node', function (): void {
+        // arrange
+        const src = '@bbb\nccc';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 3);
+        expectNode.expression(res.children[0], 'bbb');
+        expectNode.eol(res.children[1]);
+        expectNode.literal(res.children[2], 'ccc');
+    });
 });

@@ -1,22 +1,32 @@
+const at = '@';
+const atat = at + at;
+const atparenthesis = at + '(';
+const atbrace = at + '{';
+const atquote = at + '"';
 const keywords = {
     // flow
-    if: '@if',
+    at,
+    atat,
+    atparenthesis,
+    atbrace,
+    atquote,
+    if: at + 'if',
     else: 'else',
-    foreach: '@foreach',
+    foreach: at + 'foreach',
     lineFeed: '\n',
-    eol: '@eol',
-    eof: '@eof',
+    eol: at + 'eol',
+    eof: at + 'eof',
 
     // config
-    language: '@language ', // c#, js or ts
-    parameters: '@parameters ',
+    language: at + 'language ', // c#, js or ts
+    parameters: at + 'parameters ',
 
     // js/ts specific
-    import: '@import ',
+    import: at + 'import ',
 
     // c# specific
-    namespace: '@namespace ',
-    using: '@using '
+    namespace: at + 'namespace ',
+    using: at + 'using '
 };
 
 const configKeywords = [
@@ -32,16 +42,19 @@ const flowKeywords = [
     keywords.foreach,
     keywords.lineFeed,
     keywords.eol,
-    keywords.eof
+    keywords.eof,
+    at,
+    atat,
+    atparenthesis,
+    atbrace,
+    atquote
 ];
 
 const tokens = [
     '\r', '\r\n',
     '<', '>', '(', ')',
     '[', ']', '{', '}',
-    '@', '@@', '@(', '@{',
-    ' ', '=', '@"',
-    '"', , '\'', '\\',
+    ' ', '=', '"', , '\'', '\\',
     '*', ',', ';', ':'
 ];
 
@@ -56,6 +69,7 @@ export {
     keywords,
     configKeywords,
     flowKeywords,
+    tokens,
     allTokens,
     replacements
 }

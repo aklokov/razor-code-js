@@ -30,7 +30,7 @@ describe('parser/literal', function (): void {
     });
 
 
-    it('should treat windows linenbreaks the same way', function (): void {
+    it('should treat windows linebreaks the same way', function (): void {
         // arrange
         const src = 'aaa\r\nbbb';
 
@@ -44,7 +44,7 @@ describe('parser/literal', function (): void {
         expectNode.literal(res.children[2], 'bbb');
     });
 
-    it('should treat mac linenbreaks the same way', function (): void {
+    it('should treat mac linebreaks the same way', function (): void {
         // arrange
         const src = 'aaa\rbbb';
 

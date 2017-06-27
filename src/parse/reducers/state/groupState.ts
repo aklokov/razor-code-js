@@ -8,11 +8,11 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
         case keywords.eol:
             return functions.eol.addForceEol(current);
-        case '\n':
+        case keywords.lineFeed:
             return functions.eol.tryAddEol(current);
-        case '@@':
-            return functions.content.addToken(current, '@');
-        case '@':
+        case keywords.atat:
+            return functions.content.addToken(current, keywords.at);
+        case keywords.at:
             const afterAdd = functions.content.tryAddLiteralNode(current);
             return implicitExpressionState.createState(afterAdd);
         case keywords.foreach:

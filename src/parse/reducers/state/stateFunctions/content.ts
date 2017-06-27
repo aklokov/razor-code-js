@@ -27,10 +27,10 @@ export function getContent(current: IStateWithContent): string {
     return current.content;
 }
 
-export function addToken(current: IStateWithContent, token: string): IStateWithContent {
+export function addToken(current: IStateWithContent, ...tokens: string[]): IStateWithContent {
     return {
         ...current,
-        content: current.content + token
+        content: current.content + tokens.join('')
     };
 }
 
