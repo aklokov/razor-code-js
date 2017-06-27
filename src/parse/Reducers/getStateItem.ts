@@ -10,8 +10,10 @@ function getStateItem(type: StateType): IStateItem {
             return stateItems.configState;
         case StateType.Final:
             return stateItems.finalState;
-        case StateType.Expression:
+        case StateType.ImplicitExpression:
             return stateItems.implicitExpressionState;
+        case StateType.RoundParenthesis:
+            return stateItems.parenthesisState;
         default:
             throw new Error('unsupported state');
     }

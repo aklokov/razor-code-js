@@ -4,6 +4,7 @@ import { keywords, flowKeywords, tokens } from '../../tokens';
 import * as functions from './stateFunctions';
 import { ContentNode, NodeType } from '../../../nodes';
 import * as groupState from './groupState';
+import * as bracketMain from './brackets/bracketMain';
 
 function createNode(current: IChildState): ContentNode {
     return new ContentNode(functions.content.getContent(current), NodeType.Expression);
@@ -15,7 +16,7 @@ function addNodeToPreviousState(current: IChildState): IGroupState {
         : (functions.content.addToken(current.previous, keywords.at) as IGroupState);
 }
 
-function expressionBreakEncounteread(current: IChildState, token: string): IState {
+function expressionBreakEncountered(current: IChildState, token: string): IState {
     const previous = addNodeToPreviousState(current);
     return groupState.reduceGroupState(previous, token);
 }
@@ -24,25 +25,27 @@ function eofEncountered(current: IChildState): IState {
     return addNodeToPreviousState(current);
 }
 
-// const openingBrackets = {
-//     '<': true,
-//     '(': true,
-//     '[': true
-// };
+const openingBrackets = {
+    '<': true,
+    '(': true,
+    '[': true
+};
 
 let expressionBreaks = {};
 [...flowKeywords, ...tokens].forEach(token => expressionBreaks[token] = true);
 
 
 export function reduce(current: IChildState, token: string): IState {
-    // if(openingBrackets[token])){
-    // }
     if (token === keywords.eof) {
         return eofEncountered(current);
     }
 
+    if (openingBrackets[token]) {
+        return bracketMain.createTopBracketState(current, current, token);
+    }
+
     if (expressionBreaks[token]) {
-        return expressionBreakEncounteread(current, token);
+        return expressionBreakEncountered(current, token);
     }
 
     return functions.content.addToken(current, token);
@@ -50,7 +53,7 @@ export function reduce(current: IChildState, token: string): IState {
 
 export function createState(previous: IGroupState): IChildState {
     return {
-        type: StateType.Expression,
+        type: StateType.ImplicitExpression,
         previous,
         content: ''
     };

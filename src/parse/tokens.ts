@@ -2,14 +2,14 @@ const at = '@';
 const atat = at + at;
 const atparenthesis = at + '(';
 const atbrace = at + '{';
-const atquote = at + '"';
+// const atquote = at + '"';
 const keywords = {
     // flow
     at,
     atat,
     atparenthesis,
     atbrace,
-    atquote,
+    //  atquote,
     if: at + 'if',
     else: 'else',
     foreach: at + 'foreach',
@@ -46,8 +46,8 @@ const flowKeywords = [
     at,
     atat,
     atparenthesis,
-    atbrace,
-    atquote
+    atbrace
+    // atquote
 ];
 
 const tokens = [

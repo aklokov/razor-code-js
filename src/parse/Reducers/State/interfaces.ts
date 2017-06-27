@@ -13,12 +13,19 @@ export interface IStateWithContent extends IState {
     content: string;
 }
 
+export interface IBracketState extends IState {
+    topBracket: boolean;
+    contentState: IStateWithContent;
+    previous: IState;
+}
+
 export interface IChildState extends IState {
     content: string;
     previous: IGroupState;
 }
 
-export interface IGroupState extends IStateWithContent {
+export interface IGroupState extends IState {
+    content: string;
     hasContent: boolean;
     children: BasicNode[];
 }
@@ -30,7 +37,8 @@ export interface IFinalState extends IState {
     rootNode: RootNode;
 }
 
-export interface ISimpleConfigState extends IStateWithContent {
+export interface ISimpleConfigState extends IState {
+    content: string;
     token: string;
     root: IRootState;
 }
