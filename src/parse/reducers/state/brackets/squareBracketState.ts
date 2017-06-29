@@ -10,14 +10,14 @@ const openingBrackets = {
     '\'': true,
     '"': true
 };
-const openingBracket = '(';
-const closingBracket = ')';
+const openingBracket = '[';
+const closingBracket = ']';
 
 const reduce: (c: IBracketState, t: string) => IState
     = baseBracketFunctions.reducerCreation(openingBrackets, closingBracket);
 
 const createState: (i: IStateWithContent, s: IState, t: boolean) => IBracketState
-    = baseBracketFunctions.stateCreation(openingBracket, StateType.RoundParenthesis);
+    = baseBracketFunctions.stateCreation(openingBracket, StateType.SquareBracket);
 
 export {
     reduce,

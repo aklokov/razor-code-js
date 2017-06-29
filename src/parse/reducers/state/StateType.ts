@@ -4,8 +4,9 @@ enum StateType {
     Config = 3,
     ImplicitExpression = 4,
     RoundParenthesis = 5,
-    CurlyBraces = 6,
-    SquareBrackets = 7
+    CurlyBrace = 6,
+    SquareBracket = 7,
+    AngleBracket = 8
 };
 
 export default StateType;

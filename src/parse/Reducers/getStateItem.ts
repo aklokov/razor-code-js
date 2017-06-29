@@ -14,6 +14,10 @@ function getStateItem(type: StateType): IStateItem {
             return stateItems.implicitExpressionState;
         case StateType.RoundParenthesis:
             return stateItems.parenthesisState;
+        case StateType.SquareBracket:
+            return stateItems.squareBracketState;
+        case StateType.AngleBracket:
+            return stateItems.angleBracketState;
         default:
             throw new Error('unsupported state');
     }

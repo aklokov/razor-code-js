@@ -19,6 +19,11 @@ export interface IBracketState extends IState {
     previous: IState;
 }
 
+export interface IAngleBracketState extends IBracketState {
+    passedFirstChar: boolean;
+}
+
+
 export interface IChildState extends IState {
     content: string;
     previous: IGroupState;

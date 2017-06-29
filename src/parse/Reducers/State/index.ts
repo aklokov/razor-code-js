@@ -3,6 +3,8 @@ import * as configState from './configState';
 import * as finalState from './finalState';
 import * as implicitExpressionState from './implicitExpressionState';
 import * as parenthesisState from './brackets/parenthesisState';
+import * as squareBracketState from './brackets/squareBracketState';
+import * as angleBracketState from './brackets/angleBracketState';
 import StateType from './StateType';
 
 export {
@@ -11,5 +13,7 @@ export {
     finalState,
     StateType,
     implicitExpressionState,
-    parenthesisState
+    parenthesisState,
+    squareBracketState,
+    angleBracketState
 }

@@ -60,20 +60,6 @@ describe('parser/expression', function (): void {
     });
 
 
-    it('should return expression node with code in parentheses', function (): void {
-        // arrange
-        const src = '@a(b).c d';
-
-        // act
-        const res = wrappedParser(src);
-
-        // assert
-        expectNode.root(res, 2);
-        expectNode.expression(res.children[0], 'a(b).c');
-        expectNode.literal(res.children[1], ' d');
-    });
-
-
     it('should return (at) as part of literal if expressions has no meaningful characters', function (): void {
         // arrange
         const src = '@)';
