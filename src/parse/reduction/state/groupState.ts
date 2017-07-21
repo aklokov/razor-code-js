@@ -1,9 +1,7 @@
 import { IGroupState, IState } from './interfaces';
 import { keywords } from '../../tokens';
 import * as functions from './stateFunctions';
-import * as implicitExpressionState from './implicitExpressionState';
-import * as explicitExpressionState from './explicitExpressionState';
-import * as injectionState from './injectionState';
+import { implicitExpressionState, explicitExpressionState, injectionState } from './';
 
 export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
