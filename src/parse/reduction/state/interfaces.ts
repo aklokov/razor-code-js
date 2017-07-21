@@ -46,7 +46,7 @@ export interface IFinalState extends IState {
     rootNode: RootNode;
 }
 
-export interface ISimpleConfigState extends IState {
+export interface IConfigState extends IState {
     content: string;
     token: string;
     root: IRootState;

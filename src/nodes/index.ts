@@ -1,4 +1,4 @@
-import { BasicNode, RootNode, ConfigNode, ContentNode, LiteralNode, ExpressionNode, InjectionNode } from './nodes';
+import { BasicNode, RootNode, ConfigNode, ContentNode, LiteralNode, ExpressionNode, InjectionNode, ForEachNode, IfNode } from './nodes';
 import NodeType from './NodeType';
 
 export {
@@ -9,5 +9,7 @@ export {
     LiteralNode,
     ExpressionNode,
     InjectionNode,
-    ConfigNode
+    ConfigNode,
+    ForEachNode,
+    IfNode
 }

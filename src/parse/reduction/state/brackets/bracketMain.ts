@@ -1,6 +1,5 @@
 import { IState, IStateWithContent } from '../interfaces';
 import * as states from '../index';
-import * as functions from '../stateFunctions';
 
 function createState(contentState: IStateWithContent, previous: IState, token: string, topBracket: boolean): IState {
     switch (token) {
@@ -8,6 +7,8 @@ function createState(contentState: IStateWithContent, previous: IState, token: s
             return states.parenthesisState.createState(contentState, previous, topBracket);
         case '[':
             return states.squareBracketState.createState(contentState, previous, topBracket);
+        case '{':
+            return states.curlyBraceState.createState(contentState, previous, topBracket);
         case '<':
             return states.angleBracketState.createState(contentState, previous, topBracket);
         case '"':
@@ -15,7 +16,7 @@ function createState(contentState: IStateWithContent, previous: IState, token: s
         case '\'':
             return states.apostropheBracketState.createState(contentState, previous, topBracket);
         default:
-            return functions.content.addToken(contentState, token);
+            throw new Error('unknown brace');
     }
 }
 

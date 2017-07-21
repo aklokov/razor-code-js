@@ -32,6 +32,18 @@ export class InjectionNode extends ContentNode {
     }
 }
 
+export class ForEachNode extends BasicNode {
+    constructor(public condition: string, public children: BasicNode[]) {
+        super(NodeType.Root);
+    }
+}
+
+export class IfNode extends BasicNode {
+    constructor(public condition: string, public ifChildren: BasicNode[], public elseChildren: BasicNode[]) {
+        super(NodeType.Root);
+    }
+}
+
 export class RootNode extends BasicNode {
     constructor(public children: BasicNode[]) {
         super(NodeType.Root);
@@ -40,6 +52,6 @@ export class RootNode extends BasicNode {
 
 export class ConfigNode extends BasicNode {
     constructor(public token: string, public content: string) {
-        super(NodeType.SimpleConfig);
+        super(NodeType.Config);
     }
 }

@@ -6,7 +6,7 @@ import * as configState from './configState';
 import * as groupState from './groupState';
 import * as functions from './stateFunctions';
 
-function tryCreateSimpleConfig(current: IRootState, token: string): IState {
+function tryCreateConfig(current: IRootState, token: string): IState {
     if (functions.content.nodeHasContent(current)) {
         return functions.content.addToken(current, token);
     }
@@ -22,7 +22,7 @@ export function reduce(current: IState, token: string): IState {
         case keywords.import:
         case keywords.namespace:
         case keywords.using:
-            return tryCreateSimpleConfig(currentState, token);
+            return tryCreateConfig(currentState, token);
         case keywords.eof:
             return finalState.createState(functions.content.tryAddLiteralNode(currentState).children);
         default:

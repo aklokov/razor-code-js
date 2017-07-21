@@ -1,7 +1,7 @@
 import wrappedParser from './wrappedParser';
 import expectNode from './helpers/expectNode';
 
-describe('parser/expression', function (): void {
+describe('parser/implicitExpression', function (): void {
 
     it('should treat @@ as escaped @', function (): void {
         // arrange

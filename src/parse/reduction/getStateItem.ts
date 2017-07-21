@@ -12,8 +12,12 @@ function getStateItem(type: StateType): IStateItem {
             return stateItems.finalState;
         case StateType.ImplicitExpression:
             return stateItems.implicitExpressionState;
+        case StateType.ExplicitExpression:
+            return stateItems.explicitExpressionState;
         case StateType.RoundParenthesis:
             return stateItems.parenthesisState;
+        case StateType.CurlyBrace:
+            return stateItems.curlyBraceState;
         case StateType.SquareBracket:
             return stateItems.squareBracketState;
         case StateType.AngleBracket:

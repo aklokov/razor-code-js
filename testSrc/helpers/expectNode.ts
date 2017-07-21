@@ -1,4 +1,4 @@
-import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode } from '../import';
+import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode } from '../../src/nodes';
 import { expect } from 'chai';
 
 function root(node: RootNode, childrenCount?: number): void {
@@ -8,9 +8,9 @@ function root(node: RootNode, childrenCount?: number): void {
     }
 }
 
-function simpleConfig(node: BasicNode, token: string, content: string): void {
+function config(node: BasicNode, token: string, content: string): void {
     const configNode = node as ConfigNode;
-    expect(configNode.type).to.be.equal(NodeType.SimpleConfig);
+    expect(configNode.type).to.be.equal(NodeType.Config);
     expect(configNode.token).to.be.equal(token);
     expect(configNode.content).to.be.equal(content);
 }
@@ -38,18 +38,24 @@ function forceEol(node: BasicNode): void {
 }
 
 function rootWithoutConfig(node: RootNode): void {
-    const haveConfigNode = node.children.some(node => node.type === NodeType.SimpleConfig);
+    const haveConfigNode = node.children.some(node => node.type === NodeType.Config);
     expect(haveConfigNode).to.be.false;
+}
+
+function forEach(node: BasicNode, condition: string): ForEachNode {
+    expect(node.type).to.be.equal(NodeType.ForEach);
+    return node as ForEachNode;
 }
 
 const expectNode = {
     root,
-    simpleConfig,
+    config,
     literal,
     expression,
     eol,
     forceEol,
-    rootWithoutConfig
+    rootWithoutConfig,
+    forEach
 };
 
 export default expectNode;

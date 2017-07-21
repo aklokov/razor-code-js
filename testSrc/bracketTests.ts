@@ -59,14 +59,14 @@ describe('parser/brackets', function (): void {
 
     it('should return deep brackets as part of expression node', function (): void {
         // arrange
-        const src = '@a(c[d<b>()()]) d';
+        const src = '@a(c[d<b>()(new a{b=1})]) d';
 
         // act
         const res = wrappedParser(src);
 
         // assert
         expectNode.root(res, 2);
-        expectNode.expression(res.children[0], 'a(c[d<b>()()])');
+        expectNode.expression(res.children[0], 'a(c[d<b>()(new a{b=1})])');
         expectNode.literal(res.children[1], ' d');
     });
 
@@ -139,4 +139,19 @@ describe('parser/brackets', function (): void {
         expectNode.expression(res.children[0], 'a(a[\'b\\\'a\'])');
         expectNode.literal(res.children[1], ' d');
     });
+
+
+    it('should return curly braces as part of expression node', function (): void {
+        // arrange
+        const src = '@a(new b{x = 1}) d';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'a(new b{x = 1})');
+        expectNode.literal(res.children[1], ' d');
+    });
+
 });

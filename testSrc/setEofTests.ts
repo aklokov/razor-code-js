@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { keywords } from './import';
+import { keywords } from '../src/parse/tokens';
 import setEof from '../src/parse/setEof';
 
 describe('setEof', function (): void {

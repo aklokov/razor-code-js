@@ -1,5 +1,5 @@
 import wrappedParser from './wrappedParser';
-import { keywords } from './import';
+import { keywords } from '../src/parse/tokens';
 import expectNode from './helpers/expectNode';
 
 describe('parser/config', function (): void {
@@ -12,7 +12,7 @@ describe('parser/config', function (): void {
 
         // assert
         expectNode.root(res, 1);
-        expectNode.simpleConfig(res.children[0], keywords.namespace, 'asdf fre arfs');
+        expectNode.config(res.children[0], keywords.namespace, 'asdf fre arfs');
     });
 
     it('should not return config node after content node', function (): void {
@@ -50,6 +50,6 @@ describe('parser/config', function (): void {
 
         // assert
         expectNode.root(res, 1);
-        expectNode.simpleConfig(res.children[0], keywords.using, 'aaa');
+        expectNode.config(res.children[0], keywords.using, 'aaa');
     });
 });
