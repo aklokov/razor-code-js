@@ -30,4 +30,17 @@ describe('parser/explicitExpression', function (): void {
         expectNode.expression(res.children[0], 'bbb');
         expectNode.expression(res.children[1], 'ccc');
     });
+
+
+    it('should return deep brackets in explicit expression', function (): void {
+        // arrange
+        const src = '@(bbb<as>(sadf[new a{\'b\' = "x"}]))';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 1);
+        expectNode.expression(res.children[0], 'bbb<as>(sadf[new a{\'b\' = "x"}])');
+    });
 });

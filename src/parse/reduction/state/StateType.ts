@@ -9,7 +9,8 @@ enum StateType {
     AngleBracket = 8,
     QuoteBracket = 9,
     ApostropheBracket = 10,
-    ExplicitExpression = 11
+    ExplicitExpression = 11,
+    Injection = 12
 };
 
 export default StateType;

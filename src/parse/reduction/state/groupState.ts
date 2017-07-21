@@ -3,6 +3,7 @@ import { keywords } from '../../tokens';
 import * as functions from './stateFunctions';
 import * as implicitExpressionState from './implicitExpressionState';
 import * as explicitExpressionState from './explicitExpressionState';
+import * as injectionState from './injectionState';
 
 export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
@@ -21,6 +22,11 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
                 return explicitExpressionState.createState(afterAdd);
+            }
+        case keywords.atbrace:
+            {
+                const afterAdd = functions.content.tryAddLiteralNode(current);
+                return injectionState.createState(afterAdd);
             }
         case keywords.foreach:
         case keywords.if:

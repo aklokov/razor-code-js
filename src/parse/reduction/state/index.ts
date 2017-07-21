@@ -3,6 +3,7 @@ import * as configState from './configState';
 import * as finalState from './finalState';
 import * as implicitExpressionState from './implicitExpressionState';
 import * as explicitExpressionState from './explicitExpressionState';
+import * as injectionState from './injectionState';
 import * as parenthesisState from './brackets/parenthesisState';
 import * as squareBracketState from './brackets/squareBracketState';
 import * as curlyBraceState from './brackets/curlyBraceState';
@@ -18,6 +19,7 @@ export {
     StateType,
     implicitExpressionState,
     explicitExpressionState,
+    injectionState,
     parenthesisState,
     squareBracketState,
     curlyBraceState,

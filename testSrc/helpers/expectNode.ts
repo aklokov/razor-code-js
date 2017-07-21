@@ -29,6 +29,10 @@ function expression(node: BasicNode, content: string): void {
     contentNode(node, content, NodeType.Expression);
 }
 
+function injection(node: BasicNode, content: string): void {
+    contentNode(node, content, NodeType.Injection);
+}
+
 function eol(node: BasicNode): void {
     expect(node.type).to.be.equal(NodeType.Eol);
 }
@@ -44,7 +48,9 @@ function rootWithoutConfig(node: RootNode): void {
 
 function forEach(node: BasicNode, condition: string): ForEachNode {
     expect(node.type).to.be.equal(NodeType.ForEach);
-    return node as ForEachNode;
+    const forEachNode = node as ForEachNode;
+    expect(forEachNode.condition).to.be.equal(condition);
+    return forEachNode;
 }
 
 const expectNode = {
@@ -52,6 +58,7 @@ const expectNode = {
     config,
     literal,
     expression,
+    injection,
     eol,
     forceEol,
     rootWithoutConfig,
