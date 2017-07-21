@@ -8,5 +8,5 @@ module.exports = {
     buildSrcDir: './out/src',
     testRunDir: './out/testSrc',
     reportDir: './out/reports',
-    coverage: false // todo, coverage not working for some reason
+    coverage: false // todo, coverage not working with freeze and too f-ing slow otherwize
 }

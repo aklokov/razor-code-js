@@ -23,6 +23,10 @@ export interface IAngleBracketState extends IBracketState {
     passedFirstChar: boolean;
 }
 
+export interface IQuoteBracketState extends IBracketState {
+    escaped: boolean;
+}
+
 
 export interface IChildState extends IState {
     content: string;

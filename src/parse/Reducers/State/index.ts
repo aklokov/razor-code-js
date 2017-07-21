@@ -5,6 +5,8 @@ import * as implicitExpressionState from './implicitExpressionState';
 import * as parenthesisState from './brackets/parenthesisState';
 import * as squareBracketState from './brackets/squareBracketState';
 import * as angleBracketState from './brackets/angleBracketState';
+import * as quoteBracketState from './brackets/quoteBracketState';
+import * as apostropheBracketState from './brackets/apostropheBracketState';
 import StateType from './StateType';
 
 export {
@@ -15,5 +17,7 @@ export {
     implicitExpressionState,
     parenthesisState,
     squareBracketState,
-    angleBracketState
+    angleBracketState,
+    quoteBracketState,
+    apostropheBracketState
 }

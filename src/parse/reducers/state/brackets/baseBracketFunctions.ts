@@ -1,4 +1,4 @@
-import { IState, IStateWithContent, IBracketState } from '../interfaces';
+import { IState, IStateWithContent, IBracketState, IQuoteBracketState } from '../interfaces';
 import { keywords } from '../../../tokens';
 import StateType from '../StateType';
 import * as bracketMain from './bracketMain';
@@ -18,6 +18,13 @@ export function goBack(current: IBracketState, token: string): IState {
     };
 }
 
+function addToken(current: IBracketState, token: string): IState {
+    return {
+        ...current,
+        contentState: functions.content.addToken(current.contentState, token)
+    };
+}
+
 export function reducerCreation(openingBrackets: StringMap<boolean>, closingBracket: string): (c: IBracketState, t: string) => IState {
     return function reduce(current: IBracketState, token: string): IState {
         if (token === keywords.eof) {
@@ -32,10 +39,35 @@ export function reducerCreation(openingBrackets: StringMap<boolean>, closingBrac
             return goBack(current, token);
         }
 
-        return {
-            ...current,
-            contentState: functions.content.addToken(current.contentState, token)
-        };
+        return addToken(current, token);
+    };
+}
+
+const escape = '\\';
+
+export function quotesReducerCreation(closingBracket: string): (c: IBracketState, t: string) => IState {
+    return function reduce(current: IQuoteBracketState, token: string): IState {
+        if (token === keywords.eof) {
+            return current.previous;
+        }
+
+        if (token === closingBracket && !current.escaped) {
+            return goBack(current, token);
+        }
+
+        if (current.escaped) {
+            current = {
+                ...current,
+                escaped: false
+            };
+        } else if (token === escape) {
+            current = {
+                ...current,
+                escaped: true
+            };
+        }
+
+        return addToken(current, token);
     };
 }
 

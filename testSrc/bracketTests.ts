@@ -83,4 +83,60 @@ describe('parser/brackets', function (): void {
         expectNode.expression(res.children[0], 'a(b < c)');
         expectNode.literal(res.children[1], ' d');
     });
+
+
+    it('should return quotes as part of expression node', function (): void {
+        // arrange
+        const src = '@a("b") d';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'a("b")');
+        expectNode.literal(res.children[1], ' d');
+    });
+
+
+    it('should respect escapes inside quotes', function (): void {
+        // arrange
+        const src = '@a(a["b\\"a"]) d';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'a(a["b\\"a"])');
+        expectNode.literal(res.children[1], ' d');
+    });
+
+
+    it('should return apostrophes as part of expression node', function (): void {
+        // arrange
+        const src = '@a(\'b\') d';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'a(\'b\')');
+        expectNode.literal(res.children[1], ' d');
+    });
+
+
+    it('should respect escapes inside apostrophes', function (): void {
+        // arrange
+        const src = '@a(a[\'b\\\'a\']) d';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 2);
+        expectNode.expression(res.children[0], 'a(a[\'b\\\'a\'])');
+        expectNode.literal(res.children[1], ' d');
+    });
 });

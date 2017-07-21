@@ -18,6 +18,10 @@ function getStateItem(type: StateType): IStateItem {
             return stateItems.squareBracketState;
         case StateType.AngleBracket:
             return stateItems.angleBracketState;
+        case StateType.QuoteBracket:
+            return stateItems.quoteBracketState;
+        case StateType.ApostropheBracket:
+            return stateItems.apostropheBracketState;
         default:
             throw new Error('unsupported state');
     }

@@ -10,6 +10,10 @@ function createState(contentState: IStateWithContent, previous: IState, token: s
             return states.squareBracketState.createState(contentState, previous, topBracket);
         case '<':
             return states.angleBracketState.createState(contentState, previous, topBracket);
+        case '"':
+            return states.quoteBracketState.createState(contentState, previous, topBracket);
+        case '\'':
+            return states.apostropheBracketState.createState(contentState, previous, topBracket);
         default:
             return functions.content.addToken(contentState, token);
     }

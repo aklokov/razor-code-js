@@ -6,7 +6,9 @@ enum StateType {
     RoundParenthesis = 5,
     CurlyBrace = 6,
     SquareBracket = 7,
-    AngleBracket = 8
+    AngleBracket = 8,
+    QuoteBracket = 9,
+    ApostropheBracket = 10
 };
 
 export default StateType;
