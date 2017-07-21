@@ -10,6 +10,8 @@ import * as curlyBraceState from './brackets/curlyBraceState';
 import * as angleBracketState from './brackets/angleBracketState';
 import * as quoteBracketState from './brackets/quoteBracketState';
 import * as apostropheBracketState from './brackets/apostropheBracketState';
+import * as forEachConditionState from './subgroup/forEachConditionState';
+import * as braceWaitState from './subgroup/braceWaitState';
 import StateType from './StateType';
 
 export {
@@ -25,5 +27,7 @@ export {
     curlyBraceState,
     angleBracketState,
     quoteBracketState,
-    apostropheBracketState
+    apostropheBracketState,
+    forEachConditionState,
+    braceWaitState
 }

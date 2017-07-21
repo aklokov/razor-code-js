@@ -1,3 +1,5 @@
+import { toBoolStringMap } from '../tools/array';
+
 const at = '@';
 const atat = at + at;
 const atparenthesis = at + '(';
@@ -10,9 +12,11 @@ const keywords = {
     atparenthesis,
     atbrace,
     //  atquote,
-    if: at + 'if',
+    if: at + 'if(',
+    ifSpaced: at + 'if (',
     else: 'else',
-    foreach: at + 'foreach',
+    foreach: at + 'foreach(',
+    foreachSpaced:  at + 'foreach (',
     lineFeed: '\n',
     eol: at + 'eol',
     eof: at + 'eof',
@@ -28,6 +32,11 @@ const keywords = {
     namespace: at + 'namespace ',
     using: at + 'using '
 };
+
+const openingBrackets = [
+    '<', '(', '[',
+    '{', '"', '\''
+];
 
 const configKeywords = [
     keywords.language,
@@ -51,10 +60,10 @@ const flowKeywords = [
 ];
 
 const tokens = [
+    ...openingBrackets,
     '\r', '\r\n',
-    '<', '>', '(', ')',
-    '[', ']', '{', '}',
-    ' ', '=', '"', , '\'', '\\',
+    '>', ')', ']', '}',
+    ' ', '=', '\\',
     '*', ',', ';', ':'
 ];
 
@@ -65,8 +74,12 @@ const replacements = {
     '\r\n': keywords.lineFeed
 };
 
+const openingBracketsMap = toBoolStringMap(openingBrackets);
+
 export {
     keywords,
+    openingBrackets,
+    openingBracketsMap,
     configKeywords,
     flowKeywords,
     tokens,

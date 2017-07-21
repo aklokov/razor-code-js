@@ -5,6 +5,7 @@ import * as functions from './stateFunctions';
 import { ContentNode, NodeType } from '../../../nodes';
 import * as groupState from './groupState';
 import * as bracketMain from './brackets/bracketMain';
+import { toBoolStringMap } from '../../../tools/array';
 
 function createNode(current: IChildState): ContentNode {
     return new ContentNode(functions.content.getContent(current), NodeType.Expression);
@@ -31,9 +32,7 @@ const openingBrackets = {
     '[': true
 };
 
-let expressionBreaks = {};
-[...flowKeywords, ...tokens].forEach(token => expressionBreaks[token] = true);
-
+let expressionBreaks = toBoolStringMap([...flowKeywords, ...tokens]);
 
 export function reduce(current: IChildState, token: string): IState {
     if (token === keywords.eof) {

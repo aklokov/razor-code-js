@@ -3,6 +3,7 @@ import { keywords } from '../../../tokens';
 import * as functions from '../stateFunctions';
 import { ContentNode, NodeType } from '../../../../nodes';
 import * as bracketMain from '../brackets/bracketMain';
+import { openingBracketsMap } from '../../../tokens';
 
 function createNode(current: IChildState, nodeType: NodeType): ContentNode {
     return new ContentNode(functions.content.getContent(current), nodeType);
@@ -22,22 +23,12 @@ function eofEncountered(current: IChildState, nodeType: NodeType): IState {
     return addNodeToPreviousState(current, nodeType);
 }
 
-const openingBrackets = {
-    '<': true,
-    '(': true,
-    '[': true,
-    '{': true,
-    '"': true,
-    '\'': true
-};
-
-
 export function reduce(current: IChildState, token: string, closing: string, nodeType: NodeType): IState {
     if (token === keywords.eof) {
         return eofEncountered(current, nodeType);
     }
 
-    if (openingBrackets[token]) {
+    if (openingBracketsMap[token]) {
         return bracketMain.createTopBracketState(current, current, token);
     }
 

@@ -1,7 +1,7 @@
 import { IGroupState, IState } from './interfaces';
 import { keywords } from '../../tokens';
 import * as functions from './stateFunctions';
-import { implicitExpressionState, explicitExpressionState, injectionState } from './';
+import { implicitExpressionState, explicitExpressionState, injectionState, forEachConditionState } from './';
 
 export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
@@ -27,6 +27,11 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
                 return injectionState.createState(afterAdd);
             }
         case keywords.foreach:
+        case keywords.foreachSpaced:
+            {
+                const afterAdd = functions.content.tryAddLiteralNode(current);
+                return forEachConditionState.createState(afterAdd);
+            }
         case keywords.if:
             throw new Error('not implemented');
         default:

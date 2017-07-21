@@ -16,6 +16,8 @@ function getStateItem(type: StateType): IStateItem {
         case StateType.AngleBracket: return stateItems.angleBracketState;
         case StateType.QuoteBracket: return stateItems.quoteBracketState;
         case StateType.ApostropheBracket: return stateItems.apostropheBracketState;
+        case StateType.ForEachCondition: return stateItems.forEachConditionState;
+        case StateType.BraceWait: return stateItems.braceWaitState;
         default:
             throw new Error('unsupported state');
     }

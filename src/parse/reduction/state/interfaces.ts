@@ -27,10 +27,21 @@ export interface IQuoteBracketState extends IBracketState {
     escaped: boolean;
 }
 
-
 export interface IChildState extends IState {
     content: string;
     previous: IGroupState;
+}
+
+export enum BraceOwner {
+    foreach = 0,
+    if,
+    else
+};
+
+export interface IBraceWaitState extends IState {
+    content: string;
+    owner: BraceOwner;
+    previous: IChildState;
 }
 
 export interface IGroupState extends IState {
@@ -40,6 +51,11 @@ export interface IGroupState extends IState {
 }
 
 export interface IRootState extends IGroupState {
+}
+
+export interface ISubgroupState extends IGroupState {
+    owner: BraceOwner;
+    previous: IChildState;
 }
 
 export interface IFinalState extends IState {
