@@ -32,7 +32,7 @@ export interface IChildState extends IState {
     previous: IGroupState;
 }
 
-export enum BraceOwner {
+export enum SubgroupOwner {
     foreach = 0,
     if,
     else
@@ -40,7 +40,7 @@ export enum BraceOwner {
 
 export interface IBraceWaitState extends IState {
     content: string;
-    owner: BraceOwner;
+    owner: SubgroupOwner;
     previous: IChildState;
 }
 
@@ -54,7 +54,7 @@ export interface IRootState extends IGroupState {
 }
 
 export interface ISubgroupState extends IGroupState {
-    owner: BraceOwner;
+    owner: SubgroupOwner;
     previous: IChildState;
 }
 

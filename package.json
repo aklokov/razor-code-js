@@ -34,7 +34,7 @@
     "mocha": "3.1.2",
     "node-notifier": "4.6.1",
     "tslint": "3.15.1",
-    "typescript": "^2.3.4"
+    "typescript": "^2.4.2"
   },
   "dependencies": {
     "@types/uuid": "2.0.29",

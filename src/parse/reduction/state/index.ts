@@ -12,6 +12,8 @@ import * as quoteBracketState from './brackets/quoteBracketState';
 import * as apostropheBracketState from './brackets/apostropheBracketState';
 import * as forEachConditionState from './subgroup/forEachConditionState';
 import * as braceWaitState from './subgroup/braceWaitState';
+import * as subgroupState from './subgroup/subgroupState';
+import * as multilineSubgroupState from './subgroup/multilineSubgroupState';
 import StateType from './StateType';
 
 export {
@@ -29,5 +31,7 @@ export {
     quoteBracketState,
     apostropheBracketState,
     forEachConditionState,
-    braceWaitState
+    braceWaitState,
+    subgroupState,
+    multilineSubgroupState
 }

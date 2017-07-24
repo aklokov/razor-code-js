@@ -12,13 +12,15 @@ export function goBack(current: IBracketState, token: string): IState {
         return contentState;
     }
 
-    return {
-        ...current.previous,
+    const result: IBracketState = {
+        ...(current.previous as IBracketState),
         contentState
     };
+
+    return result;
 }
 
-function addToken(current: IBracketState, token: string): IState {
+function addToken(current: IBracketState, token: string): IBracketState {
     return {
         ...current,
         contentState: functions.content.addToken(current.contentState, token)

@@ -1,44 +1,49 @@
 import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode } from '../../src/nodes';
 import { expect } from 'chai';
 
+function expectNodeType(node: BasicNode, type: NodeType, description: string): void {
+    expect(node.type).to.be.equal(type, `node type ${description} was expected`);
+}
+
 function root(node: RootNode, childrenCount?: number): void {
-    expect(node.type).to.be.equal(NodeType.Root);
+    expectNodeType(node, NodeType.Root, 'Root');
     if (childrenCount) {
         expect(node.children.length).to.be.equal(childrenCount);
     }
 }
 
 function config(node: BasicNode, token: string, content: string): void {
+    expectNodeType(node, NodeType.Config, 'Config');
     const configNode = node as ConfigNode;
-    expect(configNode.type).to.be.equal(NodeType.Config);
     expect(configNode.token).to.be.equal(token);
     expect(configNode.content).to.be.equal(content);
 }
 
-function contentNode(node: BasicNode, content: string, type: NodeType): void {
+
+function contentNode(node: BasicNode, content: string, type: NodeType, description: string): void {
+    expectNodeType(node, type, description);
     const contentNode = node as ContentNode;
-    expect(contentNode.type).to.be.equal(type);
     expect(contentNode.content).to.be.equal(content);
 }
 
 function literal(node: BasicNode, content: string): void {
-    contentNode(node, content, NodeType.Literal);
+    contentNode(node, content, NodeType.Literal, 'Literal');
 }
 
 function expression(node: BasicNode, content: string): void {
-    contentNode(node, content, NodeType.Expression);
+    contentNode(node, content, NodeType.Expression, 'Expression');
 }
 
 function injection(node: BasicNode, content: string): void {
-    contentNode(node, content, NodeType.Injection);
+    contentNode(node, content, NodeType.Injection, 'Injection');
 }
 
 function eol(node: BasicNode): void {
-    expect(node.type).to.be.equal(NodeType.Eol);
+    expectNodeType(node, NodeType.Eol, 'Eol');
 }
 
 function forceEol(node: BasicNode): void {
-    expect(node.type).to.be.equal(NodeType.ForceEol);
+    expectNodeType(node, NodeType.ForceEol, 'ForceEol');
 }
 
 function rootWithoutConfig(node: RootNode): void {
@@ -47,7 +52,7 @@ function rootWithoutConfig(node: RootNode): void {
 }
 
 function forEach(node: BasicNode, condition: string): ForEachNode {
-    expect(node.type).to.be.equal(NodeType.ForEach);
+    expectNodeType(node, NodeType.ForEach, 'ForEach');
     const forEachNode = node as ForEachNode;
     expect(forEachNode.condition).to.be.equal(condition);
     return forEachNode;

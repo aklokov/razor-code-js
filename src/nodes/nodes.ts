@@ -34,13 +34,13 @@ export class InjectionNode extends ContentNode {
 
 export class ForEachNode extends BasicNode {
     constructor(public condition: string, public children: BasicNode[]) {
-        super(NodeType.Root);
+        super(NodeType.ForEach);
     }
 }
 
 export class IfNode extends BasicNode {
     constructor(public condition: string, public ifChildren: BasicNode[], public elseChildren: BasicNode[]) {
-        super(NodeType.Root);
+        super(NodeType.If);
     }
 }
 

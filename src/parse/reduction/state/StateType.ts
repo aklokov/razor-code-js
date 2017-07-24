@@ -13,7 +13,8 @@ enum StateType {
     Injection,
     ForEachCondition,
     BraceWait,
-    Subgroup = 15
+    Subgroup = 15,
+    MultilineSubgroup
 };
 
 export default StateType;

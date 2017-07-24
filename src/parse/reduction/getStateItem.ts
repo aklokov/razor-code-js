@@ -18,6 +18,8 @@ function getStateItem(type: StateType): IStateItem {
         case StateType.ApostropheBracket: return stateItems.apostropheBracketState;
         case StateType.ForEachCondition: return stateItems.forEachConditionState;
         case StateType.BraceWait: return stateItems.braceWaitState;
+        case StateType.Subgroup: return stateItems.subgroupState;
+        case StateType.MultilineSubgroup: return stateItems.multilineSubgroupState;
         default:
             throw new Error('unsupported state');
     }

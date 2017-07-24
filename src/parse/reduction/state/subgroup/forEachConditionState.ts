@@ -1,4 +1,4 @@
-import { IState, IGroupState, IChildState, BraceOwner } from '../interfaces';
+import { IState, IGroupState, IChildState, SubgroupOwner } from '../interfaces';
 import StateType from '../StateType';
 import { keywords } from '../../../tokens';
 import { openingBracketsMap } from '../../../tokens';
@@ -16,7 +16,7 @@ export function reduce(current: IChildState, token: string): IState {
     }
 
     if (token === ')') {
-        return braceWaitState.createState(current, BraceOwner.foreach);
+        return braceWaitState.createState(current, SubgroupOwner.foreach);
     }
 
     return functions.content.addToken(current, token);
