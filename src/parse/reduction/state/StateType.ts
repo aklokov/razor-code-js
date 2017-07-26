@@ -11,9 +11,10 @@ enum StateType {
     ApostropheBracket = 10,
     ExplicitExpression,
     Injection,
-    ForEachCondition,
+    SubgroupCondition,
     BraceWait,
-    Subgroup = 15,
+    ElseWait = 15,
+    Subgroup,
     MultilineSubgroup
 };
 

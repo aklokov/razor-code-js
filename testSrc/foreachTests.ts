@@ -16,6 +16,47 @@ describe('parser/forEach', function (): void {
     });
 
 
+    it('should return foreach node with spaced curly brace', function (): void {
+        // arrange
+        const src = '@foreach(let a of b)   {a}';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 1);
+        const forEach = expectNode.forEach(res.children[0], 'let a of b', 1);
+        expectNode.literal(forEach.children[0], 'a');
+    });
+
+
+    it('should fallback from foreach if no brace found', function (): void {
+        // arrange
+        const src = '@foreach(let a of b)   abc';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 1);
+        expectNode.literal(res.children[0], '   abc');
+    });
+
+
+    it('should fallback from foreach if eof', function (): void {
+        // arrange
+        const src = 'a@foreach(let a of b)';
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 1);
+        expectNode.literal(res.children[0], 'a');
+    });
+
+
+
     it('should return foreach node with deep brackets inside condition', function (): void {
         // arrange
         const src = '@foreach(let a of b(x["z" < \'d\'])){a}';

@@ -32,6 +32,11 @@ export interface IChildState extends IState {
     previous: IGroupState;
 }
 
+export interface ISubgroupConditionState extends IChildState {
+    owner: SubgroupOwner;
+    nodes: BasicNode[];
+}
+
 export enum SubgroupOwner {
     foreach = 0,
     if,
@@ -40,8 +45,13 @@ export enum SubgroupOwner {
 
 export interface IBraceWaitState extends IState {
     content: string;
-    owner: SubgroupOwner;
-    previous: IChildState;
+    previous: ISubgroupConditionState;
+}
+
+export interface IElseWaitState extends IState {
+    content: string;
+    elseFound: boolean;
+    previous: ISubgroupConditionState;
 }
 
 export interface IGroupState extends IState {
@@ -54,8 +64,7 @@ export interface IRootState extends IGroupState {
 }
 
 export interface ISubgroupState extends IGroupState {
-    owner: SubgroupOwner;
-    previous: IChildState;
+    previous: ISubgroupConditionState;
 }
 
 export interface IFinalState extends IState {

@@ -1,4 +1,4 @@
-import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode } from '../../src/nodes';
+import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode, IfNode } from '../../src/nodes';
 import { expect } from 'chai';
 
 function expectNodeType(node: BasicNode, type: NodeType, description: string): void {
@@ -61,6 +61,18 @@ function forEach(node: BasicNode, condition: string, childCount?: number): ForEa
     return forEachNode;
 }
 
+function ifNode(node: BasicNode, condition: string): IfNode {
+    expectNodeType(node, NodeType.If, 'If');
+    const ifNode = node as IfNode;
+    expect(ifNode.condition).to.be.equal(condition);
+    return ifNode;
+}
+
+function ifChildren(node: IfNode, ifCount: number, elseCount: number = 0): void {
+    expect(node.ifChildren.length).to.be.equal(ifCount, 'if node children count is not as expected');
+    expect(node.elseChildren.length).to.be.equal(elseCount, 'if node children else count is not as expected');
+}
+
 const expectNode = {
     root,
     config,
@@ -70,7 +82,9 @@ const expectNode = {
     eol,
     forceEol,
     rootWithoutConfig,
-    forEach
+    forEach,
+    ifNode,
+    ifChildren
 };
 
 export default expectNode;

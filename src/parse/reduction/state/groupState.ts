@@ -1,7 +1,7 @@
-import { IGroupState, IState } from './interfaces';
+import { IGroupState, IState, SubgroupOwner } from './interfaces';
 import { keywords } from '../../tokens';
 import * as functions from './stateFunctions';
-import { implicitExpressionState, explicitExpressionState, injectionState, forEachConditionState } from './';
+import { implicitExpressionState, explicitExpressionState, injectionState, subgroupConditionState } from './';
 
 export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
@@ -30,10 +30,14 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
         case keywords.foreachSpaced:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return forEachConditionState.createState(afterAdd);
+                return subgroupConditionState.createState(afterAdd, SubgroupOwner.foreach);
             }
         case keywords.if:
-            throw new Error('not implemented');
+        case keywords.ifSpaced:
+            {
+                const afterAdd = functions.content.tryAddLiteralNode(current);
+                return subgroupConditionState.createState(afterAdd, SubgroupOwner.if);
+            }
         case keywords.escapeBrace:
             return functions.content.addToken(current, '}');
         default:

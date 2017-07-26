@@ -1,4 +1,4 @@
-import { IState, IChildState, ISubgroupState, SubgroupOwner } from '../interfaces';
+import { IState, ISubgroupConditionState, ISubgroupState } from '../interfaces';
 import { BasicNode, ForEachNode, IfNode } from '../../../../nodes';
 import { NodeType } from '../../../../nodes';
 import StateType from '../StateType';
@@ -44,10 +44,9 @@ export function reduce(current: ISubgroupState, token: string): IState {
     return afterAdd;
 }
 
-export function createState(previous: IChildState, owner: SubgroupOwner): ISubgroupState {
+export function createState(previous: ISubgroupConditionState): ISubgroupState {
     return {
         type: StateType.Subgroup,
-        owner,
         previous,
         content: '',
         hasContent: false,

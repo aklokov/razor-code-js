@@ -1,4 +1,4 @@
-import { IState, IGroupState, IChildState, SubgroupOwner } from '../interfaces';
+import { IState, IGroupState, ISubgroupConditionState, SubgroupOwner } from '../interfaces';
 import StateType from '../StateType';
 import { keywords } from '../../../tokens';
 import { openingBracketsMap } from '../../../tokens';
@@ -6,7 +6,7 @@ import * as bracketMain from '../brackets/bracketMain';
 import * as braceWaitState from './braceWaitState';
 import * as functions from '../stateFunctions';
 
-export function reduce(current: IChildState, token: string): IState {
+export function reduce(current: ISubgroupConditionState, token: string): IState {
     if (token === keywords.eof) {
         return current.previous;
     }
@@ -16,16 +16,18 @@ export function reduce(current: IChildState, token: string): IState {
     }
 
     if (token === ')') {
-        return braceWaitState.createState(current, SubgroupOwner.foreach);
+        return braceWaitState.createState(current);
     }
 
     return functions.content.addToken(current, token);
 }
 
-export function createState(previous: IGroupState): IChildState {
+export function createState(previous: IGroupState, owner: SubgroupOwner): ISubgroupConditionState {
     return {
-        type: StateType.ForEachCondition,
+        type: StateType.SubgroupCondition,
         previous,
-        content: ''
+        content: '',
+        owner,
+        nodes: []
     };
 }

@@ -1,4 +1,4 @@
-import { IState, IChildState, IBraceWaitState, SubgroupOwner } from '../interfaces';
+import { IState, ISubgroupConditionState, IBraceWaitState } from '../interfaces';
 import StateType from '../StateType';
 import { keywords } from '../../../tokens';
 import * as functions from '../stateFunctions';
@@ -13,21 +13,15 @@ export function reduce(current: IBraceWaitState, token: string): IState {
     }
 
     if (token === '{') {
-        return subgroupState.createState(current.previous, current.owner);
+        return subgroupState.createState(current.previous);
     }
 
-    const rollback = {
-        ...current.previous,
-        content: current.content
-    };
-
-    return functions.content.addToken(rollback, token);
+    return functions.content.addToken(current.previous.previous, current.content + token);
 }
 
-export function createState(previous: IChildState, owner: SubgroupOwner): IBraceWaitState {
+export function createState(previous: ISubgroupConditionState): IBraceWaitState {
     return {
         type: StateType.BraceWait,
-        owner,
         previous,
         content: ''
     };
