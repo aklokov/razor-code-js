@@ -26,13 +26,14 @@ function isMultilineNode(node: BasicNode): boolean {
 }
 
 export function reduce(current: ISubgroupState, token: string): IState {
-    if (token === keywords.eof) {
-        return current.previous.previous;
-    }
-
-    if (token === '}') {
+    if (token === keywords.eof || token === '}') {
         const afterAdd = functions.content.tryAddLiteralNode(current);
         return closeSubgroup(afterAdd as ISubgroupState);
+    }
+
+    if (token === keywords.eol || token === keywords.lineFeed) {
+        const afterAdd = groupState.reduceGroupState(current, token) as ISubgroupState;
+        return multiline.createState(afterAdd);
     }
 
     const afterAdd = groupState.reduceGroupState(current, token) as ISubgroupState;

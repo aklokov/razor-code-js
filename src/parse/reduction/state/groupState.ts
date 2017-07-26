@@ -34,6 +34,8 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
             }
         case keywords.if:
             throw new Error('not implemented');
+        case keywords.escapeBrace:
+            return functions.content.addToken(current, '}');
         default:
             return functions.content.addToken(current, token);
     }

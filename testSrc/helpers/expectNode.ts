@@ -8,7 +8,7 @@ function expectNodeType(node: BasicNode, type: NodeType, description: string): v
 function root(node: RootNode, childrenCount?: number): void {
     expectNodeType(node, NodeType.Root, 'Root');
     if (childrenCount) {
-        expect(node.children.length).to.be.equal(childrenCount);
+        expect(node.children.length).to.be.equal(childrenCount, 'child count in root node is not as expected');
     }
 }
 
@@ -48,13 +48,16 @@ function forceEol(node: BasicNode): void {
 
 function rootWithoutConfig(node: RootNode): void {
     const haveConfigNode = node.children.some(node => node.type === NodeType.Config);
-    expect(haveConfigNode).to.be.false;
+    expect(haveConfigNode).to.be.equal(false, 'config node should not be present');
 }
 
-function forEach(node: BasicNode, condition: string): ForEachNode {
+function forEach(node: BasicNode, condition: string, childCount?: number): ForEachNode {
     expectNodeType(node, NodeType.ForEach, 'ForEach');
     const forEachNode = node as ForEachNode;
     expect(forEachNode.condition).to.be.equal(condition);
+    if (childCount) {
+        expect(forEachNode.children.length).to.be.equal(childCount, 'child count in forEach node is not as expected');
+    }
     return forEachNode;
 }
 
