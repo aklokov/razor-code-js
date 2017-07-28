@@ -32,6 +32,12 @@ export interface IChildState extends IState {
     previous: IGroupState;
 }
 
+export interface ICommentState extends IState {
+    starEncountered: boolean;
+    content: string;
+    previous: IGroupState;
+}
+
 export interface ISubgroupConditionState extends IChildState {
     owner: SubgroupOwner;
     nodes: BasicNode[];

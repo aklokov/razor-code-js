@@ -2,14 +2,15 @@ import { IState, IGroupState, ISubgroupState, SubgroupOwner } from '../interface
 import { ForEachNode, IfNode } from '../../../../nodes';
 import * as functions from '../stateFunctions';
 import * as elseWaitState from './elseWaitState';
+import { cleanNodes } from './cleanNodes';
 
 function createForEachNode(state: ISubgroupState): IGroupState {
-    const node = new ForEachNode(state.previous.content, state.children);
+    const node = new ForEachNode(state.previous.content, cleanNodes(state.children));
     return functions.group.addNode(state.previous.previous, node);
 }
 
 function createIfElseNode(state: ISubgroupState): IGroupState {
-    const node = new IfNode(state.previous.content, state.previous.nodes, state.children);
+    const node = new IfNode(state.previous.content, cleanNodes(state.previous.nodes), cleanNodes(state.children));
     return functions.group.addNode(state.previous.previous, node);
 }
 

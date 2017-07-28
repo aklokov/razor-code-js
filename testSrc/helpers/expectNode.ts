@@ -19,11 +19,14 @@ function config(node: BasicNode, token: string, content: string): void {
     expect(configNode.content).to.be.equal(content);
 }
 
-
 function contentNode(node: BasicNode, content: string, type: NodeType, description: string): void {
     expectNodeType(node, type, description);
     const contentNode = node as ContentNode;
     expect(contentNode.content).to.be.equal(content);
+}
+
+function comment(node: BasicNode, content: string): void {
+    contentNode(node, content, NodeType.Comment, 'Comment');
 }
 
 function literal(node: BasicNode, content: string): void {
@@ -84,7 +87,8 @@ const expectNode = {
     rootWithoutConfig,
     forEach,
     ifNode,
-    ifChildren
+    ifChildren,
+    comment
 };
 
 export default expectNode;

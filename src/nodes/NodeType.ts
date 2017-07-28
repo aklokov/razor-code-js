@@ -1,13 +1,14 @@
 enum NodeType {
     Root = 1,
-    Config = 2,
-    Literal = 3,
-    Expression = 4,
+    Config,
+    Literal,
+    Expression,
     Injection = 5,
-    Eol = 6,
-    ForceEol = 7,
-    ForEach = 8,
-    If = 9
+    Eol,
+    ForceEol,
+    ForEach,
+    If,
+    Comment = 10
 }
 
 export default NodeType;

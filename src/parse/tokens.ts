@@ -5,6 +5,7 @@ const atat = at + at;
 const atparenthesis = at + '(';
 const atbrace = at + '{';
 const escapeBrace = at + '}';
+const atStar = at + '*';
 // const atquote = at + '"';
 const keywords = {
     // flow
@@ -12,6 +13,7 @@ const keywords = {
     atat,
     atparenthesis,
     atbrace,
+    atStar,
     escapeBrace,
     //  atquote,
     if: at + 'if(',
@@ -58,6 +60,7 @@ const flowKeywords = [
     atat,
     atparenthesis,
     atbrace,
+    atStar,
     escapeBrace
     // atquote
 ];

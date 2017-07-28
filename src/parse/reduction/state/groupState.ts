@@ -1,7 +1,7 @@
 import { IGroupState, IState, SubgroupOwner } from './interfaces';
 import { keywords } from '../../tokens';
 import * as functions from './stateFunctions';
-import { implicitExpressionState, explicitExpressionState, injectionState, subgroupConditionState } from './';
+import * as stateItems from './';
 
 export function reduceGroupState(current: IGroupState, token: string): IState {
     switch (token) {
@@ -14,32 +14,34 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
         case keywords.at:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return implicitExpressionState.createState(afterAdd);
+                return stateItems.implicitExpressionState.createState(afterAdd);
             }
         case keywords.atparenthesis:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return explicitExpressionState.createState(afterAdd);
+                return stateItems.explicitExpressionState.createState(afterAdd);
             }
         case keywords.atbrace:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return injectionState.createState(afterAdd);
+                return stateItems.injectionState.createState(afterAdd);
             }
         case keywords.foreach:
         case keywords.foreachSpaced:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return subgroupConditionState.createState(afterAdd, SubgroupOwner.foreach);
+                return stateItems.subgroupConditionState.createState(afterAdd, SubgroupOwner.foreach);
             }
         case keywords.if:
         case keywords.ifSpaced:
             {
                 const afterAdd = functions.content.tryAddLiteralNode(current);
-                return subgroupConditionState.createState(afterAdd, SubgroupOwner.if);
+                return stateItems.subgroupConditionState.createState(afterAdd, SubgroupOwner.if);
             }
         case keywords.escapeBrace:
             return functions.content.addToken(current, '}');
+        case keywords.atStar:
+            return stateItems.commentState.createState(current);
         default:
             return functions.content.addToken(current, token);
     }

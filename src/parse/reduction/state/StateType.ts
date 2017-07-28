@@ -15,7 +15,8 @@ enum StateType {
     BraceWait,
     ElseWait = 15,
     Subgroup,
-    MultilineSubgroup
+    MultilineSubgroup,
+    Comment
 };
 
 export default StateType;

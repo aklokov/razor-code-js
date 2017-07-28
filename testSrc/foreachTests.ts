@@ -1,4 +1,4 @@
-import wrappedParser from './wrappedParser';
+import wrappedParser from './helpers/wrappedParser';
 import expectNode from './helpers/expectNode';
 
 describe('parser/forEach', function (): void {
@@ -146,13 +146,11 @@ describe('parser/forEach', function (): void {
 
         // assert
         expectNode.root(res, 1);
-        const forEach = expectNode.forEach(res.children[0], 'let a of b', 5);
+        const forEach = expectNode.forEach(res.children[0], 'let a of b', 3);
         expectNode.literal(forEach.children[0], '    aasdf');
         expectNode.eol(forEach.children[1]);
-        expectNode.literal(forEach.children[2], '    ');
-        expectNode.eol(forEach.children[4]);
 
-        const forEach2 = expectNode.forEach(forEach.children[3], 'let c of a', 2);
+        const forEach2 = expectNode.forEach(forEach.children[2], 'let c of a', 2);
         expectNode.literal(forEach2.children[0], '    sdfsg');
         expectNode.eol(forEach2.children[1]);
     });

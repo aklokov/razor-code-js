@@ -1,4 +1,4 @@
-import wrappedParser from './wrappedParser';
+import wrappedParser from './helpers/wrappedParser';
 import { keywords } from '../src/parse/tokens';
 import expectNode from './helpers/expectNode';
 

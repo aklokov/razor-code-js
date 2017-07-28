@@ -4,6 +4,7 @@ import { keywords } from '../../../tokens';
 import * as functions from '../stateFunctions';
 import { IfNode } from '../../../../nodes';
 import * as subgroupState from './subgroupState';
+import { cleanNodes } from './cleanNodes';
 
 export function reduce(current: IElseWaitState, token: string): IState {
     if (token === ' ' || token === '\t') {
@@ -23,7 +24,7 @@ export function reduce(current: IElseWaitState, token: string): IState {
         return subgroupState.createState(current.previous);
     }
 
-    const node = new IfNode(current.previous.content, current.previous.nodes, []);
+    const node = new IfNode(current.previous.content, cleanNodes(current.previous.nodes), []);
     const fallback = functions.group.addNode(current.previous.previous, node);
     const content = token === keywords.eof ? current.content : current.content + token;
     return functions.content.addToken(fallback, content);

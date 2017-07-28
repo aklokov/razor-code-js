@@ -15,6 +15,7 @@ import * as braceWaitState from './subgroup/braceWaitState';
 import * as subgroupState from './subgroup/subgroupState';
 import * as multilineSubgroupState from './subgroup/multilineSubgroupState';
 import * as elseWaitState from './subgroup/elseWaitState';
+import * as commentState from './commentState';
 import StateType from './StateType';
 
 export {
@@ -35,5 +36,6 @@ export {
     braceWaitState,
     subgroupState,
     multilineSubgroupState,
-    elseWaitState
+    elseWaitState,
+    commentState
 }
