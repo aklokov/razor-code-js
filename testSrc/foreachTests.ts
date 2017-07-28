@@ -129,4 +129,31 @@ describe('parser/forEach', function (): void {
         expectNode.literal(forEach.children[2], '    sdfsg');
         expectNode.eol(forEach.children[3]);
     });
+
+
+    it('should return foreach inside foreach', function (): void {
+        // arrange
+        const src =
+            `@foreach(let a of b){
+    aasdf
+    @foreach(let c of a){
+    sdfsg
+    }
+}`;
+
+        // act
+        const res = wrappedParser(src);
+
+        // assert
+        expectNode.root(res, 1);
+        const forEach = expectNode.forEach(res.children[0], 'let a of b', 5);
+        expectNode.literal(forEach.children[0], '    aasdf');
+        expectNode.eol(forEach.children[1]);
+        expectNode.literal(forEach.children[2], '    ');
+        expectNode.eol(forEach.children[4]);
+
+        const forEach2 = expectNode.forEach(forEach.children[3], 'let c of a', 2);
+        expectNode.literal(forEach2.children[0], '    sdfsg');
+        expectNode.eol(forEach2.children[1]);
+    });
 });
