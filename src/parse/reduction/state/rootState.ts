@@ -1,6 +1,6 @@
-import StateType from './StateType';
+import { StateType } from './StateType';
 import { IState, IRootState } from './interfaces';
-import { keywords } from '../../tokens';
+import { keywords } from '../../../tokens';
 import * as finalState from './finalState';
 import * as configState from './configState';
 import * as groupState from './groupState';

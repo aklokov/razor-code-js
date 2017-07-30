@@ -1,4 +1,4 @@
-import NodeType from './NodeType';
+import { NodeType } from './NodeType';
 import * as uuid from 'uuid';
 
 export class BasicNode {

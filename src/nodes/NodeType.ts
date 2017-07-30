@@ -1,4 +1,4 @@
-enum NodeType {
+export enum NodeType {
     Root = 1,
     Config,
     Literal,
@@ -10,5 +10,3 @@ enum NodeType {
     If,
     Comment = 10
 }
-
-export default NodeType;

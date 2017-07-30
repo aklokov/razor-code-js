@@ -1,5 +1,5 @@
 import { RootNode, BasicNode } from '../../../nodes';
-import StateType from './StateType';
+import { StateType } from './StateType';
 
 export interface IState {
     type: StateType;

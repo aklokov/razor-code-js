@@ -1,5 +1,5 @@
 import { IState, IStateWithContent, IBracketState, IAngleBracketState } from '../interfaces';
-import StateType from '../StateType';
+import { StateType } from '../StateType';
 import * as baseBracketFunctions from './baseBracketFunctions';
 
 const openingBrackets = {

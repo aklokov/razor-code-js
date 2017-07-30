@@ -1,5 +1,5 @@
 import wrappedParser from './helpers/wrappedParser';
-import { keywords } from '../src/parse/tokens';
+import { keywords } from '../../src/tokens';
 import expectNode from './helpers/expectNode';
 
 describe('parser/config', function (): void {

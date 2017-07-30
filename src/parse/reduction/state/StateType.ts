@@ -1,4 +1,4 @@
-enum StateType {
+export enum StateType {
     Final = 1,
     Root,
     Config,
@@ -18,5 +18,3 @@ enum StateType {
     MultilineSubgroup,
     Comment
 };
-
-export default StateType;

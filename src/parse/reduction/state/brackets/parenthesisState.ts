@@ -1,7 +1,7 @@
 import { IState, IStateWithContent, IBracketState } from '../interfaces';
-import StateType from '../StateType';
+import { StateType } from '../StateType';
 import * as baseBracketFunctions from './baseBracketFunctions';
-import { openingBracketsMap } from '../../../tokens';
+import { openingBracketsMap } from '../../../../tokens';
 
 const openingBracket = '(';
 const closingBracket = ')';

@@ -1,5 +1,5 @@
 import tokenBreakdown from 'token-breakdown-js';
-import { allTokens } from './tokens';
+import { allTokens } from '../tokens';
 import { IState, IFinalState } from './reduction/state/interfaces';
 import { RootNode } from '../nodes';
 import setEof from './setEof';

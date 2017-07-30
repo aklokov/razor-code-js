@@ -1,8 +1,8 @@
 import { IState } from './state/interfaces';
 import getStateItem from './getStateItem';
-import StateType from './state/StateType';
+import { StateType } from './state/StateType';
 import * as rootState from './state/rootState';
-import { keywords, replacements } from '../tokens';
+import { keywords, replacements } from '../../tokens';
 
 function rootReducer(current: IState, token: string): IState {
     current = current || rootState.createState();

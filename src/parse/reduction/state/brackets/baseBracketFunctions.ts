@@ -1,6 +1,6 @@
 import { IState, IStateWithContent, IBracketState, IQuoteBracketState } from '../interfaces';
-import { keywords } from '../../../tokens';
-import StateType from '../StateType';
+import { keywords } from '../../../../tokens';
+import { StateType } from '../StateType';
 import * as bracketMain from './bracketMain';
 import * as functions from '../stateFunctions';
 import { StringMap } from '../../../../tools/dictionary';

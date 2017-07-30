@@ -1,4 +1,4 @@
-import StateType from '../StateType';
+import { StateType } from '../StateType';
 import { IState, IGroupState, IChildState } from '../interfaces';
 import { NodeType } from '../../../../nodes';
 import * as explicit from './explicitContentReducer';

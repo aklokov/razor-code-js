@@ -1,4 +1,4 @@
-import { toBoolStringMap } from '../tools/array';
+import { toBoolStringMap } from './tools/array';
 
 const at = '@';
 const atat = at + at;

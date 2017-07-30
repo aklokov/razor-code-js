@@ -1,9 +1,8 @@
 import { IState, IGroupState, IChildState } from '../interfaces';
-import { keywords } from '../../../tokens';
+import { keywords, openingBracketsMap } from '../../../../tokens';
 import * as functions from '../stateFunctions';
 import { ContentNode, NodeType } from '../../../../nodes';
 import * as bracketMain from '../brackets/bracketMain';
-import { openingBracketsMap } from '../../../tokens';
 
 function createNode(current: IChildState, nodeType: NodeType): ContentNode {
     return new ContentNode(functions.content.getContent(current), nodeType);

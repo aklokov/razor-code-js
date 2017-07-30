@@ -1,6 +1,6 @@
 import { IState, ISubgroupState } from '../interfaces';
-import StateType from '../StateType';
-import { keywords } from '../../../tokens';
+import { StateType } from '../StateType';
+import { keywords } from '../../../../tokens';
 import { NodeType } from '../../../../nodes';
 import * as groupState from '../groupState';
 import { closeSubgroup } from './subgroupClosing';

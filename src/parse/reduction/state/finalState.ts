@@ -1,4 +1,4 @@
-import StateType from './StateType';
+import { StateType } from './StateType';
 import { IState, IFinalState } from './interfaces';
 
 import { RootNode, BasicNode } from '../../../nodes';

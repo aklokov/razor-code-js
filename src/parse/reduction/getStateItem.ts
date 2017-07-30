@@ -1,6 +1,6 @@
 import * as stateItems from './state';
 import { IStateItem } from './state/interfaces';
-import StateType from './state/StateType';
+import { StateType } from './state/StateType';
 
 function getStateItem(type: StateType): IStateItem {
     switch (type) {

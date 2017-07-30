@@ -1,6 +1,6 @@
 import { IState, IGroupState, IChildState } from './interfaces';
-import StateType from './StateType';
-import { keywords, flowKeywords, tokens } from '../../tokens';
+import { StateType } from './StateType';
+import { keywords, flowKeywords, tokens } from '../../../tokens';
 import * as functions from './stateFunctions';
 import { ContentNode, NodeType } from '../../../nodes';
 import * as groupState from './groupState';

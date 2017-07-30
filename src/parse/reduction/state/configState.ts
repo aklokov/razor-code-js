@@ -1,6 +1,6 @@
-import StateType from './StateType';
+import { StateType } from './StateType';
 import { IState, IRootState, IConfigState } from './interfaces';
-import { keywords } from '../../tokens';
+import { keywords } from '../../../tokens';
 import { ConfigNode } from '../../../nodes';
 
 function backToRootState(currentState: IConfigState): IRootState {

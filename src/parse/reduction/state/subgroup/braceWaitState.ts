@@ -1,6 +1,6 @@
 import { IState, ISubgroupConditionState, IBraceWaitState } from '../interfaces';
-import StateType from '../StateType';
-import { keywords } from '../../../tokens';
+import { StateType } from '../StateType';
+import { keywords } from '../../../../tokens';
 import * as functions from '../stateFunctions';
 import * as subgroupState from './subgroupState';
 export function reduce(current: IBraceWaitState, token: string): IState {

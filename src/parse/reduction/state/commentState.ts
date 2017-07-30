@@ -1,6 +1,6 @@
 import { IState, IGroupState, ICommentState } from './interfaces';
-import StateType from './StateType';
-import { keywords } from '../../tokens';
+import { StateType } from './StateType';
+import { keywords } from '../../../tokens';
 import * as functions from './stateFunctions';
 import { ContentNode, NodeType } from '../../../nodes';
 

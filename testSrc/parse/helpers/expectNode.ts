@@ -1,4 +1,4 @@
-import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode, IfNode } from '../../src/nodes';
+import { RootNode, BasicNode, ContentNode, NodeType, ConfigNode, ForEachNode, IfNode } from '../../../src/nodes';
 import { expect } from 'chai';
 
 function expectNodeType(node: BasicNode, type: NodeType, description: string): void {
