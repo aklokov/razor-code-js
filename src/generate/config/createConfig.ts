@@ -3,13 +3,13 @@ import { IConfig, Language } from './config';
 import { keywords } from '../../tokens';
 import * as parsers from './parsers';
 
-function optionsReducer(acc: IConfig, node: BasicNode, index: number, array: BasicNode[]): IConfig {
+function optionsReducer(config: IConfig, node: BasicNode): IConfig {
     const configNode = node as ConfigNode;
     switch (configNode.token) {
         case keywords.language:
-            return parsers.language(acc, configNode.content);
+            return parsers.language(config, configNode.content);
         default:
-            return acc;
+            return config;
     }
 }
 
@@ -18,5 +18,5 @@ export function createConfig(root: RootNode): IConfig {
     const defaultConfig = {
         language: Language.TypeScript
     };
-    return configNodes.reduce<IConfig>(optionsReducer, defaultConfig);
+    return configNodes.reduce(optionsReducer, defaultConfig);
 }
