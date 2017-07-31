@@ -6,4 +6,5 @@ export enum Language {
 
 export interface IConfig {
     language: Language;
+    parameters: string[];
 }

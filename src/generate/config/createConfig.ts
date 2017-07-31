@@ -8,6 +8,8 @@ function optionsReducer(config: IConfig, node: BasicNode): IConfig {
     switch (configNode.token) {
         case keywords.language:
             return parsers.language(config, configNode.content);
+        case keywords.parameters:
+            return parsers.parameters(config, configNode.content);
         default:
             return config;
     }
@@ -16,7 +18,9 @@ function optionsReducer(config: IConfig, node: BasicNode): IConfig {
 export function createConfig(root: RootNode): IConfig {
     const configNodes = root.children.filter(node => node.type === NodeType.Config);
     const defaultConfig = {
-        language: Language.TypeScript
+        language: Language.TypeScript,
+        parameters: []
     };
+
     return configNodes.reduce(optionsReducer, defaultConfig);
 }
