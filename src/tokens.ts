@@ -20,7 +20,7 @@ const keywords = {
     ifSpaced: at + 'if (',
     else: 'else',
     foreach: at + 'foreach(',
-    foreachSpaced:  at + 'foreach (',
+    foreachSpaced: at + 'foreach (',
     lineFeed: '\n',
     eol: at + 'eol',
     eof: at + 'eof',
@@ -28,6 +28,8 @@ const keywords = {
     // config
     language: at + 'language ', // c#, js or ts
     parameters: at + 'parameters ',
+    exportName: at + 'exportname ',
+    lineFeedType: at + 'lineFeedType ',
 
     // js/ts specific
     import: at + 'import ',
@@ -46,6 +48,8 @@ const configKeywords = [
     keywords.language,
     keywords.parameters,
     keywords.import,
+    keywords.exportName,
+    keywords.lineFeedType,
     keywords.namespace,
     keywords.using
 ];

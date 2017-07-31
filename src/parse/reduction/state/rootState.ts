@@ -19,7 +19,11 @@ export function reduce(current: IState, token: string): IState {
     switch (token) {
         case keywords.language:
         case keywords.parameters:
+        case keywords.exportName:
+        case keywords.lineFeedType:
+
         case keywords.import:
+
         case keywords.namespace:
         case keywords.using:
             return tryCreateConfig(currentState, token);

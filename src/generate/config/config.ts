@@ -1,10 +1,7 @@
-export enum Language {
-    TypeScript,
-    JavaScript,
-    CSharp
-}
-
 export interface IConfig {
-    language: Language;
+    language: string;
+    lineFeed: string;
     parameters: string[];
+    imports: string[];
+    exportName: string;
 }
