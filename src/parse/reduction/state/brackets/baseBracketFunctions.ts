@@ -1,9 +1,9 @@
 import { IState, IStateWithContent, IBracketState, IQuoteBracketState } from '../interfaces';
-import { keywords } from '../../../../tokens';
+import { keywords } from '@src/tokens';
 import { StateType } from '../StateType';
 import * as bracketMain from './bracketMain';
 import * as functions from '../stateFunctions';
-import { StringMap } from '../../../../tools/dictionary';
+import { StringMap } from '@tools';
 
 export function goBack(current: IBracketState, token: string): IState {
     const contentState = functions.content.addToken(current.contentState, token);

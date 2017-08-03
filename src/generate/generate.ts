@@ -1,7 +1,7 @@
-import { RootNode } from '../nodes';
+import { RootNode } from '@nodes';
 import { createConfig } from './config';
 import * as tsGen from './tsGen';
-import { language } from '../constants';
+import { language } from '@src/constants';
 
 export default function generateImpl(rootNode: RootNode): string {
     const config = createConfig(rootNode);

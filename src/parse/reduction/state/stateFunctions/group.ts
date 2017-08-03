@@ -1,5 +1,5 @@
 import { IGroupState } from '../interfaces';
-import { BasicNode } from '../../../../nodes';
+import { BasicNode } from '@nodes';
 
 export function addNode(current: IGroupState, node: BasicNode): IGroupState {
     return {

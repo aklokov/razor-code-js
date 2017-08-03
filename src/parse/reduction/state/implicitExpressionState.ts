@@ -1,11 +1,11 @@
 import { IState, IGroupState, IChildState } from './interfaces';
 import { StateType } from './StateType';
-import { keywords, flowKeywords, tokens } from '../../../tokens';
+import { keywords, flowKeywords, tokens } from '@src/tokens';
 import * as functions from './stateFunctions';
-import { ContentNode, NodeType } from '../../../nodes';
+import { ContentNode, NodeType } from '@nodes';
 import * as groupState from './groupState';
 import * as bracketMain from './brackets/bracketMain';
-import { toBoolStringMap } from '../../../tools/array';
+import { toBoolStringMap } from '@tools';
 
 function createNode(current: IChildState): ContentNode {
     return new ContentNode(functions.content.getContent(current), NodeType.Expression);

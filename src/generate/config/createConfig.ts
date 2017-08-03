@@ -1,8 +1,8 @@
-import { RootNode, ConfigNode, NodeType, BasicNode } from '../../nodes';
+import { RootNode, ConfigNode, NodeType, BasicNode } from '@nodes';
 import { IConfig } from './config';
-import { keywords } from '../../tokens';
+import { keywords } from '@src/tokens';
 import * as parsers from './parsers';
-import { lineFeedType, language } from '../../constants';
+import { lineFeedType, language } from '@src/constants';
 
 function optionsReducer(config: IConfig, node: BasicNode): IConfig {
     const configNode = node as ConfigNode;

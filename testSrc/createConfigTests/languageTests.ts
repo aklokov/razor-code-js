@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import { createConfig } from '../../src/generate/config';
-import { lineFeedType, language } from '../../src/constants';
-import { RootNode, ConfigNode } from '../../src/nodes';
-import { keywords } from '../../src/tokens';
+import { createConfig } from '@src/generate/config';
+import { lineFeedType, language } from '@src/constants';
+import { RootNode, ConfigNode } from '@src/nodes';
+import { keywords } from '@src/tokens';
 
 describe('createConfig/language', function (): void {
     it('should set language and windows linefeed for csharp', function (): void {

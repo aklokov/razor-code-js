@@ -1,5 +1,5 @@
 import { IGroupState, IState, SubgroupOwner } from './interfaces';
-import { keywords } from '../../../tokens';
+import { keywords } from '@src/tokens';
 import * as functions from './stateFunctions';
 import * as stateItems from './';
 

@@ -5,6 +5,14 @@
         "noResolve": false,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "mapRoot": "./",
+		"baseUrl": ".",
+		"paths":
+		{
+            "@src/*": ["src/*"],
+            "@tools": ["src/tools"],
+            "@nodes": ["src/nodes"]
+		}
     }
 }

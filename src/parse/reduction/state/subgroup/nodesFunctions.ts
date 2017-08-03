@@ -1,5 +1,4 @@
-import { BasicNode, ForEachNode, IfNode, ContentNode } from '../../../../nodes';
-import { NodeType } from '../../../../nodes';
+import { BasicNode, ForEachNode, IfNode, ContentNode, NodeType } from '@nodes';
 
 export function isEndOfLine(node: BasicNode): boolean {
     return node.type === NodeType.Eol || node.type === NodeType.ForceEol;

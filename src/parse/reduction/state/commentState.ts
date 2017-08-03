@@ -1,8 +1,8 @@
 import { IState, IGroupState, ICommentState } from './interfaces';
 import { StateType } from './StateType';
-import { keywords } from '../../../tokens';
+import { keywords } from '@src/tokens';
 import * as functions from './stateFunctions';
-import { ContentNode, NodeType } from '../../../nodes';
+import { ContentNode, NodeType } from '@nodes';
 
 function createNode(current: ICommentState): ContentNode {
     return new ContentNode(functions.content.getContent(current), NodeType.Comment);

@@ -1,6 +1,6 @@
 import { IState, ISubgroupConditionState, ISubgroupState } from '../interfaces';
 import { StateType } from '../StateType';
-import { keywords } from '../../../../tokens';
+import { keywords } from '@src/tokens';
 import * as multiline from './multilineSubgroupState';
 import * as functions from '../stateFunctions';
 import * as groupState from '../groupState';

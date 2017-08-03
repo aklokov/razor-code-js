@@ -1,6 +1,6 @@
-import { indentSize } from '../../constants';
-import { Dictionary, NumberMap } from '../../tools/dictionary';
-import { lineFeedType as lft } from '../../constants';
+import { indentSize } from '@src/constants';
+import { Dictionary, NumberMap } from '@tools';
+import { lineFeedType as lft } from '@src/constants';
 
 const dict: Dictionary = {};
 dict[lft.mac] = '\r';

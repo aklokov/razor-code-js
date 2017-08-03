@@ -1,4 +1,4 @@
-import { RootNode } from '../../nodes';
+import { RootNode } from '@nodes';
 import { IConfig } from '../config';
 import { startFile } from '../common/fileGen';
 import { generateFileContent } from './generateFileContent';

@@ -1,5 +1,5 @@
 import { IConfig } from '../config';
-import { language as lng, lineFeedType } from '../../../constants';
+import { language as lng, lineFeedType } from '@src/constants';
 
 export function language(config: IConfig, content: string): IConfig {
     const newLanguage = content.trim();

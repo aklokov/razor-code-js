@@ -1,5 +1,5 @@
 import { IGroupState, IStateWithContent } from '../interfaces';
-import { LiteralNode, NodeType } from '../../../../nodes';
+import { LiteralNode, NodeType } from '@nodes';
 import * as group from './group';
 
 export function afterForceEol(current: IGroupState): boolean {

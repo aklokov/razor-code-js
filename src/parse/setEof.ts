@@ -1,4 +1,4 @@
-import { keywords } from '../tokens';
+import { keywords } from '@src/tokens';
 export default function setEof(tokens: string[]): string[] {
     const index = tokens.indexOf(keywords.eof);
     if (index !== -1) {

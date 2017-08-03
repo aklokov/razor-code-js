@@ -1,6 +1,6 @@
 
 import * as deepFreeze from 'deep-freeze';
-import { IState } from '../../../src/parse/reduction/state/interfaces';
+import { IState } from '@src/parse/reduction/state/interfaces';
 
 function protect<T>(obj: T): T {
     const serialized = JSON.stringify(obj);
