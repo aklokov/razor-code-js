@@ -1,44 +1,22 @@
 const gulp = require('gulp');
 const ts = require('gulp-tsc');
 const settings = require('./extra/buildSettings');
-const tslint = require('gulp-tslint');
-const wrap = require('./extra/wrap');
-const src = settings.srcDir + '/**/*.ts';
-const tests = settings.testSrcDir + '/**/*.ts';
 const tsconfig = require('../tsconfig');
+const allTs = '/**/*.ts';
 
-
-function build(reportError, emitError) {
-    return gulp.src([tests, src])
-        .pipe(ts({ declaration: true, emitError }))
-
-        .pipe(gulp.dest(settings.buildDir));
+function build(src, dest) {
+    const options = Object.assign({}, tsconfig.compilerOptions, { "baseUrl": "." });
+    return gulp.src(src)
+        .pipe(ts(options))
+        .pipe(gulp.dest(dest));
 }
 
-gulp.task('build', ['cleanup'], function () {
-    return gulp.src([tests, src])
-        .pipe(ts(tsconfig.compilerOptions))
-        .pipe(gulp.dest(settings.buildDir));
-});
+gulp.task('build-src', ['cleanup'], function () {
+    return build(settings.srcDir + allTs, settings.buildSrcDir);
+})
 
-gulp.task('build-watch', ['cleanup'], wrap('TS-Build', function (reportError) {
-    return gulp.src([tests, src])
-        .pipe(ts(tsconfig.compilerOptions))
-        .on('error', reportError)
-        .pipe(gulp.dest(settings.buildDir));
-}));
+gulp.task('build-tests', ['cleanup'], function () {
+    return build(settings.testSrcDir + allTs, settings.testRunDir);
+})
 
-function lint(reportError, emitError) {
-    return gulp.src([tests, src])
-        .pipe(tslint({ formatter: "verbose" }))
-        .pipe(tslint.report({ emitError: process.env.emitError }))
-        .on('error', reportError);
-}
-
-gulp.task('tslint', ['build'], function (done) {
-    return lint(() => { }, true);
-});
-
-gulp.task('tslint-watch', ['build-watch'], wrap('TS-lint', reportError => lint(reportError, false)));
-
-gulp.task('full-build-watch', ['build-watch', 'tslint-watch']);
+gulp.task('build', ['build-src', 'build-tests']);

@@ -4,29 +4,19 @@ const settings = require('./extra/buildSettings');
 const cover = require('gulp-coverage');
 const mocha = require('gulp-mocha');
 const notifier = require('node-notifier');
-const wrap = require('./extra/wrap');
-
 const testSrc = settings.testRunDir + '/**/*.js';
 const mochaSetting = { reporter: 'spec' };
 
-function test(reportError) {
-    if (settings.coverage) {
+gulp.task('tests', ['full-build'], function (done) {
+        if (settings.coverage) {
         return gulp.src(testSrc)
             .pipe(cover.instrument({ pattern: [settings.buildSrcDir + '/**/*.js'] }))
             .pipe(mocha(mochaSetting))
-            .on('error', reportError)
             .pipe(cover.gather())
             .pipe(cover.format(['html', 'lcov']))
             .pipe(gulp.dest(settings.reportDir));
     }
 
     return gulp.src(testSrc)
-        .pipe(mocha(mochaSetting))
-        .on('error', reportError);
-}
-
-gulp.task('tests', ['full-build'], function (done) {
-    return test(() => { });
+        .pipe(mocha(mochaSetting));
 });
-
-gulp.task('tests-watch', ['full-build-watch'], wrap('Tests', test));

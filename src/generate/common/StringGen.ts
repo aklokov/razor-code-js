@@ -43,8 +43,27 @@ export class StringGen {
         this.strings.push(text);
     }
 
+    public braces(func: () => void): void {
+        this.bracesImpl(func, '}');
+    }
+
+    public bracesSemicolon(func: () => void): void {
+        this.bracesImpl(func, '};');
+    }
+
     public toString(): string {
+        if (this.currentIndent > 0) {
+            throw new Error('indent error');
+        }
         return this.strings.join('');
+    }
+
+    private bracesImpl(func: () => void, ending: string): void {
+        this.appendLine('{');
+        this.pushIndent();
+        func();
+        this.popIndent();
+        this.appendLine(ending);
     }
 
     private appendLineFeed(): void {
@@ -70,5 +89,4 @@ export class StringGen {
             this.strings.push(this.createIndent());
         }
     }
-
 }
