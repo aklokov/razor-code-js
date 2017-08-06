@@ -1,11 +1,8 @@
 import { NodeType } from './NodeType';
-import * as uuid from 'uuid';
 
 export class BasicNode {
     public uuid: string;
-    constructor(public type: NodeType) {
-        this.uuid = uuid.v1();
-    }
+    constructor(public type: NodeType) { }
 }
 
 export class ContentNode extends BasicNode {

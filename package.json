@@ -5,8 +5,8 @@
   "files": [
     "out/src"
   ],
-  "main": "./out/src/razor-code-js.js",
-  "types": "./out/src/razor-code-js.d.ts",
+  "main": "out/src/index.js",
+  "typings": "out/src/index",
   "scripts": {},
   "keywords": [
     "token",
@@ -38,8 +38,6 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "@types/uuid": "2.0.29",
-    "token-breakdown-js": "1.0.6",
-    "uuid": "3.0.1"
+    "token-breakdown-js": "1.0.6"
   }
 }
