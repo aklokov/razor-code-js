@@ -1,4 +1,4 @@
-import { RootNode } from '@nodes';
+import { RootNode } from '../../nodes';
 import { IConfig } from '../config';
 import { StringGen } from '../common/StringGen';
 import { generateNode } from './generateNode';

@@ -12,6 +12,7 @@ export class StringGen {
     private currentIndent: number = 0;
     private strings: string[] = [];
     private lineFeed: string;
+    private eol: boolean = false;
 
     constructor(lineFeed: string = lft.unix) {
         this.lineFeed = dict[lineFeed];
@@ -34,13 +35,17 @@ export class StringGen {
             return;
         }
 
-        this.appendIndent();
         this.append(line);
         this.appendLineFeed();
     }
 
     public append(text: string): void {
+        if (this.eol) {
+            this.appendIndent();
+        }
+
         this.strings.push(text);
+        this.eol = false;
     }
 
     public braces(func: () => void): void {
@@ -59,7 +64,8 @@ export class StringGen {
     }
 
     private bracesImpl(func: () => void, ending: string): void {
-        this.appendLine('{');
+        this.append('{');
+        this.appendLine();
         this.pushIndent();
         func();
         this.popIndent();
@@ -67,6 +73,7 @@ export class StringGen {
     }
 
     private appendLineFeed(): void {
+        this.eol = true;
         this.strings.push(this.lineFeed);
     }
 
