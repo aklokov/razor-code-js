@@ -82,3 +82,9 @@ export interface IConfigState extends IState {
     token: string;
     root: IRootState;
 }
+
+export interface IPartialState extends IState {
+    content: string;
+    generatorName: string;
+    previous: IGroupState;
+}

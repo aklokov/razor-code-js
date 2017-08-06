@@ -8,5 +8,6 @@ export enum NodeType {
     ForceEol = 'ForceEol',
     ForEach = 'ForEach',
     If = 'If',
-    Comment = 'Comment'
+    Comment = 'Comment',
+    Partial = 'Partial'
 }

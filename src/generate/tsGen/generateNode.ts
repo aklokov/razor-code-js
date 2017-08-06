@@ -26,6 +26,9 @@ export function generateNode(sgen: StringGen, node: nodes.BasicNode): void {
         case NodeType.If:
             nodeGen.generateIfNode(sgen, node as nodes.IfNode);
             break;
+        case NodeType.Partial:
+            nodeGen.generatePartial(sgen, node as nodes.PartialNode);
+            break;
         default:
             break;
     }

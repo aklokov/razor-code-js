@@ -29,11 +29,11 @@ export function reduce(current: IState, token: string): IState {
     }
 }
 
-export function createState(root: IRootState, token: string, content: string = ''): IConfigState {
+export function createState(root: IRootState, token: string): IConfigState {
     const newState: IConfigState = {
         root,
         token,
-        content,
+        content: '',
         type: StateType.Config
     };
 

@@ -52,3 +52,9 @@ export class ConfigNode extends BasicNode {
         super(NodeType.Config);
     }
 }
+
+export class PartialNode extends BasicNode {
+    constructor(public generatorName:string, public parameters:string){
+        super(NodeType.Partial);
+    }
+}

@@ -42,6 +42,8 @@ export function reduceGroupState(current: IGroupState, token: string): IState {
             return functions.content.addToken(current, '}');
         case keywords.atStar:
             return stateItems.commentState.createState(current);
+        case keywords.atbracket:
+            return
         default:
             return functions.content.addToken(current, token);
     }

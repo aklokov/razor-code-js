@@ -4,6 +4,7 @@ const at = '@';
 const atat = at + at;
 const atparenthesis = at + '(';
 const atbrace = at + '{';
+const atbracket = at + '[';
 const escapeBrace = at + '}';
 const atStar = at + '*';
 // const atquote = at + '"';
@@ -13,6 +14,7 @@ const keywords = {
     atat,
     atparenthesis,
     atbrace,
+    atbracket,
     atStar,
     escapeBrace,
     //  atquote,
@@ -64,6 +66,7 @@ const flowKeywords = [
     atat,
     atparenthesis,
     atbrace,
+    atbracket,
     atStar,
     escapeBrace
     // atquote
