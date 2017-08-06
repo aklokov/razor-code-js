@@ -4,19 +4,10 @@ const settings = require('./extra/buildSettings');
 const tsconfig = require('../tsconfig');
 const allTs = '/**/*.ts';
 
-function build(src, dest) {
-    const options = Object.assign({}, tsconfig.compilerOptions, { "baseUrl": "." });
-    return gulp.src(src)
+gulp.task('build', function () {
+    const options = Object.assign({}, tsconfig.compilerOptions);
+    const sources = [settings.srcDir + allTs, settings.testSrcDir + allTs];
+    return gulp.src(sources)
         .pipe(ts(options))
-        .pipe(gulp.dest(dest));
-}
-
-gulp.task('build-src', ['cleanup'], function () {
-    return build(settings.srcDir + allTs, settings.buildSrcDir);
-})
-
-gulp.task('build-tests', ['cleanup'], function () {
-    return build(settings.testSrcDir + allTs, settings.testRunDir);
-})
-
-gulp.task('build', ['build-src', 'build-tests']);
+        .pipe(gulp.dest(settings.buildDir));
+});

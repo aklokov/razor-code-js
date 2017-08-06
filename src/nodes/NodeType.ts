@@ -1,12 +1,12 @@
 export enum NodeType {
-    Root = 1,
-    Config,
-    Literal,
-    Expression,
-    Injection = 5,
-    Eol,
-    ForceEol,
-    ForEach,
-    If,
-    Comment = 10
+    Root = 'Root',
+    Config = 'Config',
+    Literal = 'Literal',
+    Expression = 'Expression',
+    Injection = 'Injection',
+    Eol = 'Eol',
+    ForceEol = 'ForceEol',
+    ForEach = 'ForEach',
+    If = 'If',
+    Comment = 'Comment'
 }

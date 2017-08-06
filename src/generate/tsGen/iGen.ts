@@ -1,6 +1,6 @@
 import { StringGen } from '../common/StringGen';
 import { IConfig } from '../config';
-
+import { lineFeedType } from '../../constants';
 export function generateIGenInterface(sgen: StringGen): void {
     sgen.append('export interface IGen ');
     sgen.braces(() => {
@@ -22,7 +22,8 @@ function generateClassContent(sgen: StringGen, config: IConfig): void {
     sgen.appendLine();
     sgen.append('public append(text: string): void ');
     sgen.braces(() => {
-        sgen.appendLine('this.lines.push(indent + text);');
+        sgen.appendLine('if(this.eolPrinted) { this.lines.push(indent); }');
+        sgen.appendLine('this.lines.push(text);');
         sgen.appendLine('this.eolPrinted = true;');
     });
     sgen.appendLine();
@@ -31,13 +32,13 @@ function generateClassContent(sgen: StringGen, config: IConfig): void {
         sgen.append('if(this.eolPrinted) ');
         sgen.braces(() => sgen.appendLine('return;'));
         sgen.appendLine('this.eolPrinted = true;');
-        sgen.appendLine(`this.lines.push(${getEol(config.lineFeed)});`);
+        sgen.appendLine(`this.lines.push('${getEol(config.lineFeed)}');`);
     });
     sgen.appendLine();
     sgen.append('public forceEol(): void ');
     sgen.braces(() => {
         sgen.appendLine('this.eolPrinted = true;');
-        sgen.appendLine(`this.lines.push(${getEol(config.lineFeed)});`);
+        sgen.appendLine(`this.lines.push('${getEol(config.lineFeed)}');`);
     });
     sgen.appendLine();
     sgen.append('public toString(): string ');
@@ -45,11 +46,13 @@ function generateClassContent(sgen: StringGen, config: IConfig): void {
 }
 
 function getEol(eol: string): string {
-    if (eol.length === 2) {
-        return '\\r\\n';
-    } else if (eol === '\n') {
-        return '\\n';
-    } else {
-        return '\\r';
+    switch (eol) {
+        case lineFeedType.windows:
+            return '\\r\\n';
+        case lineFeedType.mac:
+            return '\\r';
+        case lineFeedType.unix:
+        default:
+            return '\\n';
     }
 }

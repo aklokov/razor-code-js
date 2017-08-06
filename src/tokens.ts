@@ -29,7 +29,7 @@ const keywords = {
     language: at + 'language ', // c#, js or ts
     parameters: at + 'parameters ',
     exportName: at + 'exportname ',
-    lineFeedType: at + 'lineFeedType ',
+    lineFeedType: at + 'linefeed ',
 
     // js/ts specific
     import: at + 'import ',

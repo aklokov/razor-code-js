@@ -6,15 +6,15 @@ import { generateNode } from './generateNode';
 export function generateMainFunction(sgen: StringGen, root: RootNode, config: IConfig): void {
     const parms = config.parameters.join(', ');
     if (parms.length) {
-        sgen.append(`function generateContent(gen: Gen, ${config.parameters.join(', ')}): string[] `);
+        sgen.append(`function generateContent(gen: IGen, ${config.parameters.join(', ')}): string[] `);
     } else {
-        sgen.append(`function generateContent(gen: Gen): string[] `);
+        sgen.append(`function generateContent(gen: IGen): string[] `);
     }
 
-    sgen.braces(() => generateMainFunctionContent(root, sgen));
+    sgen.braces(() => generateMainFunctionContent(sgen, root));
 }
 
-function generateMainFunctionContent(root: RootNode, sgen: StringGen): void {
+function generateMainFunctionContent(sgen: StringGen, root: RootNode): void {
     sgen.appendLine('const indent = gen.indent;');
-    root.children.forEach(node => generateNode(node, sgen));
+    root.children.forEach(node => generateNode(sgen, node));
 }
