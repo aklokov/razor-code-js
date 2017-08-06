@@ -1,5 +1,5 @@
 import { IGroupState } from '../interfaces';
-import { BasicNode, NodeType } from '@nodes';
+import { BasicNode, NodeType } from '../../../../nodes';
 import * as contentFunctions from './content';
 import * as group from './group';
 

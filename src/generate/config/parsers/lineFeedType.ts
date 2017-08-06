@@ -1,5 +1,5 @@
 import { IConfig } from '../config';
-import { lineFeedType as lft } from '@src/constants';
+import { lineFeedType as lft } from '../../../constants';
 
 export function lineFeedType(config: IConfig, content: string): IConfig {
     let newLft = content.trim();

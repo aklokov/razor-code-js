@@ -1,8 +1,8 @@
 import { IState, ISubgroupState, ISubgroupConditionState, IElseWaitState, SubgroupOwner } from '../interfaces';
 import { StateType } from '../StateType';
-import { keywords } from '@src/tokens';
+import { keywords } from '../../../../tokens';
 import * as functions from '../stateFunctions';
-import { IfNode } from '@nodes';
+import { IfNode } from '../../../../nodes';
 import * as subgroupState from './subgroupState';
 import { cleanNodes } from './cleanNodes';
 

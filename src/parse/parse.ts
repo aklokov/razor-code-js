@@ -1,4 +1,4 @@
-import { RootNode } from '@nodes';
+import { RootNode } from '../nodes';
 import rootReducer from './reduction/rootReducer';
 import parseImpl from './parseImpl';
 

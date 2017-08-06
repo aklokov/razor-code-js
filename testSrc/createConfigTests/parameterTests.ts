@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { createConfig } from '@src/generate/config';
-import { RootNode, ConfigNode } from '@nodes';
-import { keywords } from '@src/tokens';
+import { createConfig } from '../../src/generate/config';
+import { RootNode, ConfigNode } from '../../src/nodes';
+import { keywords } from '../../src/tokens';
 
 describe('createConfig/parameters', function (): void {
     it('should return single parameter', function (): void {

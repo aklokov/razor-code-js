@@ -1,4 +1,4 @@
-import { RootNode } from '@nodes';
+import { RootNode } from '../../nodes';
 
 export default function jsGen(node: RootNode): string {
     return '';

@@ -1,4 +1,5 @@
-import { BasicNode, NodeType } from '@nodes';
+import { BasicNode } from '../../../../nodes';
+import { NodeType } from '../../../../nodes';
 import { isEndOfLine, isSuppressableNode, isSuppressingNode } from './nodesFunctions';
 import * as _ from 'lodash';
 

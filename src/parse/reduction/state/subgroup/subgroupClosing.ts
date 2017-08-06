@@ -1,5 +1,5 @@
 import { IState, IGroupState, ISubgroupState, SubgroupOwner } from '../interfaces';
-import { ForEachNode, IfNode } from '@nodes';
+import { ForEachNode, IfNode } from '../../../../nodes';
 import * as functions from '../stateFunctions';
 import * as elseWaitState from './elseWaitState';
 import { cleanNodes } from './cleanNodes';

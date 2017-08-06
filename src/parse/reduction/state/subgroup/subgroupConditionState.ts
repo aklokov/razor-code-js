@@ -1,6 +1,6 @@
 import { IState, IGroupState, ISubgroupConditionState, SubgroupOwner } from '../interfaces';
 import { StateType } from '../StateType';
-import { keywords, openingBracketsMap } from '@src/tokens';
+import { keywords, openingBracketsMap } from '../../../../tokens';
 import * as bracketMain from '../brackets/bracketMain';
 import * as braceWaitState from './braceWaitState';
 import * as functions from '../stateFunctions';

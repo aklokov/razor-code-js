@@ -1,4 +1,4 @@
-import { RootNode, BasicNode } from '@nodes';
+import { RootNode, BasicNode } from '../../../nodes';
 import { StateType } from './StateType';
 
 export interface IState {
