@@ -22,6 +22,7 @@ function getStateItem(type: StateType): IStateItem {
         case StateType.MultilineSubgroup: return stateItems.multilineSubgroupState;
         case StateType.ElseWait: return stateItems.elseWaitState;
         case StateType.Comment: return stateItems.commentState;
+        case StateType.Partial: return stateItems.partialState;
         default:
             throw new Error('unsupported state');
     }

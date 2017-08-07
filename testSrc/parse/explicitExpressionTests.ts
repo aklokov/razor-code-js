@@ -1,5 +1,5 @@
 import wrappedParser from './helpers/wrappedParser';
-import expectNode from './helpers/expectNode';
+import * as expectNode from './helpers/expectNode';
 
 describe('parser/explicitExpression', function (): void {
 

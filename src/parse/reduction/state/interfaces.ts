@@ -87,4 +87,5 @@ export interface IPartialState extends IState {
     content: string;
     generatorName: string;
     previous: IGroupState;
+    addedNode: boolean;
 }

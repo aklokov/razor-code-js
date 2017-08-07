@@ -12,15 +12,15 @@ export function afterForceEol(current: IGroupState): boolean {
 }
 
 function emptyContentAfterForceEol(current: IGroupState): boolean {
-    return afterForceEol(current) && !contentIsNotEmpty(current.content);
+    return afterForceEol(current) && contentIsEmpty(current.content);
 }
 
-function contentIsNotEmpty(content: string): boolean {
-    return !!content.trim().length;
+function contentIsEmpty(content: string): boolean {
+    return !content.trim().length;
 }
 
 export function nodeHasContent(node: IGroupState): boolean {
-    return node.hasContent || contentIsNotEmpty(node.content);
+    return node.hasContent || !contentIsEmpty(node.content);
 }
 
 export function getContent(current: IStateWithContent): string {

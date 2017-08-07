@@ -1,6 +1,6 @@
 import wrappedParser from './helpers/wrappedParser';
 import { keywords } from '../../src/tokens';
-import expectNode from './helpers/expectNode';
+import * as expectNode from './helpers/expectNode';
 
 describe('parser/config', function (): void {
     it('should return config node', function (): void {

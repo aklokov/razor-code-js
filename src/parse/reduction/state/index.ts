@@ -16,26 +16,28 @@ import * as subgroupState from './subgroup/subgroupState';
 import * as multilineSubgroupState from './subgroup/multilineSubgroupState';
 import * as elseWaitState from './subgroup/elseWaitState';
 import * as commentState from './commentState';
+import * as partialState from './partialState';
 import { StateType } from './StateType';
 
 export {
-    rootState,
-    configState,
-    finalState,
-    StateType,
-    implicitExpressionState,
-    explicitExpressionState,
-    injectionState,
-    parenthesisState,
-    squareBracketState,
-    curlyBraceState,
-    angleBracketState,
-    quoteBracketState,
-    apostropheBracketState,
-    subgroupConditionState,
-    braceWaitState,
-    subgroupState,
-    multilineSubgroupState,
-    elseWaitState,
-    commentState
+  rootState,
+  configState,
+  finalState,
+  StateType,
+  implicitExpressionState,
+  explicitExpressionState,
+  injectionState,
+  parenthesisState,
+  squareBracketState,
+  curlyBraceState,
+  angleBracketState,
+  quoteBracketState,
+  apostropheBracketState,
+  subgroupConditionState,
+  braceWaitState,
+  subgroupState,
+  multilineSubgroupState,
+  elseWaitState,
+  commentState,
+  partialState
 }

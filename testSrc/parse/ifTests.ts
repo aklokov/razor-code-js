@@ -1,5 +1,5 @@
 import wrappedParser from './helpers/wrappedParser';
-import expectNode from './helpers/expectNode';
+import * as expectNode from './helpers/expectNode';
 
 describe('parser/if', function (): void {
     it('should return if node with literal node', function (): void {

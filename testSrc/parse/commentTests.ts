@@ -1,5 +1,5 @@
 import wrappedParser from './helpers/wrappedParser';
-import expectNode from './helpers/expectNode';
+import * as expectNode from './helpers/expectNode';
 
 describe('parser/comment', function (): void {
     it('should return comment node without leading spaces and linefeed', function (): void {
