@@ -6,7 +6,7 @@ export function generateIGenInterface(sgen: StringGen): void {
     sgen.braces(() => {
         sgen.appendLine('append: (text: string) => void;');
         sgen.appendLine('eol: () => void;');
-        sgen.appendLine('forceEol(() => void)');
+        sgen.appendLine('forceEol: () => void;');
     });
 }
 
