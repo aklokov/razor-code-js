@@ -3,7 +3,7 @@ import { StringGen } from '../../common/StringGen';
 import { generateNode } from '../generateNode';
 
 export function generateForEach(sgen: StringGen, node: ForEachNode): void {
-    sgen.append(`for(${node.condition}) `);
+    sgen.append(`for (${node.condition}) `);
     sgen.braces(() => generateForEachContent(sgen, node));
 }
 

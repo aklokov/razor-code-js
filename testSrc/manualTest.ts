@@ -1,27 +1,18 @@
 import { generate } from '../src';
 
 const template = `
-@language ts
-@linefeed unix
-@import * as IType from './IType;
-@parameters obj: IType
+@import { ActionsFile } from '../../derive/model';
+@import { actionGenerator } from './action';
+@parameters file: ActionsFile
 
-export class @obj.className {
-    public @(obj.functionName)(): void {
-@{let i = 5;}
-@if(i > 5){
-    @foreach(let world in obj.worlds){
-        console.log('hello, world ' + @world.name);
-    }
+@foreach(let imp of file.imports) {
+import { @imp.types } from '@imp.path';
 }
-
-@if(i < 5){
-    return;
-} else {
-    return @i;
+@eol
+@foreach(let action of file.actions) {
+@[actionGenerator(action)]@if(action !== file.actions[file.actions.length - 1]){@eol}
 }
-    }
-}
+@eol
 `;
 
 describe('manualTest', function (): void {

@@ -6,9 +6,9 @@ import { generateNode } from './generateNode';
 export function generateMainFunction(sgen: StringGen, root: RootNode, config: IConfig): void {
     const parms = config.parameters.join(', ');
     if (parms.length) {
-        sgen.append(`function generateContent(gen: IGen, ${config.parameters.join(', ')}): string[] `);
+        sgen.append(`function generateContent(gen: any, ${config.parameters.join(', ')}): void `);
     } else {
-        sgen.append(`function generateContent(gen: IGen): string[] `);
+        sgen.append(`function generateContent(gen: any): void `);
     }
 
     sgen.braces(() => generateMainFunctionContent(sgen, root));

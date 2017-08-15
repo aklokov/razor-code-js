@@ -3,7 +3,7 @@ import { StringGen } from '../../common/StringGen';
 import { generateNode } from '../generateNode';
 
 export function generateIfNode(sgen: StringGen, node: IfNode): void {
-    sgen.appendLine(`if(${node.condition}) {`);
+    sgen.appendLine(`if (${node.condition}) {`);
     sgen.pushIndent();
     generateIfContent(sgen, node);
     sgen.popIndent();
