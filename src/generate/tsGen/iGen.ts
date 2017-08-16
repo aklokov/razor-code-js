@@ -18,13 +18,13 @@ export function generateGenClass(sgen: StringGen, config: IConfig): void {
 function generateClassContent(sgen: StringGen, config: IConfig): void {
     sgen.appendLine(`public indent: string = '';`);
     sgen.appendLine('private lines: string[] = [];');
-    sgen.appendLine('private eolPrinted: boolean = false;');
+    sgen.appendLine('private eolPrinted: boolean = true;');
     sgen.appendLine();
     sgen.append('public append(text: string): void ');
     sgen.braces(() => {
         sgen.appendLine('if (this.eolPrinted) { this.lines.push(this.indent); }');
         sgen.appendLine('this.lines.push(text);');
-        sgen.appendLine('this.eolPrinted = true;');
+        sgen.appendLine('this.eolPrinted = false;');
     });
     sgen.appendLine();
     sgen.append('public eol(): void ');
