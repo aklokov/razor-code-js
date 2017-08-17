@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "javascript razor-like generator implementation",
   "files": [
-    "out/src"
+    "build/src"
   ],
-  "main": "out/src/index.js",
-  "typings": "out/src/index",
+  "main": "build/src/index.js",
+  "typings": "build/src/index",
   "scripts": {},
   "keywords": [
     "token",
@@ -38,6 +38,7 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "token-breakdown-js": "1.0.6"
+    "token-breakdown-js": "1.0.7",
+    "hash-map": "1.0.2"
   }
 }

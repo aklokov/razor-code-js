@@ -1,5 +1,5 @@
 /node_modules
-/out
+/build/testSrc
 /test
 /.coverdata
 .coverrun
