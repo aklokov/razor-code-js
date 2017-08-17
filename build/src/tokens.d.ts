@@ -1,0 +1,10 @@
+import { StringMap, Map } from 'hash-map';
+declare const keywords: Map;
+declare const openingBrackets: string[];
+declare const configKeywords: string[];
+declare const flowKeywords: string[];
+declare const tokens: string[];
+declare const allTokens: string[];
+declare const replacements: Map;
+declare const openingBracketsMap: StringMap<boolean>;
+export { keywords, openingBrackets, openingBracketsMap, configKeywords, flowKeywords, tokens, allTokens, replacements };
