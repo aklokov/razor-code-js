@@ -1,6 +1,5 @@
 /node_modules
 /build/testSrc
-/test
-/.coverdata
-.coverrun
+/gulp-tsc-tmp*
+.gulp-tsc-tmp*.*
 npm-debug.log*
