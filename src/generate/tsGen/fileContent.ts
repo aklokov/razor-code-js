@@ -27,5 +27,3 @@ function generateExport(sgen: StringGen, config: IConfig): void {
         sgen.appendLine('generateContent');
     });
 }
-
-

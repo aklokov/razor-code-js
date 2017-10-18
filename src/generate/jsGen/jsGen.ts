@@ -1,5 +1,9 @@
 import { RootNode } from '../../nodes';
+import { IConfig } from '../config';
+import { startFile } from '../common/fileGen';
 
-export default function jsGen(node: RootNode): string {
-    return '';
+export function generate(node: RootNode, config: IConfig): string {
+  const stringGen = startFile(config);
+  generateFileContent(stringGen, node, config);
+  return stringGen.toString();
 }
