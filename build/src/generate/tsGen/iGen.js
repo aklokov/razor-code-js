@@ -1,15 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../../constants");
-function generateIGenInterface(sgen) {
-    sgen.append('export interface IGen ');
-    sgen.braces(() => {
-        sgen.appendLine('append: (text: string) => void;');
-        sgen.appendLine('eol: () => void;');
-        sgen.appendLine('forceEol: () => void;');
-    });
-}
-exports.generateIGenInterface = generateIGenInterface;
 function generateGenClass(sgen, config) {
     sgen.append('class Gen ');
     sgen.braces(() => generateClassContent(sgen, config));

@@ -4,7 +4,7 @@ import { StringGen } from '../common/StringGen';
 import { generateEntryFunction, generateGenClass, generateMainFunction } from './genFunctions';
 
 export function generateFileContent(sgen: StringGen, root: RootNode, config: IConfig): void {
-  config.imports.forEach(imp => sgen.appendLine('import ' + imp));
+  config.imports.forEach(imp => sgen.appendLine(imp));
   sgen.appendLine();
   generateGenClass(sgen, config);
   sgen.appendLine();
@@ -17,7 +17,7 @@ export function generateFileContent(sgen: StringGen, root: RootNode, config: ICo
 }
 
 function generateExport(sgen: StringGen, config: IConfig): void {
-  sgen.append(`export const ${config.exportName} = `);
+  sgen.append(`module.exports = `);
   sgen.bracesSemicolon(() => {
     sgen.appendLine('generate,');
     sgen.appendLine('generateContent');

@@ -1,2 +1,3 @@
 import { RootNode } from '../../nodes';
-export default function jsGen(node: RootNode): string;
+import { IConfig } from '../config';
+export declare function generate(node: RootNode, config: IConfig): string;
