@@ -1,6 +1,6 @@
 {
   "name": "razor-code-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "js/ts/cs razor-like generator implementation, dedicated to code generation",
   "files": [
     "build/src"
