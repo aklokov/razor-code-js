@@ -1,0 +1,15 @@
+import { BasicNode } from '../../../src/nodes';
+import * as nodes from '../../../src/nodes';
+export declare function root(node: nodes.RootNode, childrenCount?: number): void;
+export declare function config(node: BasicNode, token: string, content: string): void;
+export declare function comment(node: BasicNode, content: string): void;
+export declare function literal(node: BasicNode, content: string): void;
+export declare function expression(node: BasicNode, content: string): void;
+export declare function injection(node: BasicNode, content: string): void;
+export declare function eol(node: BasicNode): void;
+export declare function forceEol(node: BasicNode): void;
+export declare function rootWithoutConfig(node: nodes.RootNode): void;
+export declare function forEach(node: BasicNode, condition: string, childCount?: number): nodes.ForEachNode;
+export declare function ifNode(node: BasicNode, condition: string): nodes.IfNode;
+export declare function ifChildren(node: nodes.IfNode, ifCount: number, elseCount?: number): void;
+export declare function partial(node: BasicNode, generatorName: string, parameters: string, indent: string): void;
