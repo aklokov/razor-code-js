@@ -1,7 +1,6 @@
 import { indentSize } from '../constants';
-import { numberMap } from 'hash-map';
 
-const indents = numberMap<string>();
+const indents = new Map<number, string>();
 
 export function createIndent(amount: number = 1): string {
   if (indents[amount]) {

@@ -1,10 +1,7 @@
 import { createIndent } from '../../tools';
 import { lineFeedType as lft } from '../../constants';
-import { map } from 'hash-map';
-const dict = map();
-dict[lft.mac] = '\r';
-dict[lft.unix] = '\n';
-dict[lft.windows] = '\r\n';
+
+const dict = new Map<string, string>([[lft.mac, '\r'], [lft.unix, '\n'], [lft.windows, '\r\n']]);
 
 export class StringGen {
   private currentIndent: number = 0;
@@ -13,7 +10,7 @@ export class StringGen {
   private eol: boolean = false;
 
   constructor(lineFeed: string = lft.unix) {
-    this.lineFeed = dict[lineFeed];
+    this.lineFeed = dict.get(lineFeed);
   }
 
   public pushIndent(amount: number = 1): void {

@@ -3,7 +3,6 @@ import { keywords } from '../../../../tokens';
 import { StateType } from '../StateType';
 import * as bracketMain from './bracketMain';
 import * as functions from '../stateFunctions';
-import { StringMap, objectToStringMap } from 'hash-map';
 
 export function goBack(current: IBracketState, token: string): IState {
   const contentState = functions.content.addToken(current.contentState, token);
@@ -27,14 +26,13 @@ function addToken(current: IBracketState, token: string): IBracketState {
   };
 }
 
-export function reducerCreation(openingBrackets: StringMap<boolean>, closingBracket: string): (c: IBracketState, t: string) => IState {
-  const bracketsMap = objectToStringMap(openingBrackets);
+export function reducerCreation(openingBrackets: Map<string, boolean>, closingBracket: string): (c: IBracketState, t: string) => IState {
   return function reduce(current: IBracketState, token: string): IState {
     if (token === keywords.eof) {
       return current.previous;
     }
 
-    if (bracketsMap[token]) {
+    if (openingBrackets[token]) {
       return bracketMain.createBracketState(current.contentState, current, token);
     }
 

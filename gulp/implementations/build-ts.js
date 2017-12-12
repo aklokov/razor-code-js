@@ -1,11 +1,7 @@
 const gulp = require('gulp');
-const ts = require('gulp-tsc');
-const settings = require('../settings');
-const tsconfig = require('../../tsconfig');
+var spawn = require('../tools/spawn');
+var path = require('path')
 
-gulp.task('build-ts', function () {
-    const options = Object.assign({}, tsconfig.compilerOptions);
-    return gulp.src(settings.projectTsFiles)
-        .pipe(ts(options))
-        .pipe(gulp.dest(settings.buildPath));
+gulp.task('build-ts', function (done) {
+  spawn('tsc', [], { stdio: 'inherit' }, done, 'compilation');
 });

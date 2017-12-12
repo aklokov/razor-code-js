@@ -2,10 +2,19 @@
     "compilerOptions": {
         "module": "commonjs",
         "declaration": true,
-		"target": "es6",
+		    "target": "es2017",
         "noResolve": false,
         "removeComments": true,
         "preserveConstEnums": true,
-        "sourceMap": true		
-    }
+        "sourceMap": true,
+        "lib": [
+          "es2017",
+          "dom"
+        ],
+        "outDir": "./build/"
+    },
+    "include": [
+      "src/**/*",
+      "testSrc/**/*"
+   ]
 }
