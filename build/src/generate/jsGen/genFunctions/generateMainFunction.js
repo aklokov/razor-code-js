@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const generateNode_1 = require("../../tsgen/generateNode");
+const generateNode_1 = require("../../tsGen/generateNode");
 function generateMainFunction(sgen, root, config) {
     const parms = config.parameters.join(', ');
     if (parms.length) {
