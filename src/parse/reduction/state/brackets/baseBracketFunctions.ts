@@ -32,7 +32,7 @@ export function reducerCreation(openingBrackets: Map<string, boolean>, closingBr
       return current.previous;
     }
 
-    if (openingBrackets[token]) {
+    if (openingBrackets.has(token)) {
       return bracketMain.createBracketState(current.contentState, current, token);
     }
 

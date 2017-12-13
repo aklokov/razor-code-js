@@ -10,7 +10,7 @@ export function reduce(current: ISubgroupConditionState, token: string): IState 
         return current.previous;
     }
 
-    if (openingBracketsMap[token]) {
+    if (openingBracketsMap.has(token)) {
         return bracketMain.createTopBracketState(current, current, token);
     }
 

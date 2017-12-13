@@ -1,5 +1,5 @@
-import { toBoolStringMap } from './tools/array';
-import { StringMap, objectToMap, Map } from 'hash-map';
+import { toMap } from 'maptools/objectMap';
+import { map } from 'maptools';
 
 const at = '@';
 const atat = at + at;
@@ -9,7 +9,7 @@ const atbracket = at + '[';
 const escapeBrace = at + '}';
 const atStar = at + '*';
 // const atquote = at + '"';
-const keywords: Map = objectToMap({
+const keywords = {
   // flow
   at,
   atat,
@@ -40,7 +40,7 @@ const keywords: Map = objectToMap({
   // c# specific
   namespace: at + 'namespace ',
   using: at + 'using '
-});
+};
 
 const openingBrackets = [
   '<', '(', '[',
@@ -83,12 +83,12 @@ const tokens = [
 
 const allTokens = [...tokens, ...configKeywords, ...flowKeywords];
 
-const replacements: Map = objectToMap({
+const replacements = toMap({
   '\r': keywords.lineFeed,
   '\r\n': keywords.lineFeed
 });
 
-const openingBracketsMap: StringMap<boolean> = toBoolStringMap(openingBrackets);
+const openingBracketsMap = map(openingBrackets, item => item, item => true);
 
 export {
   keywords,

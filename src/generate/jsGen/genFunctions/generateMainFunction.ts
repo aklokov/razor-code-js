@@ -1,7 +1,7 @@
 import { RootNode } from '../../../nodes';
 import { IConfig } from '../../config';
 import { StringGen } from '../../common/StringGen';
-import { generateNode } from '../../tsgen/generateNode';
+import { generateNode } from '../../tsGen/generateNode';
 
 export function generateMainFunction(sgen: StringGen, root: RootNode, config: IConfig): void {
     const parms = config.parameters.join(', ');

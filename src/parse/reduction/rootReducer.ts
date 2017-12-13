@@ -7,7 +7,7 @@ import { keywords, replacements } from '../../tokens';
 function rootReducer(current: IState, token: string): IState {
     current = current || rootState.createState();
 
-    token = replacements[token] || token;
+    token = replacements.get(token) || token;
     if (token === keywords.eof) {
         var nextState = current;
         while (nextState.type !== StateType.Final) {

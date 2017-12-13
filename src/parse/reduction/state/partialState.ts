@@ -72,7 +72,7 @@ function closingCallParms(current: IPartialState): IPartialState {
 }
 
 export function reduceStage2(current: IPartialState, token: string): IState {
-  if (openingBracketsMap[token]) {
+  if (openingBracketsMap.has(token)) {
     return bracketMain.createTopBracketState(current, current, token);
   }
 

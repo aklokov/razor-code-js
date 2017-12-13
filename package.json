@@ -1,6 +1,6 @@
 {
   "name": "razor-code-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "js/ts/cs razor-like generator implementation, dedicated to code generation",
   "files": [
     "build/src"
@@ -40,7 +40,7 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "maptools": "^1.0.3",
+    "maptools": "^1.0.4",
     "token-breakdown-js": "1.0.8"
   }
 }

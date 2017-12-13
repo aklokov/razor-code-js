@@ -1,1 +1,0 @@
-{"version":3,"file":"fileGen.js","sourceRoot":"","sources":["../../../../src/generate/common/fileGen.ts"],"names":[],"mappings":";;AAAA,yCAAwC;AAGxC,IAAM,cAAc,GAChB,8ZAO6E,CAAC;AAElF,mBAA0B,MAAe;IACrC,IAAM,GAAG,GAAG,IAAI,qBAAS,CAAC,MAAM,CAAC,QAAQ,CAAC,CAAC;IAC3C,GAAG,CAAC,UAAU,CAAC,cAAc,CAAC,CAAC;IAC/B,MAAM,CAAC,GAAG,CAAC;AACf,CAAC;AAJD,8BAIC"}

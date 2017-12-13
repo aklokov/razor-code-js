@@ -5,55 +5,50 @@ import * as functions from './stateFunctions';
 import { ContentNode, NodeType } from '../../../nodes';
 import * as groupState from './groupState';
 import * as bracketMain from './brackets/bracketMain';
-import { toBoolStringMap } from '../../../tools/array';
+import { map } from 'maptools';
 
 function createNode(current: IChildState): ContentNode {
-    return new ContentNode(functions.content.getContent(current), NodeType.Expression);
+  return new ContentNode(functions.content.getContent(current), NodeType.Expression);
 }
 
 function addNodeToPreviousState(current: IChildState): IGroupState {
-    return current.content.length
-        ? functions.group.addNode(current.previous, createNode(current))
-        : (functions.content.addToken(current.previous, keywords.at) as IGroupState);
+  return current.content.length
+    ? functions.group.addNode(current.previous, createNode(current))
+    : (functions.content.addToken(current.previous, keywords.at) as IGroupState);
 }
 
 function expressionBreakEncountered(current: IChildState, token: string): IState {
-    const previous = addNodeToPreviousState(current);
-    return groupState.reduceGroupState(previous, token);
+  const previous = addNodeToPreviousState(current);
+  return groupState.reduceGroupState(previous, token);
 }
 
 function eofEncountered(current: IChildState): IState {
-    return addNodeToPreviousState(current);
+  return addNodeToPreviousState(current);
 }
 
-const openingBrackets = {
-    '<': true,
-    '(': true,
-    '[': true
-};
-
-let expressionBreaks = toBoolStringMap([...flowKeywords, ...tokens]);
+const openingBrackets = map(['<', '(', '['], item => item, item => true);
+let expressionBreaks = map([...flowKeywords, ...tokens], item => item, item => true);
 
 export function reduce(current: IChildState, token: string): IState {
-    if (token === keywords.eof) {
-        return eofEncountered(current);
-    }
+  if (token === keywords.eof) {
+    return eofEncountered(current);
+  }
 
-    if (openingBrackets[token]) {
-        return bracketMain.createTopBracketState(current, current, token);
-    }
+  if (openingBrackets.has(token)) {
+    return bracketMain.createTopBracketState(current, current, token);
+  }
 
-    if (expressionBreaks[token]) {
-        return expressionBreakEncountered(current, token);
-    }
+  if (expressionBreaks.has(token)) {
+    return expressionBreakEncountered(current, token);
+  }
 
-    return functions.content.addToken(current, token);
+  return functions.content.addToken(current, token);
 }
 
 export function createState(previous: IGroupState): IChildState {
-    return {
-        type: StateType.ImplicitExpression,
-        previous,
-        content: ''
-    };
+  return {
+    type: StateType.ImplicitExpression,
+    previous,
+    content: ''
+  };
 }

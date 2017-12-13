@@ -27,7 +27,7 @@ export function reduce(current: IChildState, token: string, closing: string, nod
         return eofEncountered(current, nodeType);
     }
 
-    if (openingBracketsMap[token]) {
+    if (openingBracketsMap.has(token)) {
         return bracketMain.createTopBracketState(current, current, token);
     }
 

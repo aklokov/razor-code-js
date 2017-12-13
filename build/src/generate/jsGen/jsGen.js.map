@@ -1,0 +1,1 @@
+{"version":3,"file":"jsGen.js","sourceRoot":"","sources":["../../../../src/generate/jsGen/jsGen.ts"],"names":[],"mappings":";;AAEA,+CAA8C;AAC9C,+DAA4D;AAE5D,kBAAyB,IAAc,EAAE,MAAe;IACtD,MAAM,SAAS,GAAG,mBAAS,CAAC,MAAM,CAAC,CAAC;IACpC,yCAAmB,CAAC,SAAS,EAAE,IAAI,EAAE,MAAM,CAAC,CAAC;IAC7C,MAAM,CAAC,SAAS,CAAC,QAAQ,EAAE,CAAC;AAC9B,CAAC;AAJD,4BAIC"}
